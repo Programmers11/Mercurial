@@ -1,0 +1,13 @@
+Insert into booking values('A000032','4551166','Counter2','180','0','180','2013-12-21', '2013-12-23', 'New','Normal',CURRENT_TIMESTAMP); 
+insert into booking_clothes values((select cid from clothes where name='Pant'),'A000032','1','40','(hanger,,)'); 
+insert into booking_clothes values((select cid from clothes where name='Kurta'),'A000032','2','80','(,)'); 
+insert into booking_clothes values((select cid from clothes where name='Jeans'),'A000032','1','50','(,)'); 
+insert into booking_clothes values((select cid from clothes where name='Cap'),'A000032','1','10','(,)'); 
+Insert into booking values('A000033','4551165','Counter2','110','0','110','2013-12-21', '2013-12-23', 'New','Normal',CURRENT_TIMESTAMP); 
+insert into booking_clothes values((select cid from clothes where name='Shirt'),'A000033','1','30','(,)'); 
+insert into booking_clothes values((select cid from clothes where name='Kurta'),'A000033','2','80','(,)'); 
+Insert into booking values('A000034','4551192','Counter2','40','0','40','2013-12-21', '2013-12-23', 'New','Normal',CURRENT_TIMESTAMP); 
+insert into booking_clothes values((select cid from clothes where name='Pant'),'A000034','1','40','(hanger,,)'); 
+Insert into booking values('A000035','4933424','Counter2','120','0','120','2013-12-21', '2013-12-23', 'New','Normal',CURRENT_TIMESTAMP); 
+insert into booking_clothes values((select cid from clothes where name='Kurta'),'A000035','1','40','(,)'); 
+insert into booking_clothes values((select cid from clothes where name='Dup-Dc'),'A000035','2','80','(,)'); 

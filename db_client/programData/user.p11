@@ -1,0 +1,2 @@
+insert into staff values('Soban1', 'soban1', 0, '010', 0); 
+UPDATE staff SET sname = 'Soban1', pass= 'soban1',  no_of_bookings = 0, type= 0,priv= '110' WHERE sname = 'Soban1'; 

@@ -1,0 +1,8 @@
+insert into client values('4933424','Osman Ali','Flat1, Younus Plaza, Chandni Ch.','',0); 
+UPDATE client SET phone = '4551192', clientName= 'Carlos Sahab', address= 'SC-1, ABC arcade, main road, Gulshan Iqbal', altPh= '', discount= '0' WHERE phone = '4551192'; 
+UPDATE client SET phone = '4551166', clientName= 'Customer4', address= 'Flat-4', altPh= '', discount= '5' WHERE phone = '4551166'; 
+UPDATE client SET phone = '4551166', clientName= 'Customer4', address= 'Flat-4', altPh= '', discount= '10' WHERE phone = '4551166'; 
+UPDATE client SET phone = '4551164', clientName= 'Customer2', address= 'Flat-2', altPh= '', discount= '20' WHERE phone = '4551164'; 
+UPDATE client SET phone = '4551164', clientName= 'Customer2', address= 'Flat-2', altPh= '', discount= '50' WHERE phone = '4551164'; 
+insert into client values('4551177','Omer Ahmed','DHA','',0); 
+UPDATE client SET phone = '4551163', clientName= 'Customer1', address= 'Flat-1', altPh= '', discount= '5' WHERE phone = '4551163'; 
