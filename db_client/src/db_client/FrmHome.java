@@ -106,10 +106,16 @@ public class FrmHome extends javax.swing.JPanel
                     return;
                 }
                 
+                optNew.setEnabled(true);
+                optReady.setEnabled(true);
+                optDelivered.setEnabled(true);
+                optDNP.setEnabled(true);
+                
                 enableDNP();
                 if(lblStatus.getText().contentEquals("New"))
                 {
                     optNew.setSelected(true);
+                    
                 }
                 else if(lblStatus.getText().contentEquals("Ready"))
                 {
@@ -122,6 +128,8 @@ public class FrmHome extends javax.swing.JPanel
                 else if(lblStatus.getText().contentEquals("DNP"))
                 {
                    optDNP.setSelected(true);
+                   optNew.setEnabled(false);
+                   optReady.setEnabled(false);
                 }
                 cmdView.setEnabled(true);
                

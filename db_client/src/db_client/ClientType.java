@@ -61,6 +61,8 @@ public class ClientType {
        
     }
     
+    
+    
     public static void updateClient(String ph,String name,String address, String discount,String oldPh)
     {
         DatabaseType db=new DatabaseType();
@@ -143,6 +145,45 @@ public class ClientType {
         
     }
    
+    public static void addDNP(String ph)    {
+        DatabaseType db= new DatabaseType();
+        String q="Insert into DNP values('"+ph+"')";
+        String q1="Delete from DNP where phone='"+ph+"'";
+        try
+        {
+            db.openConnection();
+            db.delete(q1);
+            db.insert(q);
+            System.out.println(ph+ "was inserted");
+            db.commit();
+            db.closeConnection();
+//            DataLogger.writeLog(fname,addQ);
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null,e.getMessage(),"Oops",JOptionPane.ERROR_MESSAGE);
+            db.rollback();
+        }
+    }    
+    public static void removeDNP(String ph)    {
+        DatabaseType db= new DatabaseType();
+       
+        String q1="Delete from DNP where phone='"+ph+"'";
+        try
+        {
+            db.openConnection();
+            db.delete(q1);
+            System.out.println(ph+ "was deleted");
+            db.commit();
+            db.closeConnection();
+//            DataLogger.writeLog(fname,addQ);
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null,e.getMessage(),"Oops",JOptionPane.ERROR_MESSAGE);
+            db.rollback();
+        }
+    } 
     public static boolean isDNP(String rcptNo){
         DatabaseType db= new DatabaseType();
         String q="select d.phone from dnp d where d.phone = (SELECT phone FROM `booking` where rcptno = '"+rcptNo+"')";
@@ -181,4 +222,40 @@ public class ClientType {
     
     
     }
+    public static boolean isDNP(String phNo,int x){
+        DatabaseType db= new DatabaseType();
+        String q="select * from DNP where phone='"+phNo+"'";
+        ResultSet rs;
+        try
+        {
+            db.openConnection();
+            
+            rs=db.read(q);
+            try{
+                rs.next();
+                System.out.println(rs.getString("phone")+" was found");
+                }
+            catch(SQLException ex)
+                { 
+                //the phone# was not present in DNP
+                db.closeConnection();    
+                return false;
+                }
+            db.closeConnection();
+        }
+        catch(Exception e)
+        {
+           
+            JOptionPane.showMessageDialog(null,e.getMessage(),"Oops",JOptionPane.ERROR_MESSAGE);
+        }
+        
+        //the phone# was present in DNP
+        return true;
+        
+        
+    
+    
+    
+    
+    } //extra integer just to make it diffrnt from db_cllient wala isDNP
 }

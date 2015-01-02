@@ -1,0 +1,2 @@
+insert into clothes values(14, 'Curtain', '30',1); 
+insert into clothes values(15, 'Carpet', '20',1); 

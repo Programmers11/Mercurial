@@ -1,0 +1,2 @@
+Update booking set netAmount= netAmount + 10 where rcptNo='A000006'; 
+Update booking set status='Delivered',delDate = CURRENT_TIMESTAMP where rcptNo='A000002'; 

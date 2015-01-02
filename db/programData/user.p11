@@ -1,0 +1,9 @@
+insert into staff values('Counter99', 'kitkat', 0, '100', 0); 
+Delete from staff where sname='Counter99'; 
+insert into staff values('osmanali', 'osmanali', 0, '000', 0); 
+UPDATE staff SET sname = 'counter3', pass= 'counter3',  no_of_bookings = 0, type= 0,priv= '100' WHERE sname = 'counter3'; 
+UPDATE staff SET sname = 'counter3', pass= 'counter3',  no_of_bookings = 0, type= 0,priv= '010' WHERE sname = 'counter3'; 
+UPDATE staff SET sname = 'counter3', pass= 'counter3',  no_of_bookings = 0, type= 0,priv= '001' WHERE sname = 'counter3'; 
+UPDATE staff SET sname = 'counter3', pass= 'counter3',  no_of_bookings = 0, type= 0,priv= '011' WHERE sname = 'counter3'; 
+UPDATE staff SET sname = 'counter3', pass= 'counter3',  no_of_bookings = 0, type= 0,priv= '000' WHERE sname = 'counter3'; 
+insert into staff values('counter9', 'counter', 0, '010', 0); 
