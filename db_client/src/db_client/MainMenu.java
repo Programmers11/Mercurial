@@ -44,7 +44,7 @@ public class MainMenu extends javax.swing.JFrame {
     
     FrmHome home=new FrmHome(this);
 
-    
+    public static int GST=taxType.getTax("GST");
 
     FrmBooking booking;
     

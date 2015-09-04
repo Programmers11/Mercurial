@@ -469,7 +469,7 @@ public class FrmReceiptPreview extends javax.swing.JFrame {
     
      private void printRequest(int type) {
         
-        String[] Data=new String[10];
+        String[] Data=new String[11];
         
         Data[0]=txtPhone.getText();
         Data[1]=rcptduedate;
@@ -481,6 +481,7 @@ public class FrmReceiptPreview extends javax.swing.JFrame {
         Data[7]=prevRcpt;
         Data[8]=TxtTotal.getText();
         Data[9]=txtDiscount.getText();
+        Data[10]=String.valueOf(MainMenu.GST);
         
         int row=receiptTable.getModel().getRowCount();
         int col=receiptTable.getModel().getColumnCount();
@@ -591,7 +592,7 @@ public class FrmReceiptPreview extends javax.swing.JFrame {
    
       private void printRequest2(int type) throws Exception {
         
-        String[] Data=new String[10];
+        String[] Data=new String[11];
         
         Data[0]=txtPhone.getText();
         Data[1]=rcptduedate;
@@ -603,6 +604,9 @@ public class FrmReceiptPreview extends javax.swing.JFrame {
         Data[7]=prevRcpt;
         Data[8]=TxtTotal.getText();
         Data[9]=txtDiscount.getText();
+        Data[10]=String.valueOf(MainMenu.GST);
+        
+        
         int row=receiptTable.getModel().getRowCount();
         int col=receiptTable.getModel().getColumnCount();
         System.out.println("ok4a");
@@ -709,7 +713,7 @@ public class FrmReceiptPreview extends javax.swing.JFrame {
    
        private void printRequestCashmemo(int type) {
         
-        String[] Data=new String[10];
+        String[] Data=new String[11];
         
         Data[0]=txtPhone.getText();
         Data[1]=rcptduedate;
@@ -721,6 +725,8 @@ public class FrmReceiptPreview extends javax.swing.JFrame {
         Data[7]=prevRcpt;
         Data[8]=TxtTotal.getText();
         Data[9]=txtDiscount.getText();
+        Data[10]=String.valueOf(MainMenu.GST);
+        
         
         int row=receiptTable.getModel().getRowCount();
         int col=receiptTable.getModel().getColumnCount();
@@ -890,7 +896,7 @@ public class FrmReceiptPreview extends javax.swing.JFrame {
                         txtUser.getText(),
                         TxtTotal.getText(),
                         txtDiscount.getText(),
-                        txtNetTotal.getText(),
+                        String.valueOf(Integer.parseInt(txtNetTotal.getText())*MainMenu.GST  + Integer.parseInt(txtNetTotal.getText())),
                         FormatDateForDB(txtOrderDate.getText()),
                         FormatDateForDB(txtDueDate.getText()),
                         txtStatus.getText(),

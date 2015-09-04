@@ -346,6 +346,9 @@ public final class FrmBooking extends javax.swing.JPanel {
         cmdKamizDc = new javax.swing.JToggleButton();
         cmdShalwarSuiteDc = new javax.swing.JToggleButton();
         cmdShirtDc = new javax.swing.JToggleButton();
+        jLabel14 = new javax.swing.JLabel();
+        lblGST = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setAutoscrolls(true);
@@ -389,7 +392,7 @@ public final class FrmBooking extends javax.swing.JPanel {
         jdp.setBounds(10, 10, 490, 270);
 
         mainPanel.add(jdpPanel);
-        jdpPanel.setBounds(520, 200, 510, 300);
+        jdpPanel.setBounds(510, 200, 510, 300);
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
@@ -878,7 +881,7 @@ public final class FrmBooking extends javax.swing.JPanel {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("%");
         mainPanel.add(jLabel7);
-        jLabel7.setBounds(980, 430, 20, 20);
+        jLabel7.setBounds(980, 510, 20, 20);
 
         txtDiscount.setText("0");
         txtDiscount.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -910,13 +913,13 @@ public final class FrmBooking extends javax.swing.JPanel {
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Quantity:");
         mainPanel.add(jLabel9);
-        jLabel9.setBounds(520, 390, 90, 20);
+        jLabel9.setBounds(520, 400, 90, 20);
 
         totalQ.setEditable(false);
         totalQ.setText("0");
         totalQ.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         mainPanel.add(totalQ);
-        totalQ.setBounds(620, 390, 80, 20);
+        totalQ.setBounds(620, 400, 80, 20);
 
         lblColour.setBackground(new java.awt.Color(15, 88, 121));
         lblColour.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Mercurial Theme [final]/clrpickerr.png"))); // NOI18N
@@ -1291,7 +1294,7 @@ public final class FrmBooking extends javax.swing.JPanel {
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel13.setText("Hanger (Less)");
+        jLabel13.setText("Hanger (Less):");
         mainPanel.add(jLabel13);
         jLabel13.setBounds(520, 430, 90, 20);
 
@@ -1471,6 +1474,24 @@ public final class FrmBooking extends javax.swing.JPanel {
         });
         mainPanel.add(cmdShirtDc);
         cmdShirtDc.setBounds(400, 200, 90, 23);
+
+        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setText("GST:");
+        mainPanel.add(jLabel14);
+        jLabel14.setBounds(820, 510, 60, 20);
+
+        lblGST.setEditable(false);
+        lblGST.setText("0");
+        lblGST.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        mainPanel.add(lblGST);
+        lblGST.setBounds(890, 510, 80, 20);
+
+        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setText("%");
+        mainPanel.add(jLabel15);
+        jLabel15.setBounds(980, 430, 20, 20);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Mercurial Theme [final]/booking.png"))); // NOI18N
         mainPanel.add(jLabel2);
@@ -1726,6 +1747,7 @@ public final class FrmBooking extends javax.swing.JPanel {
     public void refreshPage()
     {
         
+        lblGST.setText(""+parent.GST);
         lblExpected.setText(BookingType.generateNumber());
         txtitemName.setText(null);
         txtUnitCount.setText(null);
@@ -1772,7 +1794,7 @@ public final class FrmBooking extends javax.swing.JPanel {
     private void cmdPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdPrintActionPerformed
         if (!verified()) 
             return;
-        Object[] summary=new Object[4];
+        Object[] summary=new Object[5];
         Object[] clientrDetails=new Object[2];
         Object[] receiptDetails=new Object[6];
         
@@ -1794,7 +1816,7 @@ public final class FrmBooking extends javax.swing.JPanel {
         
         summary[2]=lblNetTotal.getText();
         summary[3]=txtHanger.getText();
-        
+        summary[4]=parent.GST;
 
         
         if(addMode)
@@ -2532,6 +2554,8 @@ if ((evt.getX() > 3 && evt.getX() < 22) && (evt.getY() > 5 && evt.getY() < 24)) 
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
@@ -2565,6 +2589,7 @@ if ((evt.getX() > 3 && evt.getX() < 22) && (evt.getY() > 5 && evt.getY() < 24)) 
     private javax.swing.JLabel lblDate;
     private javax.swing.JLabel lblDefaulted;
     private javax.swing.JLabel lblExpected;
+    private javax.swing.JTextField lblGST;
     private javax.swing.JLabel lblMup;
     private javax.swing.JTextField lblNetTotal;
     private javax.swing.JTextField lblUser;
