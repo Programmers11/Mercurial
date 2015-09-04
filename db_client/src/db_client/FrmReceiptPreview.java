@@ -73,6 +73,8 @@ public class FrmReceiptPreview extends javax.swing.JFrame {
             lblQty.setVisible(true);
             txtQty.setText(BookingType.getQuantity(txtReceiptNumber.getText()));
             txtPrevRcpt.setText(booking.getString("prevRcpt"));
+            gst.setText(booking.getString("gst"));
+            
             
             if(txtStatus.getText().contentEquals("Delivered"))
             {
@@ -188,6 +190,7 @@ public class FrmReceiptPreview extends javax.swing.JFrame {
         txtDiscount.setText(summary[1].toString());
         txtNetTotal.setText(summary[2].toString());
         hangers.setText(summary[3].toString());
+        gst.setText(summary[4].toString());
      
         if(txtMode.getText().contentEquals("Press")) txtDiscount.setText("0");
         if(!txtStatus.getText().contentEquals("Delivered") && !txtStatus.getText().contentEquals("Cancelled") )cmdEdit.setVisible(false);
@@ -226,13 +229,15 @@ public class FrmReceiptPreview extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         cmdEdit = new javax.swing.JButton();
         lblHangers = new javax.swing.JLabel();
-        hangers = new javax.swing.JTextField();
+        gst = new javax.swing.JTextField();
         DelDate = new javax.swing.JLabel();
         txtDelDate = new javax.swing.JTextField();
         txtQty = new javax.swing.JTextField();
         lblQty = new javax.swing.JLabel();
         lblRcpt = new javax.swing.JLabel();
         txtPrevRcpt = new javax.swing.JTextField();
+        hangers = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -261,13 +266,12 @@ public class FrmReceiptPreview extends javax.swing.JFrame {
 
         jLabel6.setText("Total: ");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(270, 430, 40, 20);
+        jLabel6.setBounds(270, 420, 40, 20);
 
         TxtTotal.setEditable(false);
-        TxtTotal.setFont(new java.awt.Font("SansSerif", 0, 14));
         TxtTotal.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         getContentPane().add(TxtTotal);
-        TxtTotal.setBounds(320, 430, 80, 23);
+        TxtTotal.setBounds(320, 420, 80, 18);
         getContentPane().add(jSeparator1);
         jSeparator1.setBounds(0, 170, 460, 10);
         getContentPane().add(jSeparator2);
@@ -299,7 +303,6 @@ public class FrmReceiptPreview extends javax.swing.JFrame {
         txtUser.setBounds(90, 110, 100, 20);
 
         txtDiscount.setEditable(false);
-        txtDiscount.setFont(new java.awt.Font("SansSerif", 0, 14));
         txtDiscount.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         txtDiscount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -307,11 +310,11 @@ public class FrmReceiptPreview extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtDiscount);
-        txtDiscount.setBounds(90, 470, 80, 23);
+        txtDiscount.setBounds(90, 450, 80, 18);
 
-        jLabel9.setText("Dscnt");
+        jLabel9.setText("GST");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(40, 470, 40, 20);
+        jLabel9.setBounds(40, 480, 40, 20);
 
         cmdCancel.setText("Cancel");
         cmdCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -340,7 +343,6 @@ public class FrmReceiptPreview extends javax.swing.JFrame {
         txtStatus.setBounds(290, 190, 110, 20);
 
         txtMode.setEditable(false);
-        txtMode.setFont(new java.awt.Font("SansSerif", 0, 14));
         txtMode.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         txtMode.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -348,11 +350,11 @@ public class FrmReceiptPreview extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtMode);
-        txtMode.setBounds(90, 430, 80, 23);
+        txtMode.setBounds(90, 420, 80, 18);
 
         mod.setText("Mode:");
         getContentPane().add(mod);
-        mod.setBounds(40, 430, 40, 20);
+        mod.setBounds(40, 420, 40, 20);
 
         receiptTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -375,17 +377,16 @@ public class FrmReceiptPreview extends javax.swing.JFrame {
         jScrollPane1.setViewportView(receiptTable);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(30, 220, 380, 200);
+        jScrollPane1.setBounds(30, 220, 380, 170);
 
         txtNetTotal.setEditable(false);
-        txtNetTotal.setFont(new java.awt.Font("SansSerif", 0, 14));
         txtNetTotal.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         getContentPane().add(txtNetTotal);
-        txtNetTotal.setBounds(320, 470, 80, 23);
+        txtNetTotal.setBounds(320, 450, 80, 18);
 
         jLabel10.setText("Net:");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(270, 470, 40, 20);
+        jLabel10.setBounds(270, 450, 40, 20);
 
         cmdEdit.setText("Edit");
         cmdEdit.addActionListener(new java.awt.event.ActionListener() {
@@ -398,19 +399,18 @@ public class FrmReceiptPreview extends javax.swing.JFrame {
 
         lblHangers.setText("Hangers");
         getContentPane().add(lblHangers);
-        lblHangers.setBounds(40, 500, 40, 20);
+        lblHangers.setBounds(40, 510, 40, 20);
 
-        hangers.setEditable(false);
-        hangers.setFont(new java.awt.Font("SansSerif", 0, 14));
-        hangers.setText("0");
-        hangers.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        hangers.addActionListener(new java.awt.event.ActionListener() {
+        gst.setEditable(false);
+        gst.setText("0");
+        gst.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        gst.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                hangersActionPerformed(evt);
+                gstActionPerformed(evt);
             }
         });
-        getContentPane().add(hangers);
-        hangers.setBounds(90, 500, 80, 23);
+        getContentPane().add(gst);
+        gst.setBounds(90, 480, 80, 18);
 
         DelDate.setText("Delivered On");
         getContentPane().add(DelDate);
@@ -421,7 +421,6 @@ public class FrmReceiptPreview extends javax.swing.JFrame {
         txtDelDate.setBounds(280, 140, 110, 20);
 
         txtQty.setEditable(false);
-        txtQty.setFont(new java.awt.Font("SansSerif", 0, 14));
         txtQty.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         txtQty.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -429,11 +428,11 @@ public class FrmReceiptPreview extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtQty);
-        txtQty.setBounds(320, 500, 80, 23);
+        txtQty.setBounds(320, 480, 80, 18);
 
         lblQty.setText("Quantity");
         getContentPane().add(lblQty);
-        lblQty.setBounds(250, 500, 60, 20);
+        lblQty.setBounds(250, 480, 60, 20);
 
         lblRcpt.setText("Previous");
         getContentPane().add(lblRcpt);
@@ -442,6 +441,21 @@ public class FrmReceiptPreview extends javax.swing.JFrame {
         txtPrevRcpt.setEditable(false);
         getContentPane().add(txtPrevRcpt);
         txtPrevRcpt.setBounds(90, 140, 100, 20);
+
+        hangers.setEditable(false);
+        hangers.setText("0");
+        hangers.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        hangers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hangersActionPerformed(evt);
+            }
+        });
+        getContentPane().add(hangers);
+        hangers.setBounds(90, 510, 80, 18);
+
+        jLabel11.setText("Dscnt");
+        getContentPane().add(jLabel11);
+        jLabel11.setBounds(40, 450, 40, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -481,7 +495,7 @@ public class FrmReceiptPreview extends javax.swing.JFrame {
         Data[7]=prevRcpt;
         Data[8]=TxtTotal.getText();
         Data[9]=txtDiscount.getText();
-        Data[10]=String.valueOf(MainMenu.GST);
+        Data[10]=gst.getText();
         
         int row=receiptTable.getModel().getRowCount();
         int col=receiptTable.getModel().getColumnCount();
@@ -551,7 +565,7 @@ public class FrmReceiptPreview extends javax.swing.JFrame {
         if(type!=2)
         {    
         //<editor-fold defaultstate="collapsed" desc="Customer copy">
-        job.setPrintable(new Printer(x,Data,txtUser.getText(),receiptTable.getRowCount(),netTotal,1,Integer.parseInt(hangers.getText())));
+        job.setPrintable(new Printer(x,Data,txtUser.getText(),receiptTable.getRowCount(),netTotal,1,Integer.parseInt(gst.getText())));
         
         
             try {
@@ -576,7 +590,7 @@ public class FrmReceiptPreview extends javax.swing.JFrame {
         for(int i=0;i<2;i++)
         {
             
-            job.setPrintable(new Printer(x,Data,txtUser.getText(),receiptTable.getRowCount(),netTotal,0,Integer.parseInt(hangers.getText())));
+            job.setPrintable(new Printer(x,Data,txtUser.getText(),receiptTable.getRowCount(),netTotal,0,Integer.parseInt(gst.getText())));
             try{
                job.print();
             }
@@ -604,7 +618,7 @@ public class FrmReceiptPreview extends javax.swing.JFrame {
         Data[7]=prevRcpt;
         Data[8]=TxtTotal.getText();
         Data[9]=txtDiscount.getText();
-        Data[10]=String.valueOf(MainMenu.GST);
+        Data[10]=gst.getText();
         
         
         int row=receiptTable.getModel().getRowCount();
@@ -694,7 +708,7 @@ public class FrmReceiptPreview extends javax.swing.JFrame {
          PrinterJob job ; 
            job = PrinterJob.getPrinterJob();
             for(int i=0;i<2;i++){
-           job.setPrintable(new Printer(x,Data,txtUser.getText(),receiptTable.getRowCount(),netTotal,0,Integer.parseInt(hangers.getText())));
+           job.setPrintable(new Printer(x,Data,txtUser.getText(),receiptTable.getRowCount(),netTotal,0,Integer.parseInt(gst.getText())));
          
             if (true) {
               try {
@@ -725,7 +739,7 @@ public class FrmReceiptPreview extends javax.swing.JFrame {
         Data[7]=prevRcpt;
         Data[8]=TxtTotal.getText();
         Data[9]=txtDiscount.getText();
-        Data[10]=String.valueOf(MainMenu.GST);
+        Data[10]=gst.getText();
         
         
         int row=receiptTable.getModel().getRowCount();
@@ -813,13 +827,17 @@ public class FrmReceiptPreview extends javax.swing.JFrame {
         master.EditBooking(Booking,(DefaultTableModel)receiptTable.getModel());
     }//GEN-LAST:event_cmdEditActionPerformed
 
-    private void hangersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hangersActionPerformed
+    private void gstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gstActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_hangersActionPerformed
+    }//GEN-LAST:event_gstActionPerformed
 
     private void txtQtyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQtyActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtQtyActionPerformed
+
+    private void hangersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hangersActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_hangersActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel DelDate;
@@ -828,9 +846,11 @@ public class FrmReceiptPreview extends javax.swing.JFrame {
     private javax.swing.JButton cmdEdit;
     private javax.swing.JButton cmdUpdate;
     private javax.swing.JLabel dueDate;
+    private javax.swing.JTextField gst;
     private javax.swing.JTextField hangers;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -902,8 +922,9 @@ public class FrmReceiptPreview extends javax.swing.JFrame {
                         txtStatus.getText(),
                         txtMode.getText(),
                         prevRcpt,
-                        hangers.getText(),
-                        receiptTable.getModel());
+                        gst.getText(),
+                        receiptTable.getModel(),
+                        Integer.parseInt(gst.getText()));
                 
                 JOptionPane.showMessageDialog(null, "Receipt No: " + rcpNo);
                 

@@ -6,7 +6,9 @@
 
 package db_client;
 
+import java.io.File;
 import java.sql.ResultSet;
+import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,58 +18,20 @@ import javax.swing.JOptionPane;
 public class taxType {
     public static int getTax(String type)
     {
-        int GST=0;
-        String query="Select tax_value from taxTable where tax_name='"+type+"' order by update_time desc";
-        DatabaseType db=new DatabaseType();
-        ResultSet rs;
-        
-        
-        
+        int gst=0;
         try
         {
-            db.openConnection();
-            rs=db.read(query);
-            
-            if(rs.next())
-            {
-                GST=rs.getInt("tax_value");
-            }
-            else
-            {
-                throw new Exception(type+" Entry was not found in table");
-            }
-            
-            db.closeConnection();
-            
+            Scanner x= new Scanner(new File("GST.txt"));
+            gst=x.nextInt();
+            return gst;
         }
         catch(Exception e)
         {
-            JOptionPane.showMessageDialog(null,"Error reading Tax\n"+e.getMessage(),"Oops",JOptionPane.ERROR_MESSAGE);
+             JOptionPane.showMessageDialog(null,"Error Getting Tax\n"+e.getMessage(),"Oops",JOptionPane.ERROR_MESSAGE);
         }
-        
-        return GST;
+        return gst;
     }
     
-    
-    public static void setTax(String tax,int value)
-    {
-        
-        String query="insert into taxTable values(CURRENT_TIMESTAMP,'"+tax+"',"+value+")";
-        DatabaseType db=new DatabaseType();
-        
-        try
-        {
-            db.openConnection();
-            db.insert(query);
-            db.closeConnection();
-            
-        }
-        catch(Exception e)
-        {
-            JOptionPane.showMessageDialog(null,"Error Setting Tax\n"+e.getMessage(),"Oops",JOptionPane.ERROR_MESSAGE);
-        }
-        
-        
-    }
+   
     
 }

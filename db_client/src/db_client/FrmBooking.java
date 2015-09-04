@@ -1816,7 +1816,7 @@ public final class FrmBooking extends javax.swing.JPanel {
         
         summary[2]=lblNetTotal.getText();
         summary[3]=txtHanger.getText();
-        summary[4]=parent.GST;
+        summary[4]=lblGST.getText();
 
         
         if(addMode)
@@ -2391,7 +2391,7 @@ if ((evt.getX() > 3 && evt.getX() < 22) && (evt.getY() > 5 && evt.getY() < 24)) 
         txtitemName.setSelectionStart(0);
         txtitemName.setSelectionEnd(txtitemName.getText().length());
     }//GEN-LAST:event_txtitemNameFocusGained
-
+ 
     private void txtHangerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHangerActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtHangerActionPerformed

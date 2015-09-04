@@ -153,7 +153,7 @@ public class BookingType {
         return rcptNo;
     }
     
-    public static String addBooking(String phone,String staff,String total,String discount,String finalAmount,String issueDt,String returnDt,String status, String category, String oldRcpt,String hangerCount,TableModel t)
+    public static String addBooking(String phone,String staff,String total,String discount,String finalAmount,String issueDt,String returnDt,String status, String category, String oldRcpt,String hangerCount,TableModel t,int gst)
     {
         DatabaseType db=new DatabaseType();
         
@@ -165,6 +165,7 @@ public class BookingType {
                 +"'"+staff+"',"
                 +"'"+total+"',"
                 +"'"+discount+"',"
+                +"'"+gst+"',"
                 +"'"+finalAmount+"',"
                 +"'"+issueDt+"', "
                 +"'"+returnDt+"', "
