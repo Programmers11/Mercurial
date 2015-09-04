@@ -21,7 +21,7 @@ public class FrmLogin extends javax.swing.JFrame {
         txtUserName.requestFocus();
         optServer.setVisible(false);
         optServer.setSelected(false);
-        optServer.setSelected(true);
+        //optServer.setSelected(true);
                
         try
         {
@@ -242,7 +242,7 @@ public class FrmLogin extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
+                if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }

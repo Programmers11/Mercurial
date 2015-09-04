@@ -454,7 +454,7 @@ public class Information_panel extends javax.swing.JPanel {
 }//GEN-LAST:event_UDActionPerformed
 
     private void DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DActionPerformed
-    String query = "select b.rcptno, b.dupCount ,c.phone ,c.clientName,b.issuedate,b.duedate,b.netAmount  "
+    String query = "select b.rcptno ,c.phone ,c.clientName,b.dupCount ,b.issuedate,b.duedate,b.netAmount  "
                + "from booking b,client c where c.phone = b.phone and "
                + "b.status = 'Delivered' ";
             
@@ -579,7 +579,7 @@ public class Information_panel extends javax.swing.JPanel {
     }//GEN-LAST:event_Cancelledbutton2ActionPerformed
 
     private void DNPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DNPActionPerformed
-        String query = "select b.rcptno, b.dupCount ,c.phone ,c.clientName,b.issuedate,b.duedate,b.netAmount  "
+        String query = "select b.rcptno,c.phone ,c.clientName, b.dupCount ,b.issuedate,b.duedate,b.netAmount  "
                + "from booking b,client c where c.phone = b.phone and "
                + "b.status = 'DNP' ";
             
@@ -723,7 +723,7 @@ public String dateCreator() {
        // System.out.println("here");
          SimpleDateFormat myFormat=new SimpleDateFormat("yyyy-MM-dd");
         date = (myFormat.format(jdp.getDate()));
-        String querry = "select b.* from closingreport b where Date(b.delDate) = '"+date+"'";
+        String querry = "select @a:=@a+1 srno,b.* from closingreport b,(select @a:=0) as a where Date(b.delDate) = '"+date+"' ";
          System.out.println(querry);
         master.addReportWindow("Closing Report",querry,date);
         

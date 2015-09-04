@@ -190,7 +190,7 @@ public class BookingType {
                         +"'"+rcptNo+"',"
                         +"'"+tb.getValueAt(i, 3)+"',"
                         +"'"+tb.getValueAt(i, 4)+"',"
-                        +"'"+tb.getValueAt(i, 2)+"')";
+                        +"'"+tb.getValueAt(i, 2).toString().replace("\'","").replace("\"", "").replace("`", "")+"')";
                 System.out.println(transitionQuery);
                 db.insert(transitionQuery);
                 

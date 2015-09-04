@@ -43,6 +43,7 @@ public class AllReportSearch extends javax.swing.JPanel {
         serviceQuery(query);
         //rs=db.read(query);
         printOption.setVisible(false);
+         viewtotalsClosing(false);
         viewtotals(false);
         cmdPrint.setVisible(false);
         
@@ -58,11 +59,14 @@ public class AllReportSearch extends javax.swing.JPanel {
         //System.out.println("----\n"+q+"\n-----");
         
         dateGiven =date;
+        closingReport=true;
         serviceQuery(query);
         //rs=db.read(query);
         printOption.setVisible(false);
-        closingReport=true;
+        
+        
         viewtotals(false);
+        viewtotalsClosing(true);
         
         
     }
@@ -82,7 +86,7 @@ public class AllReportSearch extends javax.swing.JPanel {
         serviceQuery(query);
         //rs=db.read(query);
         printOption.setVisible(false);
-        
+         viewtotalsClosing(false);
         
     }
 
@@ -200,6 +204,8 @@ public class AllReportSearch extends javax.swing.JPanel {
         cmdPrint = new javax.swing.JButton();
         itemstotal = new javax.swing.JLabel();
         TotalItems = new javax.swing.JLabel();
+        rcptTotal = new javax.swing.JLabel();
+        rcptTotalAmount = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(14, 87, 121));
@@ -368,6 +374,17 @@ public class AllReportSearch extends javax.swing.JPanel {
         add(TotalItems);
         TotalItems.setBounds(840, 550, 120, 23);
 
+        rcptTotal.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        rcptTotal.setForeground(new java.awt.Color(255, 255, 255));
+        rcptTotal.setText("Total Rceipt:");
+        add(rcptTotal);
+        rcptTotal.setBounds(460, 520, 120, 19);
+
+        rcptTotalAmount.setForeground(new java.awt.Color(255, 255, 255));
+        rcptTotalAmount.setText("0.00");
+        add(rcptTotalAmount);
+        rcptTotalAmount.setBounds(590, 520, 120, 23);
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Mercurial Theme [final]/reportsBackground.png"))); // NOI18N
         add(jLabel1);
         jLabel1.setBounds(0, 0, 1140, 590);
@@ -388,12 +405,14 @@ public class AllReportSearch extends javax.swing.JPanel {
 
     private void searcbBarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searcbBarKeyReleased
         String q;
+        if (closingReport && list.getSelectedItem().toString().contains("srno"))
+            return;
          if (query.contains("where")) 
              q= query+ " and "+getColumnName()+" like '%"+searcbBar.getText()+"%'";
          else
             q= query+ " where "+getColumnName()+" like '%"+searcbBar.getText()+"%'";
          
-        // System.out.println(q);
+         //System.out.println(q);
          serviceQuerySearch(q);
     }//GEN-LAST:event_searcbBarKeyReleased
 
@@ -403,7 +422,9 @@ public class AllReportSearch extends javax.swing.JPanel {
     }//GEN-LAST:event_refreshActionPerformed
 
     private void listActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listActionPerformed
-       if(enableSort)
+      if (closingReport && list.getSelectedItem().toString().contains("srno"))
+            return;
+        if(enableSort)
         serviceQuerySearch(query+" order by "+getColumnName()+" ASC");
     }//GEN-LAST:event_listActionPerformed
 
@@ -451,6 +472,12 @@ public class AllReportSearch extends javax.swing.JPanel {
             toPrint[i + 1][0] = "Total ";
             toPrint[i + 1][1] = " ";
             toPrint[i + 1][2] = String.valueOf(total);
+            //spaces after total
+        for(int spaces=2;spaces <= 4; spaces++){
+        toPrint[i+spaces][0]=" ";
+        toPrint[i+spaces][1]=" ";
+        toPrint[i+spaces][2]=" ";
+        }
             ReportPrint obj = new ReportPrint(toPrint, toPrint.length, new String[]{"SrNo", "Names", "Qty"}, "Item Wise", dateGiven, false);
             //</editor-fold>
         }
@@ -486,6 +513,8 @@ public class AllReportSearch extends javax.swing.JPanel {
     private javax.swing.JComboBox list;
     private javax.swing.JLabel netAmount;
     private javax.swing.JInternalFrame printOption;
+    private javax.swing.JLabel rcptTotal;
+    private javax.swing.JLabel rcptTotalAmount;
     private javax.swing.JButton refresh;
     private javax.swing.JTextField searcbBar;
     private javax.swing.JComboBox to;
@@ -512,6 +541,8 @@ public class AllReportSearch extends javax.swing.JPanel {
     }
 
     private String getColumnName() {
+        if (closingReport) 
+            return "b.`"+list.getSelectedItem().toString()+"`";
         if(query.contains("Select *"))//if searhing in a view 
           return "`"+list.getSelectedItem().toString()+"`";
        else if(list.getSelectedItem().toString().contains("phone") )  //if searhing in a table
@@ -593,24 +624,25 @@ public class AllReportSearch extends javax.swing.JPanel {
         
         
         }
-        else if(!urgent && !semiUrgent && !specialReport){
-        /*    double tt=0;
-        int qty=0;
-           for (int i=0;i<depth; i++)
-                {
-                tt = tt + Double.parseDouble(data[i][queryWidth-1].toString());
-                qty= qty +Integer.parseInt(BookingType.getQuantity(data[i][0].toString()));
-                }
-           System.out.println("tt== "+tt);
-            Total.setText(String.valueOf(tt));
-            TotalItems.setText(String.valueOf(qty));*/
-        }else{
+        else if (closingReport){
+            System.out.println("hell yeah");
+            int tt = 0;
+            int qty = 0;
+            for (int i = 0; i < depth; i++) {
+                // tt = tt + Integer.parseInt(data[i][queryWidth-1].toString());
+                qty = qty + Integer.parseInt((data[i][queryWidth - 1].toString()));
+            }
+            Total.setText(String.valueOf(qty));
+            rcptTotalAmount.setText(String.valueOf(depth));
+        }
+        else{
             viewtotals(false);
+            viewtotalsClosing(false);
             }
     }
 
     private void setPrintableData(ArrayList<Integer> printArray,String PageName) {
-        String[][] toPrint = new String[printArray.size()+2][3];
+        String[][] toPrint = new String[printArray.size()+5][3];
         int i=0;
         int qty = 0 ;
         total =0;
@@ -618,7 +650,7 @@ public class AllReportSearch extends javax.swing.JPanel {
          //  System.out.println(data[printArray.get(i)][0]);
             toPrint[i][0]= String.valueOf(data[printArray.get(i)][queryWidth-2]); // QTY
             qty += Integer.parseInt(toPrint[i][0]);
-            toPrint[i][1]= String.valueOf(data[printArray.get(i)][0]);
+            toPrint[i][1]= String.valueOf(data[printArray.get(i)][1]);
             toPrint[i][2] = String.valueOf(data[printArray.get(i)][queryWidth-1]);
             total += Double.parseDouble(toPrint[i][2]);
         }
@@ -631,7 +663,14 @@ public class AllReportSearch extends javax.swing.JPanel {
         toPrint[i+1][1]="Total ";
         //toPrint[i+1][2]=closingReport?Total.getText():String.valueOf(total);
         toPrint[i+1][2]=String.valueOf(total);
-//      
+        
+        //spaces after total
+        for(int spaces=2;spaces <= 4; spaces++){
+        toPrint[i+spaces][0]=" ";
+        toPrint[i+spaces][1]=" ";
+        toPrint[i+spaces][2]=" ";
+        }
+        
        // dateGiven= data[i][]
         ReportPrint obj = new ReportPrint(toPrint,toPrint.length,new String[]{"SrNo","RcptNo","Amount"},PageName,dateGiven,true);
         printOption.setVisible(false);
@@ -654,7 +693,7 @@ public class AllReportSearch extends javax.swing.JPanel {
 
     private void setPrintableData2(ArrayList<Integer> printArray, String PageName) {
         if (printArray.size()>0) {
-            String[][] toPrint = new String[printArray.size() + 2][3];
+            String[][] toPrint = new String[printArray.size() + 5][3];
             int i = 0;
             for (; i < printArray.size(); i++) {
                 toPrint[i][0] = String.valueOf(data[printArray.get(i)][0]);
@@ -671,6 +710,12 @@ public class AllReportSearch extends javax.swing.JPanel {
             toPrint[i + 1][2] = " ";
 //      
             // dateGiven= data[i][]
+            //spaces after total
+        for(int spaces=2;spaces <= 4; spaces++){
+        toPrint[i+spaces][0]=" ";
+        toPrint[i+spaces][1]=" ";
+        toPrint[i+spaces][2]=" ";
+        }
             ReportPrint obj = new ReportPrint(toPrint, toPrint.length, new String[]{"RcptNo", "Phone", "Name"}, PageName, dateCreator(0), 1);
             printOption.setVisible(false);
         } else {
@@ -684,6 +729,13 @@ public class AllReportSearch extends javax.swing.JPanel {
             itemstotal.setVisible(value);
             netAmount.setVisible(value);
     }
-
+    
+    private void viewtotalsClosing(boolean value) {
+            Total.setVisible(value);
+            netAmount.setVisible(value);
+            
+            rcptTotal.setVisible(value);
+            rcptTotalAmount.setVisible(value);
+    }
     
 }

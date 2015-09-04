@@ -25,7 +25,7 @@ public ReportPrint(String Ary[][],int Length,String[] heading,String pageHeading
     
   Printable=Ary;
   this.Length=Length;
-  NumberOfLine=80;
+  NumberOfLine=57;
   Pages=getPages();
   this.heading = heading;
   this.isClosing = isClosing;
@@ -41,7 +41,7 @@ public ReportPrint(String Ary[][],int Length,String[] heading,String pageHeading
     
   Printable=Ary;
   this.Length=Length;
-  NumberOfLine=80;
+  NumberOfLine=57;
   Pages=getPages();
   this.heading = heading;
  
@@ -138,12 +138,13 @@ public int print(Graphics g, PageFormat pf, int pageIndex)
         for (int i=0;i<= pageline;i++)
         {   
          // System.out.println("123 = "+Printable[i+(pageIndex*NumberOfLine)][0]);
-          if(i == pageline-1){
+          if(i == pageline-1 && pageIndex == Pages-1){
               g.drawLine(5, y_axis, 195,y_axis);
           }
-          if(i<= pageline-2)  {
-          printString(String.valueOf(i+1), y_axis, g,5); // SR No
-          }
+          
+          printString(String.valueOf(i+(pageIndex*NumberOfLine)), y_axis, g,5); // SR No
+          
+            
           printString(Printable[i+(pageIndex*NumberOfLine)][0], y_axis, g,90); // QTY
           printString(Printable[i+(pageIndex*NumberOfLine)][1], y_axis, g,30); // Reciept No
           printString(Printable[i+(pageIndex*NumberOfLine)][2], y_axis, g,120); // Amount

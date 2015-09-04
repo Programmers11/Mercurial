@@ -134,16 +134,16 @@ public final class FrmBooking extends javax.swing.JPanel {
         
         setHighlight(cmdShalwar);
         setHighlight(cmdShirt);
-        setHighlight(cmdDupDc);
+        setHighlight(cmdSweater);
         setHighlight(cmdPant);
         setHighlight(cmdLPant);
         setHighlight(cmdLShalwar);
         setHighlight(cmdLShirt);
         setHighlight(cmdCoat);
         setHighlight(cmdSuit2p);
-        setHighlight(cmdKurta);
+        setHighlight(cmdShawl);
         setHighlight(cmdOther);
-        setHighlight(cmdTShirt);
+        setHighlight(cmdDupatta);
        /* */
         refreshPage();
     } 
@@ -197,9 +197,14 @@ public final class FrmBooking extends javax.swing.JPanel {
         
         //get details of mode
         Object[] details=ModeType.getModeDetails(mName);
-        
+        System.out.println(mName);
         
         //assign it to respective vars
+        for(int i=0; i<details.length;i++)
+        {
+            System.out.print(i+": ");
+            System.out.println(details[i]);
+        }
         mode=details[0].toString();
         multiplicativeConstant=Double.parseDouble(details[1].toString());
         isDiscountable=Integer.parseInt(details[2].toString());
@@ -246,10 +251,8 @@ public final class FrmBooking extends javax.swing.JPanel {
         jLabel25 = new javax.swing.JLabel();
         txtNm = new javax.swing.JTextField();
         jLabel26 = new javax.swing.JLabel();
-        jSeparator11 = new javax.swing.JSeparator();
-        jLabel27 = new javax.swing.JLabel();
-        jSeparator12 = new javax.swing.JSeparator();
         jLabel28 = new javax.swing.JLabel();
+        jSeparator11 = new javax.swing.JSeparator();
         jLabel29 = new javax.swing.JLabel();
         txtitemName = new javax.swing.JTextField();
         remarksField = new javax.swing.JTextField();
@@ -272,9 +275,9 @@ public final class FrmBooking extends javax.swing.JPanel {
         cmdShirt = new javax.swing.JToggleButton();
         cmdSuit2p = new javax.swing.JToggleButton();
         cmdUrgent = new javax.swing.JToggleButton();
-        cmdTShirt = new javax.swing.JToggleButton();
-        cmdKurta = new javax.swing.JToggleButton();
-        cmdDupDc = new javax.swing.JToggleButton();
+        cmdDupatta = new javax.swing.JToggleButton();
+        cmdShawl = new javax.swing.JToggleButton();
+        cmdSweater = new javax.swing.JToggleButton();
         cmdShalwar = new javax.swing.JToggleButton();
         cmdLPant = new javax.swing.JToggleButton();
         cmdNormal = new javax.swing.JToggleButton();
@@ -335,6 +338,14 @@ public final class FrmBooking extends javax.swing.JPanel {
         txtWidth = new javax.swing.JTextField();
         txtLength = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
+        cmdLshirtDc = new javax.swing.JToggleButton();
+        cmdLShalwarDc = new javax.swing.JToggleButton();
+        cmdDupattaDc = new javax.swing.JToggleButton();
+        cmdLPajamaDC = new javax.swing.JToggleButton();
+        cmdShalwarDc = new javax.swing.JToggleButton();
+        cmdKamizDc = new javax.swing.JToggleButton();
+        cmdShalwarSuiteDc = new javax.swing.JToggleButton();
+        cmdShirtDc = new javax.swing.JToggleButton();
         jLabel2 = new javax.swing.JLabel();
 
         setAutoscrolls(true);
@@ -378,7 +389,7 @@ public final class FrmBooking extends javax.swing.JPanel {
         jdp.setBounds(10, 10, 490, 270);
 
         mainPanel.add(jdpPanel);
-        jdpPanel.setBounds(490, 200, 510, 300);
+        jdpPanel.setBounds(520, 200, 510, 300);
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
@@ -395,7 +406,7 @@ public final class FrmBooking extends javax.swing.JPanel {
         lblMup.setForeground(new java.awt.Color(255, 255, 255));
         lblMup.setText(" X");
         mainPanel.add(lblMup);
-        lblMup.setBounds(150, 330, 20, 20);
+        lblMup.setBounds(150, 340, 20, 20);
 
         txtPh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -413,7 +424,7 @@ public final class FrmBooking extends javax.swing.JPanel {
             }
         });
         mainPanel.add(txtPh);
-        txtPh.setBounds(60, 130, 420, 20);
+        txtPh.setBounds(60, 120, 420, 20);
         mainPanel.add(jSeparator7);
         jSeparator7.setBounds(0, 34, 1020, 10);
 
@@ -448,7 +459,7 @@ public final class FrmBooking extends javax.swing.JPanel {
         jLabel25.setForeground(new java.awt.Color(255, 255, 255));
         jLabel25.setText("Name:");
         mainPanel.add(jLabel25);
-        jLabel25.setBounds(10, 100, 50, 20);
+        jLabel25.setBounds(10, 90, 50, 20);
 
         txtNm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -466,29 +477,21 @@ public final class FrmBooking extends javax.swing.JPanel {
             }
         });
         mainPanel.add(txtNm);
-        txtNm.setBounds(60, 100, 330, 20);
+        txtNm.setBounds(60, 90, 330, 20);
 
         jLabel26.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(255, 255, 255));
         jLabel26.setText("Address:");
         mainPanel.add(jLabel26);
-        jLabel26.setBounds(10, 170, 60, 15);
-        mainPanel.add(jSeparator11);
-        jSeparator11.setBounds(0, 220, 1020, 10);
-
-        jLabel27.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel27.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel27.setText("Items Shortcuts");
-        mainPanel.add(jLabel27);
-        jLabel27.setBounds(10, 220, 120, 20);
-        mainPanel.add(jSeparator12);
-        jSeparator12.setBounds(0, 240, 500, 12);
+        jLabel26.setBounds(10, 155, 60, 20);
 
         jLabel28.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(255, 255, 255));
         jLabel28.setText("Item Name:");
         mainPanel.add(jLabel28);
-        jLabel28.setBounds(10, 310, 80, 22);
+        jLabel28.setBounds(10, 320, 80, 22);
+        mainPanel.add(jSeparator11);
+        jSeparator11.setBounds(0, 190, 1070, 10);
 
         jLabel29.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel29.setForeground(new java.awt.Color(255, 255, 255));
@@ -514,7 +517,7 @@ public final class FrmBooking extends javax.swing.JPanel {
             }
         });
         mainPanel.add(txtitemName);
-        txtitemName.setBounds(90, 310, 130, 20);
+        txtitemName.setBounds(90, 320, 130, 20);
         mainPanel.add(remarksField);
         remarksField.setBounds(90, 510, 380, 20);
 
@@ -522,18 +525,18 @@ public final class FrmBooking extends javax.swing.JPanel {
         jLabel30.setForeground(new java.awt.Color(255, 255, 255));
         jLabel30.setText("Count:");
         mainPanel.add(jLabel30);
-        jLabel30.setBounds(380, 310, 50, 20);
+        jLabel30.setBounds(380, 320, 50, 20);
 
         txtUnitCount.setEditable(false);
         txtUnitCount.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         mainPanel.add(txtUnitCount);
-        txtUnitCount.setBounds(430, 310, 40, 20);
+        txtUnitCount.setBounds(430, 320, 40, 20);
 
         jLabel31.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel31.setForeground(new java.awt.Color(255, 255, 255));
         jLabel31.setText("/pc");
         mainPanel.add(jLabel31);
-        jLabel31.setBounds(330, 310, 30, 20);
+        jLabel31.setBounds(330, 320, 30, 20);
 
         jLabel32.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel32.setForeground(new java.awt.Color(255, 255, 255));
@@ -600,7 +603,7 @@ public final class FrmBooking extends javax.swing.JPanel {
         }
 
         mainPanel.add(jScrollPane1);
-        jScrollPane1.setBounds(520, 240, 480, 140);
+        jScrollPane1.setBounds(520, 200, 480, 180);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -636,7 +639,7 @@ public final class FrmBooking extends javax.swing.JPanel {
         jScrollPane2.setViewportView(txtAdd);
 
         mainPanel.add(jScrollPane2);
-        jScrollPane2.setBounds(60, 160, 420, 50);
+        jScrollPane2.setBounds(60, 150, 420, 30);
 
         cmdCoat.setText("SUIT 02");
         cmdCoat.addActionListener(new java.awt.event.ActionListener() {
@@ -645,7 +648,7 @@ public final class FrmBooking extends javax.swing.JPanel {
             }
         });
         mainPanel.add(cmdCoat);
-        cmdCoat.setBounds(250, 250, 80, 23);
+        cmdCoat.setBounds(250, 260, 80, 23);
 
         cmdPant.setBackground(new java.awt.Color(255, 255, 255));
         cmdPant.setSelected(true);
@@ -661,7 +664,7 @@ public final class FrmBooking extends javax.swing.JPanel {
             }
         });
         mainPanel.add(cmdPant);
-        cmdPant.setBounds(10, 250, 80, 23);
+        cmdPant.setBounds(10, 260, 80, 23);
 
         cmdLShirt.setText("L-SHIRT");
         cmdLShirt.addActionListener(new java.awt.event.ActionListener() {
@@ -670,7 +673,7 @@ public final class FrmBooking extends javax.swing.JPanel {
             }
         });
         mainPanel.add(cmdLShirt);
-        cmdLShirt.setBounds(330, 280, 80, 23);
+        cmdLShirt.setBounds(330, 290, 80, 23);
 
         cmdShirt.setText("COAT");
         cmdShirt.addActionListener(new java.awt.event.ActionListener() {
@@ -679,7 +682,7 @@ public final class FrmBooking extends javax.swing.JPanel {
             }
         });
         mainPanel.add(cmdShirt);
-        cmdShirt.setBounds(90, 250, 80, 23);
+        cmdShirt.setBounds(90, 260, 80, 23);
 
         cmdSuit2p.setText("SHIRT");
         cmdSuit2p.addActionListener(new java.awt.event.ActionListener() {
@@ -688,7 +691,7 @@ public final class FrmBooking extends javax.swing.JPanel {
             }
         });
         mainPanel.add(cmdSuit2p);
-        cmdSuit2p.setBounds(170, 250, 80, 23);
+        cmdSuit2p.setBounds(170, 260, 80, 23);
 
         cmdUrgent.setText("Urgent");
         cmdUrgent.addActionListener(new java.awt.event.ActionListener() {
@@ -699,32 +702,32 @@ public final class FrmBooking extends javax.swing.JPanel {
         mainPanel.add(cmdUrgent);
         cmdUrgent.setBounds(860, 90, 90, 23);
 
-        cmdTShirt.setText("DUPATTA");
-        cmdTShirt.addActionListener(new java.awt.event.ActionListener() {
+        cmdDupatta.setText("DUPATTA");
+        cmdDupatta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmdTShirtActionPerformed(evt);
+                cmdDupattaActionPerformed(evt);
             }
         });
-        mainPanel.add(cmdTShirt);
-        cmdTShirt.setBounds(171, 280, 79, 23);
+        mainPanel.add(cmdDupatta);
+        cmdDupatta.setBounds(170, 290, 79, 23);
 
-        cmdKurta.setText("SHAWL");
-        cmdKurta.addActionListener(new java.awt.event.ActionListener() {
+        cmdShawl.setText("SHAWL");
+        cmdShawl.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmdKurtaActionPerformed(evt);
+                cmdShawlActionPerformed(evt);
             }
         });
-        mainPanel.add(cmdKurta);
-        cmdKurta.setBounds(10, 280, 80, 23);
+        mainPanel.add(cmdShawl);
+        cmdShawl.setBounds(10, 290, 80, 23);
 
-        cmdDupDc.setText("SWEATER");
-        cmdDupDc.addActionListener(new java.awt.event.ActionListener() {
+        cmdSweater.setText("SWEATER");
+        cmdSweater.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmdDupDcActionPerformed(evt);
+                cmdSweaterActionPerformed(evt);
             }
         });
-        mainPanel.add(cmdDupDc);
-        cmdDupDc.setBounds(89, 280, 81, 23);
+        mainPanel.add(cmdSweater);
+        cmdSweater.setBounds(90, 290, 81, 23);
 
         cmdShalwar.setText("Shalwar SUIT");
         cmdShalwar.addActionListener(new java.awt.event.ActionListener() {
@@ -733,7 +736,7 @@ public final class FrmBooking extends javax.swing.JPanel {
             }
         });
         mainPanel.add(cmdShalwar);
-        cmdShalwar.setBounds(410, 250, 80, 23);
+        cmdShalwar.setBounds(410, 260, 80, 23);
 
         cmdLPant.setText("L-SHALWAR");
         cmdLPant.addActionListener(new java.awt.event.ActionListener() {
@@ -742,7 +745,7 @@ public final class FrmBooking extends javax.swing.JPanel {
             }
         });
         mainPanel.add(cmdLPant);
-        cmdLPant.setBounds(250, 280, 80, 23);
+        cmdLPant.setBounds(250, 290, 80, 23);
 
         cmdNormal.setText("Normal");
         cmdNormal.addActionListener(new java.awt.event.ActionListener() {
@@ -760,7 +763,7 @@ public final class FrmBooking extends javax.swing.JPanel {
             }
         });
         mainPanel.add(cmdLShalwar);
-        cmdLShalwar.setBounds(330, 250, 80, 23);
+        cmdLShalwar.setBounds(330, 260, 80, 23);
 
         cmdSpecial.setText("Special");
         cmdSpecial.addActionListener(new java.awt.event.ActionListener() {
@@ -1159,7 +1162,7 @@ public final class FrmBooking extends javax.swing.JPanel {
             }
         });
         mainPanel.add(cmdOther);
-        cmdOther.setBounds(410, 280, 80, 23);
+        cmdOther.setBounds(410, 290, 80, 23);
 
         cmdPress.setText("Press");
         cmdPress.addActionListener(new java.awt.event.ActionListener() {
@@ -1178,17 +1181,17 @@ public final class FrmBooking extends javax.swing.JPanel {
             }
         });
         mainPanel.add(datePicker);
-        datePicker.setBounds(620, 170, 120, 23);
+        datePicker.setBounds(620, 160, 120, 23);
 
         txtUnitPrice.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         mainPanel.add(txtUnitPrice);
-        txtUnitPrice.setBounds(280, 310, 40, 20);
+        txtUnitPrice.setBounds(280, 320, 40, 20);
 
         jLabel34.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel34.setForeground(new java.awt.Color(255, 255, 255));
         jLabel34.setText("Price:");
         mainPanel.add(jLabel34);
-        jLabel34.setBounds(230, 310, 50, 20);
+        jLabel34.setBounds(230, 320, 50, 20);
 
         p8.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         p8.setText("8");
@@ -1284,7 +1287,7 @@ public final class FrmBooking extends javax.swing.JPanel {
         lblDefaulted.setForeground(new java.awt.Color(255, 255, 255));
         lblDefaulted.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         mainPanel.add(lblDefaulted);
-        lblDefaulted.setBounds(400, 100, 70, 20);
+        lblDefaulted.setBounds(400, 90, 70, 20);
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
@@ -1347,7 +1350,7 @@ public final class FrmBooking extends javax.swing.JPanel {
         mainPanel.add(lblExpected);
         lblExpected.setBounds(500, 0, 220, 30);
         mainPanel.add(txtWidth);
-        txtWidth.setBounds(170, 330, 50, 20);
+        txtWidth.setBounds(170, 340, 50, 20);
 
         txtLength.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -1355,17 +1358,123 @@ public final class FrmBooking extends javax.swing.JPanel {
             }
         });
         mainPanel.add(txtLength);
-        txtLength.setBounds(90, 330, 50, 20);
+        txtLength.setBounds(90, 340, 50, 20);
 
         jLabel20.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setText("Phone :");
         mainPanel.add(jLabel20);
-        jLabel20.setBounds(10, 130, 50, 20);
+        jLabel20.setBounds(10, 120, 50, 20);
+
+        cmdLshirtDc.setBackground(new java.awt.Color(0, 0, 255));
+        cmdLshirtDc.setForeground(new java.awt.Color(255, 255, 255));
+        cmdLshirtDc.setText("L -SHIRT (DC)");
+        cmdLshirtDc.setOpaque(true);
+        cmdLshirtDc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdLshirtDcActionPerformed(evt);
+            }
+        });
+        cmdLshirtDc.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                cmdLshirtDcFocusGained(evt);
+            }
+        });
+        mainPanel.add(cmdLshirtDc);
+        cmdLshirtDc.setBounds(10, 230, 110, 23);
+
+        cmdLShalwarDc.setBackground(new java.awt.Color(0, 0, 255));
+        cmdLShalwarDc.setForeground(new java.awt.Color(255, 255, 255));
+        cmdLShalwarDc.setText("L-SHALWAR (DC)");
+        cmdLShalwarDc.setOpaque(true);
+        cmdLShalwarDc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdLShalwarDcActionPerformed(evt);
+            }
+        });
+        mainPanel.add(cmdLShalwarDc);
+        cmdLShalwarDc.setBounds(120, 230, 130, 23);
+
+        cmdDupattaDc.setBackground(new java.awt.Color(0, 0, 255));
+        cmdDupattaDc.setForeground(new java.awt.Color(255, 255, 255));
+        cmdDupattaDc.setText("DUPATTA (DC)");
+        cmdDupattaDc.setOpaque(true);
+        cmdDupattaDc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdDupattaDcActionPerformed(evt);
+            }
+        });
+        mainPanel.add(cmdDupattaDc);
+        cmdDupattaDc.setBounds(250, 230, 110, 23);
+
+        cmdLPajamaDC.setBackground(new java.awt.Color(0, 0, 255));
+        cmdLPajamaDC.setForeground(new java.awt.Color(255, 255, 255));
+        cmdLPajamaDC.setText("L -PAJAMA (DC)");
+        cmdLPajamaDC.setOpaque(true);
+        cmdLPajamaDC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdLPajamaDCActionPerformed(evt);
+            }
+        });
+        mainPanel.add(cmdLPajamaDC);
+        cmdLPajamaDC.setBounds(360, 230, 130, 23);
+
+        cmdShalwarDc.setBackground(new java.awt.Color(0, 0, 255));
+        cmdShalwarDc.setForeground(new java.awt.Color(255, 255, 255));
+        cmdShalwarDc.setText("SHALWAR (DC)");
+        cmdShalwarDc.setOpaque(true);
+        cmdShalwarDc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdShalwarDcActionPerformed(evt);
+            }
+        });
+        cmdShalwarDc.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                cmdShalwarDcFocusGained(evt);
+            }
+        });
+        mainPanel.add(cmdShalwarDc);
+        cmdShalwarDc.setBounds(10, 200, 120, 23);
+
+        cmdKamizDc.setBackground(new java.awt.Color(0, 0, 255));
+        cmdKamizDc.setForeground(new java.awt.Color(255, 255, 255));
+        cmdKamizDc.setText("KAMIZ (DC)");
+        cmdKamizDc.setOpaque(true);
+        cmdKamizDc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdKamizDcActionPerformed(evt);
+            }
+        });
+        mainPanel.add(cmdKamizDc);
+        cmdKamizDc.setBounds(130, 200, 120, 23);
+
+        cmdShalwarSuiteDc.setBackground(new java.awt.Color(0, 0, 255));
+        cmdShalwarSuiteDc.setForeground(new java.awt.Color(255, 255, 255));
+        cmdShalwarSuiteDc.setText("SHALWAR SUIT (DC)");
+        cmdShalwarSuiteDc.setOpaque(true);
+        cmdShalwarSuiteDc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdShalwarSuiteDcActionPerformed(evt);
+            }
+        });
+        mainPanel.add(cmdShalwarSuiteDc);
+        cmdShalwarSuiteDc.setBounds(250, 200, 150, 23);
+
+        cmdShirtDc.setBackground(new java.awt.Color(0, 0, 255));
+        cmdShirtDc.setForeground(new java.awt.Color(255, 255, 255));
+        cmdShirtDc.setText("SHIRT (DC)");
+        cmdShirtDc.setOpaque(true);
+        cmdShirtDc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdShirtDcActionPerformed(evt);
+            }
+        });
+        mainPanel.add(cmdShirtDc);
+        cmdShirtDc.setBounds(400, 200, 90, 23);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Mercurial Theme [final]/booking.png"))); // NOI18N
         mainPanel.add(jLabel2);
-        jLabel2.setBounds(0, 0, 1070, 670);
+        jLabel2.setBounds(0, 10, 1070, 670);
 
         add(mainPanel);
         mainPanel.setBounds(0, 0, 1070, 665);
@@ -1514,17 +1623,17 @@ public final class FrmBooking extends javax.swing.JPanel {
         ItemButtonClicked(cmdShalwar.getText());        
 }//GEN-LAST:event_cmdShalwarActionPerformed
 
-    private void cmdDupDcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdDupDcActionPerformed
-                ItemButtonClicked(cmdDupDc.getText());
-}//GEN-LAST:event_cmdDupDcActionPerformed
+    private void cmdSweaterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdSweaterActionPerformed
+                ItemButtonClicked(cmdSweater.getText());
+}//GEN-LAST:event_cmdSweaterActionPerformed
 
-    private void cmdKurtaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdKurtaActionPerformed
-        ItemButtonClicked(cmdKurta.getText());        
-}//GEN-LAST:event_cmdKurtaActionPerformed
+    private void cmdShawlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdShawlActionPerformed
+        ItemButtonClicked(cmdShawl.getText());        
+}//GEN-LAST:event_cmdShawlActionPerformed
 
-    private void cmdTShirtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdTShirtActionPerformed
-        ItemButtonClicked(cmdTShirt.getText());       
-}//GEN-LAST:event_cmdTShirtActionPerformed
+    private void cmdDupattaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdDupattaActionPerformed
+        ItemButtonClicked(cmdDupatta.getText());       
+}//GEN-LAST:event_cmdDupattaActionPerformed
 
     private void cmdSuit2pActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdSuit2pActionPerformed
         ItemButtonClicked(cmdSuit2p.getText());
@@ -1575,7 +1684,8 @@ public final class FrmBooking extends javax.swing.JPanel {
 
         //Now update the price and net price
         /*------------------------------------------*/
-        int QtyToReduce= Integer.parseInt(String.valueOf(receiptTable.getValueAt(row,3)));
+        int QtyToReduce= ItemType.getCountVal(String.valueOf(receiptTable.getValueAt(row,1)));
+        QtyToReduce= QtyToReduce * Integer.parseInt(String.valueOf(receiptTable.getValueAt(row,3)));
         int PriceToReduce=Integer.parseInt(String.valueOf(receiptTable.getValueAt(row,4)));
         
         txtTotal.setText(String.valueOf(Integer.parseInt(txtTotal.getText())-PriceToReduce));
@@ -1655,6 +1765,7 @@ public final class FrmBooking extends javax.swing.JPanel {
        cmdPress.setSelected(false);
        cmdNormal.setSelected(true);
        setMode("Normal");
+       txtreturnDate.setText(dateCreator(serviceTime));
         //System.out.println("refreshed");
     }
     
@@ -1717,6 +1828,7 @@ public final class FrmBooking extends javax.swing.JPanel {
             new FrmReceiptPreview(parent,this,(DefaultTableModel)receiptTable.getModel(),receiptDetails,clientrDetails,summary);
             System.out.println("-----------end------------");
         }
+        txtitemName.requestFocus();
 }//GEN-LAST:event_cmdPrintActionPerformed
 
     private void txtPhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhActionPerformed
@@ -1739,7 +1851,7 @@ public final class FrmBooking extends javax.swing.JPanel {
     
     if(!changeDateAllowed()) return;
     
-    setMode("SemiUrgent");
+    setMode("SUrgent");
     newTotal();
     txtreturnDate.setText(dateCreator(serviceTime));
     
@@ -1793,7 +1905,7 @@ public final class FrmBooking extends javax.swing.JPanel {
         // TODO add your handling code here:
         if ((evt.getX() > 3 && evt.getX() < 22) && (evt.getY() > 5 && evt.getY() < 24))setRemarksColour("White");
         else if ((evt.getX() > 26 && evt.getX() < 43) && (evt.getY() > 5 && evt.getY() < 24))setRemarksColour("Grey");
-        else if ((evt.getX() > 48 && evt.getX() < 65) && (evt.getY() > 5 && evt.getY() < 24))setRemarksColour("Arylide Yellow");
+        else if ((evt.getX() > 48 && evt.getX() < 65) && (evt.getY() > 5 && evt.getY() < 24))setRemarksColour("Fone");
         else if ((evt.getX() > 70 && evt.getX() < 87) && (evt.getY() > 5 && evt.getY() < 24))setRemarksColour("Maroon");
         else if ((evt.getX() > 92 && evt.getX() < 109) && (evt.getY() > 5 && evt.getY() < 24))setRemarksColour("Off White");
         else if ((evt.getX() > 114 && evt.getX() < 131) && (evt.getY() > 5 && evt.getY() < 24))setRemarksColour("Dark Green");
@@ -1806,8 +1918,8 @@ public final class FrmBooking extends javax.swing.JPanel {
         else if ((evt.getX() > 268 && evt.getX() < 285) && (evt.getY() > 5 && evt.getY() < 24))setRemarksColour("Sky Blue");
         else if ((evt.getX() > 290 && evt.getX() < 307) && (evt.getY() > 5 && evt.getY() < 24))setRemarksColour("Purple");
         else if ((evt.getX() > 312 && evt.getX() < 333) && (evt.getY() > 5 && evt.getY() < 24))setRemarksColour("Spotted");
-        else if ((evt.getX() > 3 && evt.getX() < 22) && (evt.getY() > 28 && evt.getY() < 45))setRemarksColour("Peach");
-        else if ((evt.getX() > 26 && evt.getX() < 43) && (evt.getY() > 28 && evt.getY() < 45))setRemarksColour("Banana Yellow");
+        else if ((evt.getX() > 3 && evt.getX() < 22) && (evt.getY() > 28 && evt.getY() < 45))setRemarksColour("Cream");
+        else if ((evt.getX() > 26 && evt.getX() < 43) && (evt.getY() > 28 && evt.getY() < 45))setRemarksColour("Yellow");
         else if ((evt.getX() > 48 && evt.getX() < 65) && (evt.getY() > 28 && evt.getY() < 45))setRemarksColour("Red");
         else if ((evt.getX() > 70 && evt.getX() < 87) && (evt.getY() >  28 && evt.getY() < 45))setRemarksColour("Brown");
         else if ((evt.getX() > 92 && evt.getX() < 109) && (evt.getY() > 28 && evt.getY() < 45))setRemarksColour("Light Green");
@@ -1820,7 +1932,9 @@ public final class FrmBooking extends javax.swing.JPanel {
         else if ((evt.getX() > 246 && evt.getX() < 263) && (evt.getY() > 28 && evt.getY() < 45))setRemarksColour("Orange");
         else if ((evt.getX() > 268 && evt.getX() < 285) && (evt.getY() > 28 && evt.getY() < 45))setRemarksColour("Checked");
         else if ((evt.getX() > 290 && evt.getX() < 307) && (evt.getY() > 28 && evt.getY() < 45))setRemarksColour("Lines");
-        //else if ((evt.getX() > 312 && evt.getX() < 333) && (evt.getY() > 28 && evt.getY() < 45))setRemarksColour("Lavender");
+        else if ((evt.getX() > 312 && evt.getX() < 333) && (evt.getY() > 28 && evt.getY() < 45))setRemarksColour("Printed");
+        //System.out.println("x: "+evt.getX()+", "+evt.getY());
+        
     }//GEN-LAST:event_lblColourMouseClicked
 
     private void remarkscolourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_remarkscolourActionPerformed
@@ -2313,6 +2427,47 @@ if ((evt.getX() > 3 && evt.getX() < 22) && (evt.getY() > 5 && evt.getY() < 24)) 
         
     }//GEN-LAST:event_txtLengthFocusLost
 
+    private void cmdLshirtDcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdLshirtDcActionPerformed
+        ItemButtonClicked(cmdLshirtDc.getText());
+    }//GEN-LAST:event_cmdLshirtDcActionPerformed
+
+    private void cmdLshirtDcFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cmdLshirtDcFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmdLshirtDcFocusGained
+
+    private void cmdLShalwarDcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdLShalwarDcActionPerformed
+        ItemButtonClicked(cmdLShalwarDc.getText());
+    }//GEN-LAST:event_cmdLShalwarDcActionPerformed
+
+    private void cmdDupattaDcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdDupattaDcActionPerformed
+        ItemButtonClicked(cmdDupattaDc.getText());
+    }//GEN-LAST:event_cmdDupattaDcActionPerformed
+
+    private void cmdLPajamaDCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdLPajamaDCActionPerformed
+        ItemButtonClicked(cmdLPajamaDC.getText());
+        
+    }//GEN-LAST:event_cmdLPajamaDCActionPerformed
+
+    private void cmdShalwarDcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdShalwarDcActionPerformed
+        ItemButtonClicked(cmdShalwarDc.getText());          
+    }//GEN-LAST:event_cmdShalwarDcActionPerformed
+
+    private void cmdShalwarDcFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cmdShalwarDcFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmdShalwarDcFocusGained
+
+    private void cmdKamizDcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdKamizDcActionPerformed
+        ItemButtonClicked(cmdKamizDc.getText());          
+    }//GEN-LAST:event_cmdKamizDcActionPerformed
+
+    private void cmdShalwarSuiteDcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdShalwarSuiteDcActionPerformed
+        ItemButtonClicked(cmdShalwarSuiteDc.getText());
+    }//GEN-LAST:event_cmdShalwarSuiteDcActionPerformed
+
+    private void cmdShirtDcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdShirtDcActionPerformed
+        ItemButtonClicked(cmdShirtDc.getText());
+    }//GEN-LAST:event_cmdShirtDcActionPerformed
+
 
     private void setHighlight(JToggleButton a)
     {
@@ -2342,11 +2497,15 @@ if ((evt.getX() > 3 && evt.getX() < 22) && (evt.getY() > 5 && evt.getY() < 24)) 
     private javax.swing.JButton cancelSD;
     private javax.swing.JToggleButton cmdCoat;
     private javax.swing.JButton cmdDateDone;
-    private javax.swing.JToggleButton cmdDupDc;
-    private javax.swing.JToggleButton cmdKurta;
+    private javax.swing.JToggleButton cmdDupatta;
+    private javax.swing.JToggleButton cmdDupattaDc;
+    private javax.swing.JToggleButton cmdKamizDc;
+    private javax.swing.JToggleButton cmdLPajamaDC;
     private javax.swing.JToggleButton cmdLPant;
     private javax.swing.JToggleButton cmdLShalwar;
+    private javax.swing.JToggleButton cmdLShalwarDc;
     private javax.swing.JToggleButton cmdLShirt;
+    private javax.swing.JToggleButton cmdLshirtDc;
     private javax.swing.JToggleButton cmdNormal;
     private javax.swing.JToggleButton cmdOther;
     private javax.swing.JToggleButton cmdPant;
@@ -2354,10 +2513,14 @@ if ((evt.getX() > 3 && evt.getX() < 22) && (evt.getY() > 5 && evt.getY() < 24)) 
     private javax.swing.JButton cmdPrint;
     private javax.swing.JToggleButton cmdSUrgent;
     private javax.swing.JToggleButton cmdShalwar;
+    private javax.swing.JToggleButton cmdShalwarDc;
+    private javax.swing.JToggleButton cmdShalwarSuiteDc;
+    private javax.swing.JToggleButton cmdShawl;
     private javax.swing.JToggleButton cmdShirt;
+    private javax.swing.JToggleButton cmdShirtDc;
     private javax.swing.JToggleButton cmdSpecial;
     private javax.swing.JToggleButton cmdSuit2p;
-    private javax.swing.JToggleButton cmdTShirt;
+    private javax.swing.JToggleButton cmdSweater;
     private javax.swing.JToggleButton cmdUrgent;
     private javax.swing.JButton datePicker;
     private javax.swing.JToggleButton faded;
@@ -2377,7 +2540,6 @@ if ((evt.getX() > 3 && evt.getX() < 22) && (evt.getY() > 5 && evt.getY() < 24)) 
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
@@ -2395,7 +2557,6 @@ if ((evt.getX() > 3 && evt.getX() < 22) && (evt.getY() > 5 && evt.getY() < 24)) 
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
-    private javax.swing.JSeparator jSeparator12;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private com.toedter.calendar.JCalendar jdp;
@@ -2496,11 +2657,19 @@ if ((evt.getX() > 3 && evt.getX() < 22) && (evt.getY() > 5 && evt.getY() < 24)) 
         clothes.add(cmdShalwar);
         clothes.add(cmdShirt);
         clothes.add(cmdSuit2p);
-        clothes.add(cmdKurta);
-        clothes.add(cmdTShirt);
+        clothes.add(cmdShawl);
+        clothes.add(cmdDupatta);
         clothes.add(cmdCoat);
-        clothes.add(cmdDupDc);
+        clothes.add(cmdSweater);
         clothes.add(cmdOther);
+        clothes.add(cmdShalwarDc);
+        clothes.add(cmdKamizDc);
+        clothes.add(cmdShalwarSuiteDc);
+        clothes.add(cmdShirtDc);
+        clothes.add(cmdLshirtDc);
+        clothes.add(cmdLShalwarDc);
+        clothes.add(cmdDupattaDc);
+        clothes.add(cmdLPajamaDC);
 
     }
     public void modeButtonGroup() {

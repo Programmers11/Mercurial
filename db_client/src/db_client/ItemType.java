@@ -165,4 +165,31 @@ public class ItemType {
     }
     
     
+    static int getCountVal(String item) 
+    {
+        String query= "select countVal "
+                + "from clothes where name = '"+item+"'";
+        int timeStamp=-1;
+        
+       
+        try
+        {
+            DatabaseType db= new DatabaseType();
+            db.openConnection();
+            ResultSet rs=db.read(query);
+            rs.next();
+            timeStamp=rs.getInt(1);
+            //JOptionPane.showMessageDialog(null, timeStamp);
+            db.closeConnection();
+             }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null, e.getMessage(),"Oops",JOptionPane.ERROR_MESSAGE);
+            System.out.println(query);
+        }
+        
+        return timeStamp;
+        
+    }
+    
 }

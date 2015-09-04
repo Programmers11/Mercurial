@@ -33,7 +33,7 @@ public class Printer implements Printable {
 	private final String PhoneNumber;
 	private final String DDate;
 	private final String ReceiptId;
-	private final String Mode;
+	private String Mode;
 	private final String Discount;
 	private final double Total;
 	private final String CusName;
@@ -111,6 +111,8 @@ public class Printer implements Printable {
 		DDate = Data[1];
 		ReceiptId = Data[2];
 		Mode = Data[3];
+                if(Data[3].contentEquals("SUrgent")) 
+                    Mode="SemiUrgent";
 		Discount = Data[4];
 		Total = Total1;
 		CusName = Data[5];
@@ -133,6 +135,8 @@ public class Printer implements Printable {
 		DDate = Data[1];
 		ReceiptId = Data[2];
 		Mode = Data[3];
+                if(Data[3].contentEquals("SUrgent")) 
+                    Mode="SemiUrgent";
 		Discount = Data[4];
 		Total = Total1;
 		CusName = Data[5];
@@ -466,10 +470,17 @@ public class Printer implements Printable {
 						 s*/
 						printEmptyString(5);
 					} else if (cashMemo) {
+                                            Scanner cin=null;
+                                            try {//for cash memo printing
+                                                cin= new Scanner(new File("Company.txt"));
+                                            } catch (FileNotFoundException ex) {
+                                                Logger.getLogger(Printer.class.getName()).log(Level.SEVERE, null, ex);
+                                            }
+                                                
 						printEmptyString(5);
 						printf("CASH MEMO", "Arial", 10, Font.BOLD, 60);
 						printf("Note: This slip only represent a cash memo, all articles ", "Arial", 8, Font.PLAIN, 10);
-						printf("have been delivered.Management Mercury Cleaners", "Arial", 8, Font.PLAIN, 10);
+						printf("have been delivered.Management "+cin.nextLine(), "Arial", 8, Font.PLAIN, 10);
 					}
 					printEmptyString(5);
 					serviceTag();
