@@ -79,7 +79,7 @@ public class Printer implements Printable {
 
 	//</editor-fold>
 	private int hangers = 0;
-
+        
 	public Printer(Object Table1[][], String Data[], String Cname, int num, double Total1, int type, int hang) {
 
 		Table = Table1;
@@ -130,6 +130,7 @@ public class Printer implements Printable {
 
 	}
 
+	//overrides default print function
 	@Override
 	public int print(Graphics graphics, PageFormat pF, int pageIndex) throws PrinterException {
 
@@ -140,17 +141,19 @@ public class Printer implements Printable {
 			// System.out.println(pF.getImageableX() + " " + pF.getImageableY());
 
 			graphics1.translate(pF.getImageableX(), pF.getImageableX());
-			setVariables();
-			headers(pageIndex, cashMemo);
-			printItemsTableAndTotals(pageIndex);
-			footers();
-			firstRun = true;
+			setVariables();//sets variable for neutralizing dual run problem.
+			
+			headers(pageIndex, cashMemo);//prints header
+			printItemsTableAndTotals(pageIndex);//print the contents of receipt table
+			footers();//prints footers
+			firstRun = true; //variable for neutralizing dual run problem
 
 			return PAGE_EXISTS;
 		}
 
 	}
 
+	//prints the string text on y axis => lineSpace
 	void printf(String text, String fontname, int fontsize, int type, int Xcord, double lineSpace) {
 		font = new Font(fontname, type, fontsize);
 		Style = new AttributedString(text);
@@ -165,6 +168,7 @@ public class Printer implements Printable {
 		}
 	}
 
+        //prints the string text
 	void printf(String text, String fontname, int fontsize, int type, int Xcord) {
 		font = new Font(fontname, type, fontsize);
 		Style = new AttributedString(text);
@@ -636,7 +640,13 @@ public class Printer implements Printable {
 	}
 
 	private void setTotalTable() {
-
+                /*
+                add 
+                "-x" --> printf()
+                ""  --> prints a line ------
+                
+                */
+            
 		Font headings = new Font("Verdana", Font.PLAIN, 9);
 		Font values = new Font("Verdana", Font.BOLD, 9);
 		

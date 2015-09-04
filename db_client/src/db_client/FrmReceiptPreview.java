@@ -565,7 +565,7 @@ public class FrmReceiptPreview extends javax.swing.JFrame {
         if(type!=2)
         {    
         //<editor-fold defaultstate="collapsed" desc="Customer copy">
-        job.setPrintable(new Printer(x,Data,txtUser.getText(),receiptTable.getRowCount(),netTotal,1,Integer.parseInt(gst.getText())));
+        job.setPrintable(new Printer(x,Data,txtUser.getText(),receiptTable.getRowCount(),netTotal,1,Integer.parseInt(hangers.getText())));
         
         
             try {
@@ -590,7 +590,7 @@ public class FrmReceiptPreview extends javax.swing.JFrame {
         for(int i=0;i<2;i++)
         {
             
-            job.setPrintable(new Printer(x,Data,txtUser.getText(),receiptTable.getRowCount(),netTotal,0,Integer.parseInt(gst.getText())));
+            job.setPrintable(new Printer(x,Data,txtUser.getText(),receiptTable.getRowCount(),netTotal,0,Integer.parseInt(hangers.getText())));
             try{
                job.print();
             }
@@ -708,7 +708,7 @@ public class FrmReceiptPreview extends javax.swing.JFrame {
          PrinterJob job ; 
            job = PrinterJob.getPrinterJob();
             for(int i=0;i<2;i++){
-           job.setPrintable(new Printer(x,Data,txtUser.getText(),receiptTable.getRowCount(),netTotal,0,Integer.parseInt(gst.getText())));
+           job.setPrintable(new Printer(x,Data,txtUser.getText(),receiptTable.getRowCount(),netTotal,0,Integer.parseInt(hangers.getText())));
          
             if (true) {
               try {
