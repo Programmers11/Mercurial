@@ -392,7 +392,7 @@ public final class FrmBooking extends javax.swing.JPanel {
         jdp.setBounds(10, 10, 490, 270);
 
         mainPanel.add(jdpPanel);
-        jdpPanel.setBounds(510, 200, 510, 300);
+        jdpPanel.setBounds(180, 90, 510, 300);
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
@@ -612,7 +612,7 @@ public final class FrmBooking extends javax.swing.JPanel {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Net Total:");
         mainPanel.add(jLabel6);
-        jLabel6.setBounds(820, 470, 80, 20);
+        jLabel6.setBounds(820, 480, 80, 20);
 
         cmdPrint.setText("Print");
         cmdPrint.setOpaque(false);
@@ -879,9 +879,9 @@ public final class FrmBooking extends javax.swing.JPanel {
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("%");
+        jLabel7.setText("RS");
         mainPanel.add(jLabel7);
-        jLabel7.setBounds(980, 510, 20, 20);
+        jLabel7.setBounds(980, 420, 20, 20);
 
         txtDiscount.setText("0");
         txtDiscount.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -901,13 +901,13 @@ public final class FrmBooking extends javax.swing.JPanel {
             }
         });
         mainPanel.add(txtDiscount);
-        txtDiscount.setBounds(890, 430, 80, 20);
+        txtDiscount.setBounds(890, 450, 80, 20);
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Discount:");
         mainPanel.add(jLabel8);
-        jLabel8.setBounds(820, 430, 60, 20);
+        jLabel8.setBounds(820, 450, 60, 20);
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
@@ -1231,13 +1231,13 @@ public final class FrmBooking extends javax.swing.JPanel {
             }
         });
         mainPanel.add(lblNetTotal);
-        lblNetTotal.setBounds(890, 470, 80, 20);
+        lblNetTotal.setBounds(890, 480, 80, 20);
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("RS");
         mainPanel.add(jLabel11);
-        jLabel11.setBounds(980, 470, 20, 20);
+        jLabel11.setBounds(980, 480, 20, 20);
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
@@ -1479,19 +1479,19 @@ public final class FrmBooking extends javax.swing.JPanel {
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("GST:");
         mainPanel.add(jLabel14);
-        jLabel14.setBounds(820, 510, 60, 20);
+        jLabel14.setBounds(820, 420, 60, 20);
 
         lblGST.setEditable(false);
         lblGST.setText("0");
         lblGST.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         mainPanel.add(lblGST);
-        lblGST.setBounds(890, 510, 80, 20);
+        lblGST.setBounds(890, 420, 80, 20);
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("%");
         mainPanel.add(jLabel15);
-        jLabel15.setBounds(980, 430, 20, 20);
+        jLabel15.setBounds(980, 450, 20, 20);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Mercurial Theme [final]/booking.png"))); // NOI18N
         mainPanel.add(jLabel2);
@@ -2399,7 +2399,8 @@ if ((evt.getX() > 3 && evt.getX() < 22) && (evt.getY() > 5 && evt.getY() < 24)) 
     private void txtHangerFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtHangerFocusLost
                 try
                 {
-                    int x=Integer.parseInt(txtDiscount.getText());
+                    
+                    int x=Integer.parseInt(txtHanger.getText());
                     if(x <0) throw new Exception();
                 }
                 catch(Exception e)
@@ -2411,7 +2412,14 @@ if ((evt.getX() > 3 && evt.getX() < 22) && (evt.getY() > 5 && evt.getY() < 24)) 
     }//GEN-LAST:event_txtHangerFocusLost
 
     private void txtHangerKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHangerKeyReleased
-        // TODO add your handling code here:
+        try
+        {
+            if(txtDiscount.getText().contentEquals((""))) throw new Exception();
+        }
+        catch(Exception e)
+        {
+           txtHanger.setText("0");
+        }
     }//GEN-LAST:event_txtHangerKeyReleased
 
     private void remove1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_remove1ActionPerformed
@@ -2818,13 +2826,17 @@ if ((evt.getX() > 3 && evt.getX() < 22) && (evt.getY() > 5 && evt.getY() < 24)) 
         
         double discount= Double.parseDouble(txtDiscount.getText()) / 100.0;
         
+        int tax= (int)Math.round(grossTotal* (MainMenu.GST / 100.0));
         
-        netTotal= (int) Math.round(grossTotal - (grossTotal*discount*isDiscountable));
+        int grossSum=grossTotal+tax;
+        
+        netTotal= (int) Math.round(grossSum - (grossSum*discount*isDiscountable));
         
         netTotal= netTotal - (Integer.parseInt(txtHanger.getText())*2);
         
         txtTotal.setText(String.valueOf(grossTotal));
         lblNetTotal.setText(String.valueOf(netTotal));
+        lblGST.setText(String.valueOf(tax));
         
     }
     

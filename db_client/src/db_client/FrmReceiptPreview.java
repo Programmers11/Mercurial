@@ -896,7 +896,7 @@ public class FrmReceiptPreview extends javax.swing.JFrame {
                         txtUser.getText(),
                         TxtTotal.getText(),
                         txtDiscount.getText(),
-                        String.valueOf(Integer.parseInt(txtNetTotal.getText())*MainMenu.GST  + Integer.parseInt(txtNetTotal.getText())),
+                        txtNetTotal.getText(),
                         FormatDateForDB(txtOrderDate.getText()),
                         FormatDateForDB(txtDueDate.getText()),
                         txtStatus.getText(),
