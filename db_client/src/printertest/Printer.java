@@ -71,31 +71,9 @@ public class Printer implements Printable {
 	LinkedList<myObject> totalsTable = new LinkedList<>();
 	int globalTableCounter = 0;
 	int globalAmountCounter = 0;
+        String TaxAmount = "" ;
 
-	Object Table[][];/*=  new Object[][]{{"1","Yellow, Starch, Fold","pat","60"},
-	 {"1","White, No No No Starch, Black, White, No No No Starch, Black, White,  oo lala re oo llalalalaala re oo lala re olllalaa reNo No No Starch, Black","tshirt","90"},
-	 {"6","Fantaaa Pepsi","pattti","600"},
-	 {"1","Yellow, Starch, Fold","pat","60"},
-	 {"1","White, No No No Starch, Black, White, No No No Starch, Black, White, No No No Starch, Black","tshirt","90"},
-	 {"6","Fantaaa Pepsi","pattti","600"},
-	 {"1","Yellow, Starch, Fold","pat","60"},
-	 {"1","White, Hello World No No No Starch, Black, White, No No No Starch, Black, White, No No No Starch, Black","tshirt","90"},
-	 {"6","Fantaaa Pepsi","pattti","600"},
-	 {"1","Yellow, Starch, Fold","pat","60"},
-	 {"1","White, No No No Starch, Black, White, No No No Starch, Black, White, No No No Starch, Black","tshirt","90"},
-	 {"6","Fantaaa Pepsi","pattti","600"},
-	 {"1","Yellow, Starch, Fold","pat","60"},
-	 {"1","White, No No No Starch, Black, White, No No No Starch, Black, White, No No No Starch, Black","tshirt","90"},
-	 {"6","Fantaaa Pepsi","pattti","600"},
-	 {"1","Yellow, Starch, Fold","pat","60"},
-	 {"1","White, No No No Starch, Black, White, No No No Starch, Black, White, No No No Starch, Black","tshirt","90"},
-	 {"6","Fantaaa Pepsi","pattti","600"},
-	 {"1","Yellow, Starch, Fold","pat","60"},
-	 {"1","White, No No No Starch, Black, White, No No No Starch, Black, White, No No No Starch, Black","tshirt","90"},
-	 {"6","Fantaaa Pepsi","pattti","600"},{"1","White, No No No Starch, Black, White, No No No Starch, Black, White, No No No Starch, Black","tshirt","90"},
-	 {"6","Fantaaa Pepsi","pattti","600"},
-	 {"1","Yellow, Starch, Fold","pat","60"}};
-	 //*/
+	Object Table[][];
 
 	StringManip strManip;
 
@@ -122,6 +100,7 @@ public class Printer implements Printable {
 		row = 0;
 		this.type = type;
 		hangers = hang;
+                TaxAmount = Data[10];
 		setItemsTableAndTotals();
 
 	}
@@ -145,6 +124,7 @@ public class Printer implements Printable {
 		GrossAmount = Data[8];
 		row = 0;
 		this.type = type;
+                TaxAmount = Data[10];
 		setItemsTableAndTotals();
 		this.cashMemo = cashMemo;
 
@@ -522,15 +502,15 @@ public class Printer implements Printable {
 			if (!firstRun) {
 				myObject obj = table.remove();
 				switch (obj.str) {
-					case " ":
+					case " "://prints text
 						line(ycord - 5);
 						printf(obj.str, obj.font, 5, 2);
 						break;
-					case "":
+					case "":// prints  line ---
 						line(ycord + obj.lineSpacings);
 						//printf(obj.str,obj.font,5,2);
 						break;
-					case "-x":
+					case "-x"://print an empty line with no text just like printLn()
 						printEmptyString(obj.lineSpacings);
 						break;
 					default:
@@ -659,24 +639,10 @@ public class Printer implements Printable {
 
 		Font headings = new Font("Verdana", Font.PLAIN, 9);
 		Font values = new Font("Verdana", Font.BOLD, 9);
-		/*
-		 table.add(new myObject("",values,-2));
-		 table.add(new myObject("",values,-1));
-		 table.add(new myObject("",values,0));
-		 table.add(new myObject("",values,1));
-		 table.add(new myObject("",values,-3));
-		 table.add(new myObject("",values,-4));
-		 table.add(new myObject("-x", values,20));
-
-		 */
-                //System.out.println("osman1");
+		
 		table.add(new myObject(BookingType.getQuantity(ReceiptId.substring(0, 6)) + " ", new Font("Verdana", Font.BOLD, 10), 10));
 		
-                // table.add(new myObject("-x", values,5));
-		//    table.add(new myObject("",values,0));
-		//  table.add(new myObject("",values,1));
-		// table.add(new myObject("-x", values,13));
-
+                
 		table.add(new myObject("Gross Amount", headings, 60));
 		table.add(new myObject(TableEntryPrinter.TheCalculator(String.format("%.0f", Double.valueOf(GrossAmount)), 120, 172, 9), values, 140));
 		table.add(new myObject("-x", values, 10));
@@ -690,6 +656,9 @@ public class Printer implements Printable {
 			table.add(new myObject(TableEntryPrinter.TheCalculator("-" + String.valueOf((hangers * 2)), 123, 172, 9), values, 140));
 
 		}
+                table.add(new myObject("-x", values, 10)); 
+                table.add(new myObject("GST["+db_client.MainMenu.GST+"%]", headings, 60));
+		table.add(new myObject(TableEntryPrinter.TheCalculator(TaxAmount, 120, 172, 9), values, 140));
 		table.add(new myObject("", values, 6));
 		//  table.add(new myObject("",values,3));
 		table.add(new myObject("-x", values, 20));
@@ -707,7 +676,7 @@ public class Printer implements Printable {
 		table.add(new myObject("", values, -4));
 		//table.add(new myObject("-x", values, 20));
                 table.add(new myObject("-x", values, 10));
-                System.out.println("soban0");
+                
 	}
 
 	public String dateCreator(int toAdd) {
