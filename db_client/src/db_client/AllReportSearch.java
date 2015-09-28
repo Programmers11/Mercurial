@@ -38,7 +38,7 @@ public class AllReportSearch extends javax.swing.JPanel {
                
         parent=p;
         query=q;
-        //System.out.println("----\n"+q+"\n-----");
+        System.out.println("----\n"+q+"\n-----");
         
         serviceQuery(query);
         //rs=db.read(query);
@@ -80,7 +80,7 @@ public class AllReportSearch extends javax.swing.JPanel {
         if(rName.contentEquals("Item-Wise"))itemReport=true;
         parent=p;
         query=q;
-        System.out.println("----\n"+q+"\n-----");
+        //System.out.println("----\n"+q+"\n-----");
         
         
         serviceQuery(query);
@@ -407,12 +407,12 @@ public class AllReportSearch extends javax.swing.JPanel {
         String q;
         if (closingReport && list.getSelectedItem().toString().contains("srno"))
             return;
-         if (query.contains("where")) 
+         if (query.toLowerCase().contains("where")) 
              q= query+ " and "+getColumnName()+" like '%"+searcbBar.getText()+"%'";
          else
             q= query+ " where "+getColumnName()+" like '%"+searcbBar.getText()+"%'";
          
-         //System.out.println(q);
+         //System.out.println("search q\n"+q);
          serviceQuerySearch(q);
     }//GEN-LAST:event_searcbBarKeyReleased
 

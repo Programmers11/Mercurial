@@ -45,7 +45,7 @@ public class MainMenu extends javax.swing.JFrame {
     FrmHome home=new FrmHome(this);
 
     public static int GST=taxType.getTax("GST");
-
+    public static boolean isRegular = false;
     FrmBooking booking;
     
     String privileges;
@@ -348,7 +348,7 @@ public class MainMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmdUrgent1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmdUrgent1MouseClicked
-        addReportWindow("Urgent", "Select * from urgent");
+        addReportWindow("Urgent", "Select * from urgent "+getIsRegularString("", true));
     }//GEN-LAST:event_cmdUrgent1MouseClicked
 
     private void cmdHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmdHomeMouseClicked
@@ -376,11 +376,11 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_cmdBooking1MouseClicked
 
     private void cmdSpecial1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmdSpecial1MouseClicked
-       addReportWindow("Special", "Select * from special");
+       addReportWindow("Special", "Select * from special"+getIsRegularString("", true));
     }//GEN-LAST:event_cmdSpecial1MouseClicked
 
     private void cmdSemiUrgentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmdSemiUrgentMouseClicked
-        addReportWindow("Semi Urgent", "Select * from surgent");
+        addReportWindow("Semi Urgent", "Select * from surgent"+getIsRegularString("", true));
     }//GEN-LAST:event_cmdSemiUrgentMouseClicked
 
     private void cmdReportsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmdReportsMouseClicked
@@ -397,7 +397,7 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel2MouseEntered
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        addReportWindow("Pressing", "Select * from press");
+        addReportWindow("Pressing", "Select * from press"+getIsRegularString("", true));
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void urgent_textMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_urgent_textMouseClicked
@@ -422,14 +422,14 @@ public class MainMenu extends javax.swing.JFrame {
     private void lblNormalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNormalMouseClicked
 
          String query = "select b.rcptno,b.phone ,c.clientName,b.issuedate,b.duedate,b.status,b.netAmount "
-               + "from booking b join client c on c.phone = b.phone ";
+               + "from booking b join client c on c.phone = b.phone "+getIsRegularString("b.", true);
         
         addReportWindow("All Bookings",query);
     }//GEN-LAST:event_lblNormalMouseClicked
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
          String query = "select b.rcptno,b.phone ,c.clientName,b.issuedate,b.duedate,b.status,b.netAmount "
-               + "from booking b join client c on c.phone = b.phone ";
+               + "from booking b join client c on c.phone = b.phone "+getIsRegularString("b.", true);
         
         addReportWindow("All Bookings",query);
              
@@ -442,6 +442,21 @@ public class MainMenu extends javax.swing.JFrame {
         addTab("Booking",booking);
     }//GEN-LAST:event_booking_textMouseClicked
 
+    /*returned string will be added to queries for geting regular/nonregular results
+    prefix: for managing table alias
+    addwhereclause : true -> add where clause in returned string ,false-> do not add where clause
+    Note: it used in all the queries except closingreport and Bokkingtype queries
+    */
+    public String getIsRegularString(String prefix,boolean addWhereClause)
+    {
+        
+        if (addWhereClause) {
+            return isRegular ? "  WHERE " + prefix + "rcptno NOT REGEXP '[A-Z]0'" : "";
+        } else {
+            return isRegular ? "  and " + prefix + "rcptno NOT REGEXP '[A-Z]0'" : "";
+        }
+        
+    }
     
     public void setMessage(String name)
     {

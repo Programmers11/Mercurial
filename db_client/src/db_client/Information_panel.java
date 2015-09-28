@@ -15,6 +15,7 @@ public class Information_panel extends javax.swing.JPanel {
     private boolean isClosing=false;
     private boolean itemWise=false;
     
+    
     public Information_panel(MainMenu master) {
         initComponents();
         this.master=master;
@@ -439,7 +440,7 @@ public class Information_panel extends javax.swing.JPanel {
 
     private void ABActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ABActionPerformed
        String query = "select b.rcptno,b.phone ,c.clientName,b.issuedate,b.duedate,b.status,b.netAmount "
-               + "from booking b join client c on c.phone = b.phone ";
+               + "from booking b join client c on c.phone = b.phone "+master.getIsRegularString("b.",true);
         
         master.addReportWindow("All Bookings",query);
 }//GEN-LAST:event_ABActionPerformed
@@ -447,7 +448,7 @@ public class Information_panel extends javax.swing.JPanel {
     private void UDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UDActionPerformed
         String query = "select b.rcptno,c.phone ,c.clientName,b.issuedate,b.duedate,b.netAmount  "
                + "from booking b,client c where c.phone = b.phone and "
-               + "(b.status != 'Delivered' AND b.status !='Cancelled')";//or issueDate = '"+dateCreator()+"')";
+               + "(b.status != 'Delivered' AND b.status !='Cancelled')"+master.getIsRegularString("b.",false);//or issueDate = '"+dateCreator()+"')";
         
       
         master.addReportWindow("Undelivered",query);
@@ -456,7 +457,7 @@ public class Information_panel extends javax.swing.JPanel {
     private void DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DActionPerformed
     String query = "select b.rcptno ,c.phone ,c.clientName,b.dupCount ,b.issuedate,b.duedate,b.netAmount  "
                + "from booking b,client c where c.phone = b.phone and "
-               + "b.status = 'Delivered' ";
+               + "b.status = 'Delivered' "+master.getIsRegularString("b.",false);
             
     master.addReportWindow("Delivered",query);
 }//GEN-LAST:event_DActionPerformed
@@ -473,7 +474,7 @@ public class Information_panel extends javax.swing.JPanel {
         String Date = dateCreator();
         String query ="select b.rcptno,c.phone ,c.clientName,b.issuedate,b.duedate,b.netAmount  "
                 + "from booking b,client c where c.phone = b.phone and"
-                + " b.status = 'Ready' AND `dueDate` <= '"+Date+"'";
+                + " b.status = 'Ready' AND `dueDate` <= '"+Date+"'"+master.getIsRegularString("b.",false);
         master.addReportWindow("Due Date Passed", query );
     }//GEN-LAST:event_DDPActionPerformed
 
@@ -490,7 +491,7 @@ public class Information_panel extends javax.swing.JPanel {
     private void ReadyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReadyActionPerformed
         String query = "select b.rcptno,c.phone ,c.clientName,b.issuedate,b.duedate,b.netAmount  "
                + "from booking b,client c where c.phone = b.phone and "
-               + "b.status = 'Ready' ";
+               + "b.status = 'Ready' "+master.getIsRegularString("b.",false);
             
             master.addReportWindow("Ready",query);
     }//GEN-LAST:event_ReadyActionPerformed
@@ -514,7 +515,7 @@ public class Information_panel extends javax.swing.JPanel {
         date = year.getText().trim()+"-"+month.getSelectedItem().toString()+"-";
         String querry = "select b.rcptno,c.phone ,c.clientName,b.issuedate,b.duedate,b.netAmount  "
                 + "from booking b,client c where c.phone = b.phone and "
-                + "issueDate  REGEXP '"+date+"[0-9][0-9]?' ";
+                + "issueDate  REGEXP '"+date+"[0-9][0-9]?' "+master.getIsRegularString("b.",false);
         master.addReportWindow("Month Wise",querry);
 
     }//GEN-LAST:event_cmdMonthConfirmActionPerformed
@@ -541,7 +542,7 @@ public class Information_panel extends javax.swing.JPanel {
         if (rs != null)
             {
             String query = "select b.rcptno,c.phone ,c.clientName,b.issuedate,b.duedate,b.netAmount  "
-               + "from booking b,client c where c.phone = '"+custPh.getText().trim()+"' and b.phone = '"+custPh.getText().trim()+"'";
+               + "from booking b,client c where c.phone = '"+custPh.getText().trim()+"' and b.phone = '"+custPh.getText().trim()+"'"+master.getIsRegularString("b.",false);
             
             master.addReportWindow("Customer Wise", query);
            }
@@ -555,7 +556,7 @@ public class Information_panel extends javax.swing.JPanel {
         
          String query = "select b.rcptno,c.phone ,c.clientName,b.issuedate,b.duedate,b.netAmount  "
                + "from booking b,client c where c.phone = b.phone and "
-               + "(b.status = 'Cancelled')";//or issueDate = '"+dateCreator()+"')";
+               + "(b.status = 'Cancelled')"+master.getIsRegularString("b.",false);//or issueDate = '"+dateCreator()+"')";
         
         master.addReportWindow("Cancelled", query);
     }//GEN-LAST:event_CancelledbuttonActionPerformed
@@ -563,7 +564,7 @@ public class Information_panel extends javax.swing.JPanel {
     private void Cancelledbutton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cancelledbutton1ActionPerformed
         String query = "select b.rcptno,c.phone ,c.clientName,b.issuedate,b.duedate,b.netAmount  "
                + "from booking b,client c where c.phone = b.phone and "
-               + "(b.dupCount>0)";//or issueDate = '"+dateCreator()+"')";
+               + "(b.dupCount>0)"+master.getIsRegularString("b.",false);//or issueDate = '"+dateCreator()+"')";
       
         master.addReportWindow("Duplicate", query);
     }//GEN-LAST:event_Cancelledbutton1ActionPerformed
@@ -581,7 +582,7 @@ public class Information_panel extends javax.swing.JPanel {
     private void DNPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DNPActionPerformed
         String query = "select b.rcptno,c.phone ,c.clientName, b.dupCount ,b.issuedate,b.duedate,b.netAmount  "
                + "from booking b,client c where c.phone = b.phone and "
-               + "b.status = 'DNP' ";
+               + "b.status = 'DNP' "+master.getIsRegularString("b.",false);
             
     master.addReportWindow("DNP",query);
     }//GEN-LAST:event_DNPActionPerformed
@@ -696,7 +697,7 @@ public String dateCreator() {
         SimpleDateFormat myFormat=new SimpleDateFormat("yyyy-MM-dd");
         date = (myFormat.format(jdp.getDate()));
         String querry = "select b.rcptno,c.phone ,c.clientName,b.issuedate,b.duedate,b.netAmount  from "
-        + "booking b,client c where c.phone = b.phone and `issueDate` = '"+date+"'";
+        + "booking b,client c where c.phone = b.phone and `issueDate` = '"+date+"'"+master.getIsRegularString("b.",false);
         System.out.println(querry);
         master.addReportWindow("Date Wise",querry);
         jdpPanel.setVisible(false);
@@ -711,7 +712,7 @@ public String dateCreator() {
         date = (myFormat.format(jdp.getDate()));
         String querry = "select `cl`.`name` AS `Name`,sum(`info`.`qty`) AS `qty`,sum((`info`.`qty` * `cl`.`countVal`)) "+
 "AS `pc` from (`booking_clothes` `info` join `clothes` `cl`) where ((`info`.`cid` = `cl`.`cid`) "+
-"and `info`.`rcptNo` in (select `booking`.`rcptNo` from `booking` where (`booking`.`issueDate` = '"+date+"'))) group by `info`.`cid`";
+"and `info`.`rcptNo` in (select `booking`.`rcptNo` from `booking` where (`booking`.`issueDate` = '"+date+"' "+master.getIsRegularString("`booking`.",false)+"))) group by `info`.`cid`";
         master.addReportWindow("Item Wise",querry);
         jdpPanel.setVisible(false);
         jdpPanel.setEnabled(false);
@@ -723,7 +724,8 @@ public String dateCreator() {
        // System.out.println("here");
          SimpleDateFormat myFormat=new SimpleDateFormat("yyyy-MM-dd");
         date = (myFormat.format(jdp.getDate()));
-        String querry = "select @a:=@a+1 srno,b.* from closingreport b,(select @a:=0) as a where Date(b.delDate) = '"+date+"' ";
+        String isRegularString = (master.isRegular)?" AND `Voucher No` NOT REGEXP '[A-Z]0'":"";
+        String querry = "select @a:=@a+1 srno,b.* from closingreport b,(select @a:=0) as a where Date(b.delDate) = '"+date+"' "+isRegularString;
          System.out.println(querry);
         master.addReportWindow("Closing Report",querry,date);
         

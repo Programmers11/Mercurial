@@ -97,7 +97,9 @@ public class BookingType {
     public static String generateNumber()
     {
         String rcptNo="";
-        String query="Select max(rcptno) as rcptNo from booking";
+        String isRegular = (MainMenu.isRegular)?"  WHERE `rcptNo` NOT REGEXP '[A-Z]0'":"";
+        String query="Select max(rcptno) as rcptNo from booking"+isRegular  ;
+        System.out.println("query== "+query);
         DatabaseType db=new DatabaseType();
         ResultSet rs;
         

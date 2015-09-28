@@ -14,6 +14,7 @@ public class FrmHome extends javax.swing.JPanel
     String curr_rec;
     MainMenu parent;
     
+    
     public FrmHome(MainMenu p) {
         initComponents();
         parent = p;
@@ -171,6 +172,7 @@ public class FrmHome extends javax.swing.JPanel
         cmdView = new javax.swing.JButton();
         optAutoMode = new javax.swing.JCheckBox();
         optDNP = new javax.swing.JRadioButton();
+        IsRegular = new javax.swing.JCheckBox();
         bgrnd = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -323,7 +325,7 @@ public class FrmHome extends javax.swing.JPanel
             }
         });
         add(optAutoMode);
-        optAutoMode.setBounds(851, 70, 120, 40);
+        optAutoMode.setBounds(851, 70, 120, 30);
 
         optDNP.setForeground(new java.awt.Color(255, 255, 255));
         optDNP.setText("DNP");
@@ -335,6 +337,18 @@ public class FrmHome extends javax.swing.JPanel
         });
         add(optDNP);
         optDNP.setBounds(920, 270, 50, 23);
+
+        IsRegular.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        IsRegular.setForeground(new java.awt.Color(255, 255, 255));
+        IsRegular.setText("Regular");
+        IsRegular.setOpaque(false);
+        IsRegular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IsRegularActionPerformed(evt);
+            }
+        });
+        add(IsRegular);
+        IsRegular.setBounds(851, 100, 110, 23);
 
         bgrnd.setBackground(new java.awt.Color(13, 71, 93));
         bgrnd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Mercurial Theme [final]/mainwindow[main_panel].png"))); // NOI18N
@@ -421,7 +435,12 @@ public class FrmHome extends javax.swing.JPanel
          if(optDNP.isSelected()) lblStatus.setText("DNP");
     }//GEN-LAST:event_optDNPActionPerformed
 
+    private void IsRegularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IsRegularActionPerformed
+       parent.isRegular = IsRegular.isSelected();
+    }//GEN-LAST:event_IsRegularActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox IsRegular;
     private javax.swing.JLabel bgrnd;
     private javax.swing.JButton cmdCancel;
     private javax.swing.JButton cmdChngState;
