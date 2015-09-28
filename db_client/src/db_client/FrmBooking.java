@@ -2826,17 +2826,17 @@ if ((evt.getX() > 3 && evt.getX() < 22) && (evt.getY() > 5 && evt.getY() < 24)) 
         
         double discount= Double.parseDouble(txtDiscount.getText()) / 100.0;
         
-        int tax= (int)Math.round(grossTotal* (MainMenu.GST / 100.0));
+        int tax= (int)(Math.round(grossTotal* (MainMenu.GST / 100.0)));
+        int netTax= (int)(Math.round(tax* discount));
         
-        int grossSum=grossTotal+tax;
         
-        netTotal= (int) Math.round(grossSum - (grossSum*discount*isDiscountable));
+        netTotal= (int) Math.round(grossTotal - (grossTotal*discount*isDiscountable));
         
         netTotal= netTotal - (Integer.parseInt(txtHanger.getText())*2);
         
         txtTotal.setText(String.valueOf(grossTotal));
-        lblNetTotal.setText(String.valueOf(netTotal));
-        lblGST.setText(String.valueOf(tax));
+        lblNetTotal.setText(String.valueOf(netTotal+netTax));
+        lblGST.setText(String.valueOf(netTax));
         
     }
     
