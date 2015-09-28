@@ -83,7 +83,7 @@ public class BaseClass extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         checkbox_dnp = new javax.swing.JCheckBox();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        isRegular = new javax.swing.JCheckBox();
         Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -554,9 +554,12 @@ public class BaseClass extends javax.swing.JFrame {
         panelmain.add(checkbox_dnp);
         checkbox_dnp.setBounds(190, 420, 21, 21);
 
-        jCheckBox1.setText("jCheckBox1");
-        panelmain.add(jCheckBox1);
-        jCheckBox1.setBounds(760, 50, 81, 23);
+        isRegular.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        isRegular.setForeground(new java.awt.Color(255, 255, 255));
+        isRegular.setText("Regular");
+        isRegular.setOpaque(false);
+        panelmain.add(isRegular);
+        isRegular.setBounds(760, 50, 69, 23);
 
         Background.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Background.setForeground(new java.awt.Color(255, 255, 255));
@@ -870,7 +873,7 @@ public class BaseClass extends javax.swing.JFrame {
     private javax.swing.JComboBox fromDate;
     private javax.swing.JComboBox fromMonth;
     private javax.swing.JTextField fromYear;
-    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox isRegular;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -945,26 +948,26 @@ public class BaseClass extends javax.swing.JFrame {
 
         switch(selectedReport){
             case ALLBOOKINGS:
-                return "select (@s:=@s+1)as srno,b.* from allreports b,(SELECT @s:= 0) AS s where issuedate >= '"+date1+"' and issuedate <= '"+date2+"'";
+                return "select (@s:=@s+1)as srno,b.* from allreports b,(SELECT @s:= 0) AS s where issuedate >= '"+date1+"' and issuedate <= '"+date2+"'"+getIsRegularString("b.",false);
             case DUEDATE:
-                  return "select (@s:=@s+1)as srno,b.* from allreports b,(SELECT @s:= 0) AS s where status = 'Ready' and deldate >= '"+date1+"' and deldate <= '"+date2+"'";
+                  return "select (@s:=@s+1)as srno,b.* from allreports b,(SELECT @s:= 0) AS s where status = 'Ready' and deldate >= '"+date1+"' and deldate <= '"+date2+"'"+getIsRegularString("b.",false);
            case CLOSINGREPORT:
-                  return "select (@s:=@s+1)as srno,b.* from allreports b,(SELECT @s:= 0) AS s where status = 'Delivered' and deldate >= '"+date1+"' and deldate <= '"+date2+"'";
+                  return "select (@s:=@s+1)as srno,b.* from allreports b,(SELECT @s:= 0) AS s where status = 'Delivered' and deldate >= '"+date1+"' and deldate <= '"+date2+"'"+getIsRegularString("b.",false);
            case UNDELIVERED:
-                  return "select (@s:=@s+1)as srno,b.* from allreports b,(SELECT @s:= 0) AS s where status != 'Delivered' and status != 'Cancelled' and issuedate >= '"+date1+"' and issuedate <= '"+date2+"'";
+                  return "select (@s:=@s+1)as srno,b.* from allreports b,(SELECT @s:= 0) AS s where status != 'Delivered' and status != 'Cancelled' and issuedate >= '"+date1+"' and issuedate <= '"+date2+"'"+getIsRegularString("b.",false);
            case DELIVERED:
-                  return "select (@s:=@s+1)as srno,b.* from allreports b,(SELECT @s:= 0) AS s where status = 'Delivered' and issuedate >= '"+date1+"' and issuedate <= '"+date2+"'";
+                  return "select (@s:=@s+1)as srno,b.* from allreports b,(SELECT @s:= 0) AS s where status = 'Delivered' and issuedate >= '"+date1+"' and issuedate <= '"+date2+"'"+getIsRegularString("b.",false);
           
            case READY:
-                  return "select (@s:=@s+1)as srno,b.* from allreports b,(SELECT @s:= 0) AS s where status = 'Ready' and issuedate >= '"+date1+"' and issuedate <= '"+date2+"'";
+                  return "select (@s:=@s+1)as srno,b.* from allreports b,(SELECT @s:= 0) AS s where status = 'Ready' and issuedate >= '"+date1+"' and issuedate <= '"+date2+"'"+getIsRegularString("b.",false);
            case DNP:
-                  return "select (@s:=@s+1)as srno,b.* from allreports b,(SELECT @s:= 0) AS s where status = 'DNP' and issuedate >= '"+date1+"' and issuedate <= '"+date2+"'";
+                  return "select (@s:=@s+1)as srno,b.* from allreports b,(SELECT @s:= 0) AS s where status = 'DNP' and issuedate >= '"+date1+"' and issuedate <= '"+date2+"'"+getIsRegularString("b.",false);
            case CANCELLED:
-                  return "select (@s:=@s+1)as srno,b.* from allreports b,(SELECT @s:= 0) AS s where status = 'Cancelled' and issuedate >= '"+date1+"' and issuedate <= '"+date2+"'";
+                  return "select (@s:=@s+1)as srno,b.* from allreports b,(SELECT @s:= 0) AS s where status = 'Cancelled' and issuedate >= '"+date1+"' and issuedate <= '"+date2+"'"+getIsRegularString("b.",false);
            case DUPLICATES:
-                  return "select (@s:=@s+1)as srno,b.* from duplicates b,(SELECT @s:= 0) AS s where issuedate >= '"+date1+"' and issuedate <= '"+date2+"'";
+                  return "select (@s:=@s+1)as srno,b.* from duplicates b,(SELECT @s:= 0) AS s where issuedate >= '"+date1+"' and issuedate <= '"+date2+"'"+getIsRegularString("b.",false);
            case CUSTOMERWISE:
-                  return "select (@s:=@s+1)as srno,b.* from allreports b,(SELECT @s:= 0) AS s where Phone = '"+customerNumber.getText().trim()+"' and issuedate >= '"+date1+"' and issuedate <= '"+date2+"'";
+                  return "select (@s:=@s+1)as srno,b.* from allreports b,(SELECT @s:= 0) AS s where Phone = '"+customerNumber.getText().trim()+"' and issuedate >= '"+date1+"' and issuedate <= '"+date2+"'"+getIsRegularString("b.",false);
            case ITEMWISE:
                list.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "" }));
                netAmountLabel.setVisible(false);
@@ -990,6 +993,23 @@ public class BaseClass extends javax.swing.JFrame {
        }
     }
 
+    /**
+     *
+     * @param prefix for managing table alias
+     * @param addWhereClause adds where clause if true
+     * @return String will be added to queries for getting regular/non-regular results 
+     */
+    public String getIsRegularString(String prefix,boolean addWhereClause)
+    {
+        
+        if (addWhereClause) {
+            return isRegular.isSelected() ? "" : "  WHERE " + prefix + "`Voucher No` NOT REGEXP '[A-Z]0'";
+        } else {
+            return isRegular.isSelected() ? "" : "  and " + prefix + "`Voucher No` NOT REGEXP '[A-Z]0'";
+        }
+        
+    }
+    
     private Object getReportName() {
          switch(selectedReport){
             case ALLBOOKINGS:

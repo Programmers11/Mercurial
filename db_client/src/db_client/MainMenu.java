@@ -442,18 +442,21 @@ public class MainMenu extends javax.swing.JFrame {
         addTab("Booking",booking);
     }//GEN-LAST:event_booking_textMouseClicked
 
-    /*returned string will be added to queries for geting regular/nonregular results
-    prefix: for managing table alias
-    addwhereclause : true -> add where clause in returned string ,false-> do not add where clause
-    Note: it used in all the queries except closingreport and Bokkingtype queries
-    */
+    
+    /**
+     *
+     * @param prefix for managing table alias
+     * @param addWhereClause adds where clause if true
+     * @return String will be added to queries for getting regular/non-regular results 
+     * Note: it used in all the queries except closingreport and Bokkingtype queries
+     */
     public String getIsRegularString(String prefix,boolean addWhereClause)
     {
         
         if (addWhereClause) {
-            return isRegular ? "  WHERE " + prefix + "rcptno NOT REGEXP '[A-Z]0'" : "";
+            return isRegular ? "" : "  WHERE " + prefix + "rcptno NOT REGEXP '[A-Z]0'";
         } else {
-            return isRegular ? "  and " + prefix + "rcptno NOT REGEXP '[A-Z]0'" : "";
+            return isRegular ? "" : "  and " + prefix + "rcptno NOT REGEXP '[A-Z]0'";
         }
         
     }
