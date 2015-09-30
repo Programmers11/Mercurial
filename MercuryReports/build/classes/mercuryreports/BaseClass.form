@@ -505,7 +505,10 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane1" alignment="1" pref="780" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jScrollPane1" min="-2" pref="795" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -533,7 +536,7 @@
                       <Font name="Calibri Light" size="14" style="0"/>
                     </Property>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="9" rowCount="24">
+                      <Table columnCount="11" rowCount="24">
                         <Column editable="false" title="S.No" type="java.lang.Object"/>
                         <Column editable="false" title="Receipt#" type="java.lang.Object"/>
                         <Column editable="false" title="Phone#" type="java.lang.Object"/>
@@ -542,6 +545,8 @@
                         <Column editable="false" title="Issue Date" type="java.lang.Object"/>
                         <Column editable="false" title="Due Date" type="java.lang.Object"/>
                         <Column editable="false" title="Qty" type="java.lang.Object"/>
+                        <Column editable="false" title="GrossAmt" type="java.lang.Object"/>
+                        <Column editable="false" title="gst" type="java.lang.Object"/>
                         <Column editable="false" title="Amount" type="java.lang.Object"/>
                       </Table>
                     </Property>
@@ -583,6 +588,16 @@
                           <Renderer/>
                         </Column>
                         <Column maxWidth="-1" minWidth="-1" prefWidth="5" resizable="false">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                           <Title/>
                           <Editor/>
                           <Renderer/>
