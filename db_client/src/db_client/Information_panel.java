@@ -724,7 +724,7 @@ public String dateCreator() {
        // System.out.println("here");
          SimpleDateFormat myFormat=new SimpleDateFormat("yyyy-MM-dd");
         date = (myFormat.format(jdp.getDate()));
-        String isRegularString = (master.isRegular)?"":" AND `Voucher No` NOT REGEXP '[A-Z]0'";
+        String isRegularString = (master.isRegular)?" AND `Voucher No` Regexp '[A-Z]{1}0.*' ":"";
         String querry = "select @a:=@a+1 srno,b.* from closingreport b,(select @a:=0) as a where Date(b.delDate) = '"+date+"' "+isRegularString;
          System.out.println(querry);
         master.addReportWindow("Closing Report",querry,date);

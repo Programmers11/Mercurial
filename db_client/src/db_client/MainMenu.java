@@ -454,9 +454,9 @@ public class MainMenu extends javax.swing.JFrame {
     {
         
         if (addWhereClause) {
-            return isRegular ? "" : "  WHERE " + prefix + "rcptno NOT REGEXP '[A-Z]0'";
+            return isRegular ? "  WHERE " + prefix + "rcptno Regexp '[A-Z]{1}0.*' " : "";
         } else {
-            return isRegular ? "" : "  and " + prefix + "rcptno NOT REGEXP '[A-Z]0'";
+            return isRegular ? "  and " + prefix + "rcptno Regexp '[A-Z]{1}0.*' " : "";
         }
         
     }
