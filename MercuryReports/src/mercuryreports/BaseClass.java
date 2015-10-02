@@ -562,6 +562,11 @@ public class BaseClass extends javax.swing.JFrame {
         isRegular.setForeground(new java.awt.Color(255, 255, 255));
         isRegular.setText("Regular");
         isRegular.setOpaque(false);
+        isRegular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                isRegularActionPerformed(evt);
+            }
+        });
         panelmain.add(isRegular);
         isRegular.setBounds(760, 50, 69, 23);
 
@@ -728,7 +733,7 @@ public class BaseClass extends javax.swing.JFrame {
 
     private void listActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listActionPerformed
        
-        if(selectedReport == SUMMARY)return;
+        if(selectedReport == SUMMARY || selectedReport == ITEMWISE )return;
         serviceQuerySearch(query+" order by "+getColumnName()+" ASC");
              
     }//GEN-LAST:event_listActionPerformed
@@ -748,9 +753,13 @@ public class BaseClass extends javax.swing.JFrame {
     private void checkbox_dnpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkbox_dnpActionPerformed
                 selectedReport = DNP;
     }//GEN-LAST:event_checkbox_dnpActionPerformed
+
+    private void isRegularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_isRegularActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_isRegularActionPerformed
     
     private void serviceQuery(String queryArg)
-    {
+    {System.out.println("query---+ "+queryArg);
         try
         {
             db.openConnection();
@@ -799,7 +808,7 @@ public class BaseClass extends javax.swing.JFrame {
      
     private void serviceQuerySearch(String queryArg)
     {
-        
+        System.out.println("query --> "+queryArg);
         
         try
         {
@@ -952,26 +961,26 @@ public class BaseClass extends javax.swing.JFrame {
 
         switch(selectedReport){
             case ALLBOOKINGS:
-                return "select (@s:=@s+1)as srno,b.* from merreports b,(SELECT @s:= 0) AS s where issuedate >= '"+date1+"' and issuedate <= '"+date2+"'"+getIsRegularString("b.",false);
+                return "select (@s:=@s+1)as srno,b.* from mercreports b,(SELECT @s:= 0) AS s where issuedate >= '"+date1+"' and issuedate <= '"+date2+"'"+getIsRegularString("b.",false);
             case DUEDATE:
-                  return "select (@s:=@s+1)as srno,b.* from merreports b,(SELECT @s:= 0) AS s where status = 'Ready' and deldate >= '"+date1+"' and deldate <= '"+date2+"'"+getIsRegularString("b.",false);
+                  return "select (@s:=@s+1)as srno,b.* from mercreports b,(SELECT @s:= 0) AS s where status = 'Ready' and deldate >= '"+date1+"' and deldate <= '"+date2+"'"+getIsRegularString("b.",false);
            case CLOSINGREPORT:
                   return "select (@s:=@s+1)as srno,b.* from mercreports b,(SELECT @s:= 0) AS s where status = 'Delivered' and deldate >= '"+date1+"' and deldate <= '"+date2+"'"+getIsRegularString("b.",false);
            case UNDELIVERED:
-                  return "select (@s:=@s+1)as srno,b.* from merreports b,(SELECT @s:= 0) AS s where status != 'Delivered' and status != 'Cancelled' and issuedate >= '"+date1+"' and issuedate <= '"+date2+"'"+getIsRegularString("b.",false);
+                  return "select (@s:=@s+1)as srno,b.* from mercreports b,(SELECT @s:= 0) AS s where status != 'Delivered' and status != 'Cancelled' and issuedate >= '"+date1+"' and issuedate <= '"+date2+"'"+getIsRegularString("b.",false);
            case DELIVERED:
-                  return "select (@s:=@s+1)as srno,b.* from merreports b,(SELECT @s:= 0) AS s where status = 'Delivered' and issuedate >= '"+date1+"' and issuedate <= '"+date2+"'"+getIsRegularString("b.",false);
+                  return "select (@s:=@s+1)as srno,b.* from mercreports b,(SELECT @s:= 0) AS s where status = 'Delivered' and issuedate >= '"+date1+"' and issuedate <= '"+date2+"'"+getIsRegularString("b.",false);
           
            case READY:
                   return "select (@s:=@s+1)as srno,b.* from merreports b,(SELECT @s:= 0) AS s where status = 'Ready' and issuedate >= '"+date1+"' and issuedate <= '"+date2+"'"+getIsRegularString("b.",false);
            case DNP:
                   return "select (@s:=@s+1)as srno,b.* from merreports b,(SELECT @s:= 0) AS s where status = 'DNP' and issuedate >= '"+date1+"' and issuedate <= '"+date2+"'"+getIsRegularString("b.",false);
            case CANCELLED:
-                  return "select (@s:=@s+1)as srno,b.* from merreports b,(SELECT @s:= 0) AS s where status = 'Cancelled' and issuedate >= '"+date1+"' and issuedate <= '"+date2+"'"+getIsRegularString("b.",false);
+                  return "select (@s:=@s+1)as srno,b.* from mercreports b,(SELECT @s:= 0) AS s where status = 'Cancelled' and issuedate >= '"+date1+"' and issuedate <= '"+date2+"'"+getIsRegularString("b.",false);
            case DUPLICATES:
                   return "select (@s:=@s+1)as srno,b.* from duplicates b,(SELECT @s:= 0) AS s where issuedate >= '"+date1+"' and issuedate <= '"+date2+"'"+getIsRegularString("b.",false);
            case CUSTOMERWISE:
-                  return "select (@s:=@s+1)as srno,b.* from merreports b,(SELECT @s:= 0) AS s where Phone = '"+customerNumber.getText().trim()+"' and issuedate >= '"+date1+"' and issuedate <= '"+date2+"'"+getIsRegularString("b.",false);
+                  return "select (@s:=@s+1)as srno,b.* from mercreports b,(SELECT @s:= 0) AS s where Phone = '"+customerNumber.getText().trim()+"' and issuedate >= '"+date1+"' and issuedate <= '"+date2+"'"+getIsRegularString("b.",false);
            case ITEMWISE:
                list.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "" }));
                netAmountLabel.setVisible(false);
@@ -980,7 +989,7 @@ public class BaseClass extends javax.swing.JFrame {
                 searcbBar.setVisible(false);
                 jLabel6.setVisible(false);
                 jLabel14.setVisible(false);
-                String regularString = isRegular.isSelected()? "":" and `booking`.`rcptno` not regex '[A-Z]0'";
+                String regularString = isRegular.isSelected()? " and `booking`.`rcptno` Regexp '[A-Z]{1}0.*'":"";
                return "select `cl`.`name` AS `Name`,sum(`info`.`qty`) AS `qty`,sum((`info`.`qty` * `cl`.`countVal`)) "+
 "AS `pc` from (`booking_clothes` `info` join `clothes` `cl`) where ((`info`.`cid` = `cl`.`cid`) "+
 "and `info`.`rcptNo` in (select `booking`.`rcptNo` from `booking` where (`booking`.`issueDate` >= '"+date1+"' and issuedate <= '"+date2+"'"+regularString+"))) group by `info`.`cid`";
@@ -1009,9 +1018,9 @@ public class BaseClass extends javax.swing.JFrame {
     {
         
         if (addWhereClause) {
-            return isRegular.isSelected() ? "" : "  WHERE " + prefix + "`Voucher No` NOT REGEXP '[A-Z]0'";
+            return isRegular.isSelected() ? " WHERE " + prefix + "`Voucher No` Regexp '[A-Z]{1}0.*'" : "";
         } else {
-            return isRegular.isSelected() ? "" : "  and " + prefix + "`Voucher No` NOT REGEXP '[A-Z]0'";
+            return isRegular.isSelected() ? "  and " + prefix + "`Voucher No`Regexp '[A-Z]{1}0.*'" : "";
         }
         
     }
