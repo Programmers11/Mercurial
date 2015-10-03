@@ -943,15 +943,15 @@ public class FrmReceiptPreview extends javax.swing.JFrame {
                 master.requestFocus();
                 this.dispose();
             } else {
-                System.out.println("ok1");
+                //System.out.println("ok1");
                 if (cashMemo) {
-                System.out.println("ok2");
+                //System.out.println("ok2");
                     printRequestCashmemo(2);
-                System.out.println("ok3");
+                //System.out.println("ok3");
                 } else {
-                    System.out.println("ok4");
+                   // System.out.println("ok4");
                     printRequest2(2);
-                System.out.println("ok5");
+                //System.out.println("ok5");
                 }
                 
                 if (!txtStatus.getText().contentEquals("Delivered") && !txtStatus.getText().contentEquals("Cancelled")) {
@@ -962,7 +962,7 @@ public class FrmReceiptPreview extends javax.swing.JFrame {
             }
         } catch (Exception e) 
         {
-            JOptionPane.showMessageDialog(null, "YAR: "+e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error: "+e.getMessage());
         }
     }
 }

@@ -127,7 +127,7 @@ public class BookingType {
             {
                 
                    val%=limit;
-                   
+                   if(!MainMenu.isRegular)val = 10000;
             //       System.out.println(c);
                    if(c=='Z')
                         c='A';

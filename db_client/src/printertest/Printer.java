@@ -407,7 +407,9 @@ public class Printer implements Printable {
 					//
 
 					if (type == 1) {
-
+                                                linespacesmall();
+						printf("STN-0292788-8", "Arial", 8, Font.BOLD, 75);
+						linespacesmall();
 						Rectangle(5, ycord, 200, 220, 10, 5);
 						int charsize = 8, pos1 = 6, pos2 = 7;
 						linespacelarge();
@@ -454,6 +456,9 @@ public class Printer implements Printable {
 						 s*/
 						printEmptyString(5);
 					} else if (cashMemo) {
+                                               linespacesmall();
+						printf("STN-0292788-8", "Arial", 8, Font.BOLD, 75);
+						linespacesmall();
                                             Scanner cin=null;
                                             try {//for cash memo printing
                                                 cin= new Scanner(new File("Company.txt"));
@@ -655,11 +660,16 @@ public class Printer implements Printable {
                 
 		table.add(new myObject("Gross Amount", headings, 60));
 		table.add(new myObject(TableEntryPrinter.TheCalculator(String.format("%.0f", Double.valueOf(GrossAmount)), 120, 172, 9), values, 140));
-		table.add(new myObject("-x", values, 10));
+		
 		if (!Discount.startsWith("0")) {
-			table.add(new myObject(String.format("Discount[%.0f%%]",Double.valueOf(Discount)*100/Double.valueOf(GrossAmount)), headings, 60));
+			table.add(new myObject("-x", values, 10));
+                        table.add(new myObject(String.format("Discount[%.0f%%]",Double.valueOf(Discount)*100/Double.valueOf(GrossAmount)), headings, 60));
 			table.add(new myObject(TableEntryPrinter.TheCalculator("-" + String.format("%.0f", Math.floor(Double.valueOf(Discount))), 120, 172, 9), values, 140));
-		}
+                        table.add(new myObject("-x", values, 10));
+                        double newNetAmount = Double.valueOf(GrossAmount) - Math.floor(Double.valueOf(Discount));
+                        table.add(new myObject("NetAmount", headings, 60));
+			table.add(new myObject(TableEntryPrinter.TheCalculator(String.format("%.0f", newNetAmount), 120, 172, 9), values, 140));
+                }
 		if (hangers > 0) {
 			table.add(new myObject("-x", values, 10));
 			table.add(new myObject("Hangers(" + hangers + "):", headings, 60));
@@ -675,7 +685,7 @@ public class Printer implements Printable {
 
 		Font cashValues = new Font("Verdana", Font.BOLD, 11);
 
-		table.add(new myObject("Net Amount", cashValues, 60));
+		table.add(new myObject("Total Amount", cashValues, 60));
 		table.add(new myObject(TableEntryPrinter.TheCalculator(String.format("%.0f", Total), 120, 172, 11), cashValues, 140));
 		table.add(new myObject("-x", values, 15));
 		table.add(new myObject("", values, -2));
