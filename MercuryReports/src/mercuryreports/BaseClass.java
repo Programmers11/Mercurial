@@ -29,8 +29,6 @@ public class BaseClass extends javax.swing.JFrame {
         bg.add(checkbox_customerwise);
         bg.add(checkbox_itemwise);
         bg.add(checkbox_summary);
-        bg.add(checkbox_dnp);
-        bg.add(checkbox_bookings);
     }
 
     @SuppressWarnings("unchecked")
@@ -60,7 +58,7 @@ public class BaseClass extends javax.swing.JFrame {
         checkbox_summary = new javax.swing.JCheckBox();
         buttonprintreport = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
-        grossAmountLabel = new javax.swing.JLabel();
+        netAmountLabel = new javax.swing.JLabel();
         Total = new javax.swing.JLabel();
         panelreport = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -86,12 +84,6 @@ public class BaseClass extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         checkbox_dnp = new javax.swing.JCheckBox();
         isRegular = new javax.swing.JCheckBox();
-        GSTLabel = new javax.swing.JLabel();
-        gstTotal = new javax.swing.JLabel();
-        netAmountLabel2 = new javax.swing.JLabel();
-        grossAmountTotal = new javax.swing.JLabel();
-        bookingRpLabel = new javax.swing.JLabel();
-        checkbox_bookings = new javax.swing.JCheckBox();
         Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -111,7 +103,7 @@ public class BaseClass extends javax.swing.JFrame {
         jLabel1.setMinimumSize(new java.awt.Dimension(150, 45));
         jLabel1.setPreferredSize(new java.awt.Dimension(150, 45));
         panelmain.add(jLabel1);
-        jLabel1.setBounds(10, 140, 160, 45);
+        jLabel1.setBounds(20, 140, 160, 45);
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -120,7 +112,7 @@ public class BaseClass extends javax.swing.JFrame {
         jLabel2.setMinimumSize(new java.awt.Dimension(150, 45));
         jLabel2.setPreferredSize(new java.awt.Dimension(150, 45));
         panelmain.add(jLabel2);
-        jLabel2.setBounds(10, 380, 150, 45);
+        jLabel2.setBounds(20, 380, 150, 45);
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -129,7 +121,7 @@ public class BaseClass extends javax.swing.JFrame {
         jLabel3.setMinimumSize(new java.awt.Dimension(150, 45));
         jLabel3.setPreferredSize(new java.awt.Dimension(150, 45));
         panelmain.add(jLabel3);
-        jLabel3.setBounds(10, 450, 150, 45);
+        jLabel3.setBounds(20, 450, 150, 45);
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -138,7 +130,7 @@ public class BaseClass extends javax.swing.JFrame {
         jLabel4.setMinimumSize(new java.awt.Dimension(150, 45));
         jLabel4.setPreferredSize(new java.awt.Dimension(150, 45));
         panelmain.add(jLabel4);
-        jLabel4.setBounds(10, 190, 140, 20);
+        jLabel4.setBounds(20, 190, 140, 20);
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -147,7 +139,7 @@ public class BaseClass extends javax.swing.JFrame {
         jLabel5.setMinimumSize(new java.awt.Dimension(150, 45));
         jLabel5.setPreferredSize(new java.awt.Dimension(150, 45));
         panelmain.add(jLabel5);
-        jLabel5.setBounds(10, 260, 150, 40);
+        jLabel5.setBounds(20, 260, 150, 40);
 
         closingReport.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         closingReport.setForeground(new java.awt.Color(255, 255, 255));
@@ -156,7 +148,7 @@ public class BaseClass extends javax.swing.JFrame {
         closingReport.setMinimumSize(new java.awt.Dimension(150, 45));
         closingReport.setPreferredSize(new java.awt.Dimension(150, 45));
         panelmain.add(closingReport);
-        closingReport.setBounds(10, 220, 150, 45);
+        closingReport.setBounds(20, 220, 150, 45);
 
         jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -165,7 +157,7 @@ public class BaseClass extends javax.swing.JFrame {
         jLabel7.setMinimumSize(new java.awt.Dimension(150, 45));
         jLabel7.setPreferredSize(new java.awt.Dimension(150, 45));
         panelmain.add(jLabel7);
-        jLabel7.setBounds(10, 340, 150, 45);
+        jLabel7.setBounds(20, 340, 150, 45);
 
         jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -174,7 +166,7 @@ public class BaseClass extends javax.swing.JFrame {
         jLabel8.setMinimumSize(new java.awt.Dimension(150, 45));
         jLabel8.setPreferredSize(new java.awt.Dimension(150, 45));
         panelmain.add(jLabel8);
-        jLabel8.setBounds(10, 300, 150, 40);
+        jLabel8.setBounds(20, 300, 150, 40);
 
         jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
@@ -183,7 +175,7 @@ public class BaseClass extends javax.swing.JFrame {
         jLabel9.setMinimumSize(new java.awt.Dimension(150, 45));
         jLabel9.setPreferredSize(new java.awt.Dimension(150, 45));
         panelmain.add(jLabel9);
-        jLabel9.setBounds(10, 540, 150, 45);
+        jLabel9.setBounds(20, 540, 150, 45);
 
         checkbox_allbookings.setOpaque(false);
         checkbox_allbookings.addActionListener(new java.awt.event.ActionListener() {
@@ -192,7 +184,7 @@ public class BaseClass extends javax.swing.JFrame {
             }
         });
         panelmain.add(checkbox_allbookings);
-        checkbox_allbookings.setBounds(160, 150, 21, 21);
+        checkbox_allbookings.setBounds(190, 150, 21, 21);
 
         checkbox_duedate.setOpaque(false);
         checkbox_duedate.addActionListener(new java.awt.event.ActionListener() {
@@ -201,7 +193,7 @@ public class BaseClass extends javax.swing.JFrame {
             }
         });
         panelmain.add(checkbox_duedate);
-        checkbox_duedate.setBounds(160, 190, 21, 21);
+        checkbox_duedate.setBounds(190, 190, 21, 21);
 
         checkbox_issuedate.setOpaque(false);
         checkbox_issuedate.addActionListener(new java.awt.event.ActionListener() {
@@ -210,7 +202,7 @@ public class BaseClass extends javax.swing.JFrame {
             }
         });
         panelmain.add(checkbox_issuedate);
-        checkbox_issuedate.setBounds(160, 230, 21, 21);
+        checkbox_issuedate.setBounds(190, 230, 21, 21);
 
         checkbox_undelivered.setOpaque(false);
         checkbox_undelivered.addActionListener(new java.awt.event.ActionListener() {
@@ -219,7 +211,7 @@ public class BaseClass extends javax.swing.JFrame {
             }
         });
         panelmain.add(checkbox_undelivered);
-        checkbox_undelivered.setBounds(160, 270, 21, 21);
+        checkbox_undelivered.setBounds(190, 270, 21, 21);
 
         checkbox_delivered.setOpaque(false);
         checkbox_delivered.addActionListener(new java.awt.event.ActionListener() {
@@ -228,7 +220,7 @@ public class BaseClass extends javax.swing.JFrame {
             }
         });
         panelmain.add(checkbox_delivered);
-        checkbox_delivered.setBounds(160, 310, 21, 21);
+        checkbox_delivered.setBounds(190, 310, 21, 21);
 
         checkbox_ready.setOpaque(false);
         checkbox_ready.addActionListener(new java.awt.event.ActionListener() {
@@ -237,7 +229,7 @@ public class BaseClass extends javax.swing.JFrame {
             }
         });
         panelmain.add(checkbox_ready);
-        checkbox_ready.setBounds(160, 350, 21, 21);
+        checkbox_ready.setBounds(190, 350, 21, 21);
 
         checkbox_cancelled.setOpaque(false);
         checkbox_cancelled.addActionListener(new java.awt.event.ActionListener() {
@@ -246,7 +238,7 @@ public class BaseClass extends javax.swing.JFrame {
             }
         });
         panelmain.add(checkbox_cancelled);
-        checkbox_cancelled.setBounds(160, 390, 21, 21);
+        checkbox_cancelled.setBounds(190, 390, 21, 21);
 
         checkbox_duplicates.setOpaque(false);
         checkbox_duplicates.addActionListener(new java.awt.event.ActionListener() {
@@ -255,7 +247,7 @@ public class BaseClass extends javax.swing.JFrame {
             }
         });
         panelmain.add(checkbox_duplicates);
-        checkbox_duplicates.setBounds(160, 460, 21, 21);
+        checkbox_duplicates.setBounds(190, 460, 21, 21);
 
         checkbox_customerwise.setOpaque(false);
         checkbox_customerwise.addActionListener(new java.awt.event.ActionListener() {
@@ -264,7 +256,7 @@ public class BaseClass extends javax.swing.JFrame {
             }
         });
         panelmain.add(checkbox_customerwise);
-        checkbox_customerwise.setBounds(160, 510, 21, 21);
+        checkbox_customerwise.setBounds(190, 510, 21, 21);
 
         checkbox_summary.setOpaque(false);
         checkbox_summary.addActionListener(new java.awt.event.ActionListener() {
@@ -273,7 +265,7 @@ public class BaseClass extends javax.swing.JFrame {
             }
         });
         panelmain.add(checkbox_summary);
-        checkbox_summary.setBounds(160, 590, 21, 21);
+        checkbox_summary.setBounds(190, 590, 21, 21);
 
         buttonprintreport.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
         buttonprintreport.setText("View Report");
@@ -293,18 +285,18 @@ public class BaseClass extends javax.swing.JFrame {
         jLabel16.setMinimumSize(new java.awt.Dimension(150, 45));
         jLabel16.setPreferredSize(new java.awt.Dimension(150, 45));
         panelmain.add(jLabel16);
-        jLabel16.setBounds(10, 580, 150, 45);
+        jLabel16.setBounds(20, 580, 150, 45);
 
-        grossAmountLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        grossAmountLabel.setForeground(new java.awt.Color(255, 255, 255));
-        grossAmountLabel.setText("Gross Amount:");
-        panelmain.add(grossAmountLabel);
-        grossAmountLabel.setBounds(220, 670, 120, 19);
+        netAmountLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        netAmountLabel.setForeground(new java.awt.Color(255, 255, 255));
+        netAmountLabel.setText("Total NetAmount:");
+        panelmain.add(netAmountLabel);
+        netAmountLabel.setBounds(610, 670, 120, 19);
 
         Total.setForeground(new java.awt.Color(255, 255, 255));
         Total.setText("0.00");
         panelmain.add(Total);
-        Total.setBounds(790, 670, 90, 23);
+        Total.setBounds(740, 670, 120, 23);
 
         panelreport.setMaximumSize(new java.awt.Dimension(780, 510));
 
@@ -373,7 +365,9 @@ public class BaseClass extends javax.swing.JFrame {
         panelreport.setLayout(panelreportLayout);
         panelreportLayout.setHorizontalGroup(
             panelreportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 810, Short.MAX_VALUE)
+            .addGroup(panelreportLayout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 795, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         panelreportLayout.setVerticalGroup(
             panelreportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -381,7 +375,7 @@ public class BaseClass extends javax.swing.JFrame {
         );
 
         panelmain.add(panelreport);
-        panelreport.setBounds(200, 140, 810, 510);
+        panelreport.setBounds(220, 140, 780, 510);
 
         toDate.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Date", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
         toDate.setOpaque(false);
@@ -391,7 +385,7 @@ public class BaseClass extends javax.swing.JFrame {
             }
         });
         panelmain.add(toDate);
-        toDate.setBounds(540, 50, 48, 20);
+        toDate.setBounds(560, 50, 48, 20);
 
         toMonth.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Month", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" }));
         toMonth.setOpaque(false);
@@ -401,7 +395,7 @@ public class BaseClass extends javax.swing.JFrame {
             }
         });
         panelmain.add(toMonth);
-        toMonth.setBounds(590, 50, 77, 20);
+        toMonth.setBounds(610, 50, 77, 20);
 
         toYear.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         toYear.setText("2014");
@@ -416,7 +410,7 @@ public class BaseClass extends javax.swing.JFrame {
             }
         });
         panelmain.add(toYear);
-        toYear.setBounds(670, 50, 50, 20);
+        toYear.setBounds(690, 50, 50, 20);
 
         fromYear.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         fromYear.setText("2014");
@@ -426,7 +420,7 @@ public class BaseClass extends javax.swing.JFrame {
             }
         });
         panelmain.add(fromYear);
-        fromYear.setBounds(390, 50, 50, 20);
+        fromYear.setBounds(410, 50, 50, 20);
 
         fromMonth.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Month", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" }));
         fromMonth.setOpaque(false);
@@ -436,7 +430,7 @@ public class BaseClass extends javax.swing.JFrame {
             }
         });
         panelmain.add(fromMonth);
-        fromMonth.setBounds(310, 50, 77, 20);
+        fromMonth.setBounds(330, 50, 77, 20);
 
         fromDate.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Date", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
         fromDate.setOpaque(false);
@@ -446,19 +440,19 @@ public class BaseClass extends javax.swing.JFrame {
             }
         });
         panelmain.add(fromDate);
-        fromDate.setBounds(260, 50, 48, 20);
+        fromDate.setBounds(280, 50, 48, 20);
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("To");
         panelmain.add(jLabel10);
-        jLabel10.setBounds(490, 40, 40, 30);
+        jLabel10.setBounds(510, 40, 40, 30);
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("From");
         panelmain.add(jLabel11);
-        jLabel11.setBounds(200, 30, 46, 40);
+        jLabel11.setBounds(220, 30, 46, 40);
 
         clearChoices.setText("Clear Choices");
         clearChoices.setOpaque(false);
@@ -468,7 +462,7 @@ public class BaseClass extends javax.swing.JFrame {
             }
         });
         panelmain.add(clearChoices);
-        clearChoices.setBounds(80, 650, 100, 23);
+        clearChoices.setBounds(110, 630, 100, 23);
 
         printReport.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         printReport.setText("Print Report");
@@ -493,25 +487,25 @@ public class BaseClass extends javax.swing.JFrame {
             }
         });
         panelmain.add(list);
-        list.setBounds(260, 80, 120, 20);
+        list.setBounds(280, 80, 120, 20);
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("From");
         panelmain.add(jLabel13);
-        jLabel13.setBounds(200, 30, 46, 40);
+        jLabel13.setBounds(220, 30, 46, 40);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Option");
         panelmain.add(jLabel6);
-        jLabel6.setBounds(200, 70, 90, 40);
+        jLabel6.setBounds(220, 70, 90, 40);
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("Search");
         panelmain.add(jLabel14);
-        jLabel14.setBounds(200, 110, 80, 20);
+        jLabel14.setBounds(220, 110, 80, 20);
 
         searcbBar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -522,11 +516,11 @@ public class BaseClass extends javax.swing.JFrame {
             }
         });
         panelmain.add(searcbBar);
-        searcbBar.setBounds(260, 110, 490, 20);
+        searcbBar.setBounds(280, 110, 490, 20);
 
         customerNumber.setText("Enter Customer Phone #");
         panelmain.add(customerNumber);
-        customerNumber.setBounds(10, 690, 170, 20);
+        customerNumber.setBounds(10, 670, 200, 20);
 
         checkbox_itemwise.setOpaque(false);
         checkbox_itemwise.addActionListener(new java.awt.event.ActionListener() {
@@ -535,7 +529,7 @@ public class BaseClass extends javax.swing.JFrame {
             }
         });
         panelmain.add(checkbox_itemwise);
-        checkbox_itemwise.setBounds(160, 550, 21, 21);
+        checkbox_itemwise.setBounds(190, 550, 21, 21);
 
         jLabel15.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
@@ -544,7 +538,7 @@ public class BaseClass extends javax.swing.JFrame {
         jLabel15.setMinimumSize(new java.awt.Dimension(150, 45));
         jLabel15.setPreferredSize(new java.awt.Dimension(150, 45));
         panelmain.add(jLabel15);
-        jLabel15.setBounds(10, 490, 150, 60);
+        jLabel15.setBounds(20, 490, 150, 60);
 
         jLabel17.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
@@ -553,7 +547,7 @@ public class BaseClass extends javax.swing.JFrame {
         jLabel17.setMinimumSize(new java.awt.Dimension(150, 45));
         jLabel17.setPreferredSize(new java.awt.Dimension(150, 45));
         panelmain.add(jLabel17);
-        jLabel17.setBounds(10, 410, 150, 45);
+        jLabel17.setBounds(20, 410, 150, 45);
 
         checkbox_dnp.setOpaque(false);
         checkbox_dnp.addActionListener(new java.awt.event.ActionListener() {
@@ -562,7 +556,7 @@ public class BaseClass extends javax.swing.JFrame {
             }
         });
         panelmain.add(checkbox_dnp);
-        checkbox_dnp.setBounds(160, 420, 21, 21);
+        checkbox_dnp.setBounds(190, 420, 21, 21);
 
         isRegular.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         isRegular.setForeground(new java.awt.Color(255, 255, 255));
@@ -574,47 +568,7 @@ public class BaseClass extends javax.swing.JFrame {
             }
         });
         panelmain.add(isRegular);
-        isRegular.setBounds(740, 50, 69, 23);
-
-        GSTLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        GSTLabel.setForeground(new java.awt.Color(255, 255, 255));
-        GSTLabel.setText("GST");
-        panelmain.add(GSTLabel);
-        GSTLabel.setBounds(450, 670, 120, 19);
-
-        gstTotal.setForeground(new java.awt.Color(255, 255, 255));
-        gstTotal.setText("0.00");
-        panelmain.add(gstTotal);
-        gstTotal.setBounds(580, 670, 80, 23);
-
-        netAmountLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        netAmountLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        netAmountLabel2.setText("Total NetAmount:");
-        panelmain.add(netAmountLabel2);
-        netAmountLabel2.setBounds(660, 670, 120, 19);
-
-        grossAmountTotal.setForeground(new java.awt.Color(255, 255, 255));
-        grossAmountTotal.setText("0.00");
-        panelmain.add(grossAmountTotal);
-        grossAmountTotal.setBounds(350, 670, 100, 23);
-
-        bookingRpLabel.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        bookingRpLabel.setForeground(new java.awt.Color(255, 255, 255));
-        bookingRpLabel.setText("Booking Report");
-        bookingRpLabel.setMaximumSize(new java.awt.Dimension(150, 45));
-        bookingRpLabel.setMinimumSize(new java.awt.Dimension(150, 45));
-        bookingRpLabel.setPreferredSize(new java.awt.Dimension(150, 45));
-        panelmain.add(bookingRpLabel);
-        bookingRpLabel.setBounds(10, 610, 150, 45);
-
-        checkbox_bookings.setOpaque(false);
-        checkbox_bookings.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkbox_bookingsActionPerformed(evt);
-            }
-        });
-        panelmain.add(checkbox_bookings);
-        checkbox_bookings.setBounds(160, 620, 21, 21);
+        isRegular.setBounds(760, 50, 69, 23);
 
         Background.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Background.setForeground(new java.awt.Color(255, 255, 255));
@@ -721,13 +675,8 @@ public class BaseClass extends javax.swing.JFrame {
     }//GEN-LAST:event_toYearFocusLost
 
     private void printReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printReportActionPerformed
-        
-        if (depth==0)
-        {
-            javax.swing.JOptionPane.showMessageDialog(null, "", "", javax.swing.JOptionPane.ERROR_MESSAGE);
-        return;
-        }
-        Object header[] = new Object[]{getReportName(),getReportDuration(),dateCreator(),GROSSAmount,GSTAmount,finalAmount};
+       
+        Object header[] = new Object[]{getReportName(),getReportDuration(),dateCreator(),finalAmount};
         
         if (selectedReport == SUMMARY)
             {GenericReporter obj = new GenericReporter(true,header,data);}
@@ -808,22 +757,14 @@ public class BaseClass extends javax.swing.JFrame {
     private void isRegularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_isRegularActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_isRegularActionPerformed
-
-    private void checkbox_bookingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkbox_bookingsActionPerformed
-        selectedReport = BOOKINGREPORT;
-    }//GEN-LAST:event_checkbox_bookingsActionPerformed
     
     private void serviceQuery(String queryArg)
-    {
-        //System.out.println("query---+ "+queryArg);
+    {System.out.println("query---+ "+queryArg);
         try
         {
             db.openConnection();
             rs=db.read(queryArg);
-            double netTotal =0;
-            double gst = 0;
-            double grossTotal = 0;
-            
+            double tt =0;
             queryWidth=rs.getMetaData().getColumnCount();
             depth=setDataSize(rs);
             
@@ -847,24 +788,13 @@ public class BaseClass extends javax.swing.JFrame {
                     data[i][j-1]=rs.getString(j);
                     
                 }
-                 netTotal = netTotal + Double.parseDouble(data[i][queryWidth-1].toString());
-                 gst = gst + Double.parseDouble(data[i][queryWidth-2].toString());
+                 tt = tt + Double.parseDouble(data[i][queryWidth-1].toString());
+               
             }
-             Total.setText(String.format("%.0f",netTotal));
+             Total.setText(String.format("%.0f",tt));
              finalAmount = Total.getText();
-             if(!(selectedReport == SUMMARY || selectedReport == ITEMWISE)){
-             gstTotal.setText(String.format("%.0f",gst));
-             GSTAmount = gstTotal.getText();
-             grossTotal =(netTotal-gst);
-             grossAmountTotal.setText(String.format("%.0f",grossTotal));
-             GROSSAmount = grossAmountTotal.getText();
-             }
-             else{
-             gstTotal.setVisible(false);grossAmountTotal.setVisible(false);
-             grossAmountLabel.setVisible(false);GSTLabel.setVisible(false);
-             }
-             myTableModel tb=new myTableModel(data,heading);
-             displayTable.setModel(tb);
+            myTableModel tb=new myTableModel(data,heading);
+            displayTable.setModel(tb);
             
             db.closeConnection();
         }
@@ -878,16 +808,13 @@ public class BaseClass extends javax.swing.JFrame {
      
     private void serviceQuerySearch(String queryArg)
     {
-       // System.out.println("query --> "+queryArg);
+        System.out.println("query --> "+queryArg);
         
         try
         {
             db.openConnection();
             rs=db.read(queryArg);
-            double netTotal =0;
-            double gst = 0;
-            double grossTotal = 0;
-            
+            double tt =0;
             queryWidth=rs.getMetaData().getColumnCount();
             depth=setDataSize(rs);
             
@@ -902,26 +829,12 @@ public class BaseClass extends javax.swing.JFrame {
                     data[i][j-1]=rs.getString(j);
                     
                 }
-                netTotal = netTotal + Double.parseDouble(data[i][queryWidth-1].toString());
-                gst = gst + Double.parseDouble(data[i][queryWidth-2].toString());
+                 tt = tt + Double.parseDouble(data[i][queryWidth-1].toString());
                
             }
-             Total.setText(String.format("%.0f",netTotal));
-             finalAmount = Total.getText();
-            if(!(selectedReport == SUMMARY || selectedReport == ITEMWISE)){
-             gstTotal.setText(String.format("%.0f",gst));
-             GSTAmount = gstTotal.getText();
-             grossTotal =(netTotal-gst);
-             grossAmountTotal.setText(String.format("%.0f",grossTotal));
-             GROSSAmount = grossAmountTotal.getText();
-             }
-             else{
-             gstTotal.setVisible(false);grossAmountTotal.setVisible(false);
-             grossAmountLabel.setVisible(false);GSTLabel.setVisible(false);
-             }
-             
-              myTableModel tb=new myTableModel(data,heading);
-             displayTable.setModel(tb);
+            Total.setText(String.format("%.0f",tt));
+            myTableModel tb=new myTableModel(data,heading);
+            displayTable.setModel(tb);
             //calculateTotals();
            db.closeConnection();
         }
@@ -951,13 +864,10 @@ public class BaseClass extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Background;
-    private javax.swing.JLabel GSTLabel;
     private javax.swing.JLabel Total;
     private javax.swing.ButtonGroup bg;
-    private javax.swing.JLabel bookingRpLabel;
     private javax.swing.JButton buttonprintreport;
     private javax.swing.JCheckBox checkbox_allbookings;
-    private javax.swing.JCheckBox checkbox_bookings;
     private javax.swing.JCheckBox checkbox_cancelled;
     private javax.swing.JCheckBox checkbox_customerwise;
     private javax.swing.JCheckBox checkbox_delivered;
@@ -976,9 +886,6 @@ public class BaseClass extends javax.swing.JFrame {
     private javax.swing.JComboBox fromDate;
     private javax.swing.JComboBox fromMonth;
     private javax.swing.JTextField fromYear;
-    private javax.swing.JLabel grossAmountLabel;
-    private javax.swing.JLabel grossAmountTotal;
-    private javax.swing.JLabel gstTotal;
     private javax.swing.JCheckBox isRegular;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -998,7 +905,7 @@ public class BaseClass extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox list;
-    private javax.swing.JLabel netAmountLabel2;
+    private javax.swing.JLabel netAmountLabel;
     private javax.swing.JPanel panelmain;
     private javax.swing.JPanel panelreport;
     private javax.swing.JButton printReport;
@@ -1032,14 +939,9 @@ public class BaseClass extends javax.swing.JFrame {
     final byte ITEMWISE = 9;
     final byte SUMMARY = 10;
     final byte DNP=11;
-    final byte BOOKINGREPORT=12;
-    
-    
     final boolean itemwiseReport = true;
     String CustomerWiseVariable = "";
     String finalAmount = "0";
-    String GSTAmount = "0";
-    String GROSSAmount = "0";
     String date1 =   "";
     String date2 =   "";
 
@@ -1048,7 +950,7 @@ public class BaseClass extends javax.swing.JFrame {
     //</editor-fold>
 
     private String getSelectedQuery(String date1,String date2) {
-        grossAmountLabel.setVisible(true);
+        netAmountLabel.setVisible(true);
         Total.setVisible(true);
         list.setVisible(true);
         searcbBar.setVisible(true);
@@ -1070,9 +972,9 @@ public class BaseClass extends javax.swing.JFrame {
                   return "select (@s:=@s+1)as srno,b.* from mercreports b,(SELECT @s:= 0) AS s where status = 'Delivered' and issuedate >= '"+date1+"' and issuedate <= '"+date2+"'"+getIsRegularString("b.",false);
           
            case READY:
-                  return "select (@s:=@s+1)as srno,b.* from mercreports b,(SELECT @s:= 0) AS s where status = 'Ready' and issuedate >= '"+date1+"' and issuedate <= '"+date2+"'"+getIsRegularString("b.",false);
+                  return "select (@s:=@s+1)as srno,b.* from merreports b,(SELECT @s:= 0) AS s where status = 'Ready' and issuedate >= '"+date1+"' and issuedate <= '"+date2+"'"+getIsRegularString("b.",false);
            case DNP:
-                  return "select (@s:=@s+1)as srno,b.* from mercreports b,(SELECT @s:= 0) AS s where status = 'DNP' and issuedate >= '"+date1+"' and issuedate <= '"+date2+"'"+getIsRegularString("b.",false);
+                  return "select (@s:=@s+1)as srno,b.* from merreports b,(SELECT @s:= 0) AS s where status = 'DNP' and issuedate >= '"+date1+"' and issuedate <= '"+date2+"'"+getIsRegularString("b.",false);
            case CANCELLED:
                   return "select (@s:=@s+1)as srno,b.* from mercreports b,(SELECT @s:= 0) AS s where status = 'Cancelled' and issuedate >= '"+date1+"' and issuedate <= '"+date2+"'"+getIsRegularString("b.",false);
            case DUPLICATES:
@@ -1081,7 +983,7 @@ public class BaseClass extends javax.swing.JFrame {
                   return "select (@s:=@s+1)as srno,b.* from mercreports b,(SELECT @s:= 0) AS s where Phone = '"+customerNumber.getText().trim()+"' and issuedate >= '"+date1+"' and issuedate <= '"+date2+"'"+getIsRegularString("b.",false);
            case ITEMWISE:
                list.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "" }));
-               grossAmountLabel.setVisible(false);
+               netAmountLabel.setVisible(false);
                Total.setVisible(false);
                list.setVisible(false);
                 searcbBar.setVisible(false);
@@ -1100,9 +1002,7 @@ public class BaseClass extends javax.swing.JFrame {
                 jLabel14.setVisible(false);
                 String viewName = isRegular.isSelected()? "`closing_summary`":"`regular_summary`";
                return "SELECT * FROM "+viewName+" where `Date` >= '"+date1+"' and `Date` <= '"+date2+"' ";
-            case BOOKINGREPORT:
-                  return "select (@s:=@s+1)as srno,b.* from mercreports b,(SELECT @s:= 0) AS s where  issuedate >= '"+date1+"' and issuedate <= '"+date2+"'"+getIsRegularString("b.",false);
-            
+               
            default:
                 return " ";
        }
@@ -1146,11 +1046,7 @@ public class BaseClass extends javax.swing.JFrame {
            case SUMMARY:
                return "Closing Summary";
            case ITEMWISE:
-               return "Item Wise";  
-           case DNP:
-               return "DNP";
-           case BOOKINGREPORT:
-               return "Bookings"; 
+               return "Item Wise";               
            default:
                 return " ";
        }

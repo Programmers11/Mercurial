@@ -156,25 +156,12 @@ private void printAllBookings(){
         
         row+=2; column=9;
         
-        workEnvironment = new Label(column,row,"Gross Amount : Rs."+arr[3],cal_13_nb_r);
+        workEnvironment = new Label(column,row,"Total Amount : Rs."+arr[3],cal_13_nb_r);
         printSheet1.addCell(workEnvironment);
         row++;
-        workEnvironment = new Label(column,row,"Gross Amount in words: Rs."+toWord(Integer.parseInt(arr[3].toString())),cal_13_nb_r);
+        workEnvironment = new Label(column,row,"Total Amount in words: Rs."+toWord(Integer.parseInt(arr[3].toString())),cal_13_nb_r);
         printSheet1.addCell(workEnvironment);
         
-        row+=1; 
-        workEnvironment = new Label(column,row,"GST Amount : Rs."+arr[4],cal_13_nb_r);
-        printSheet1.addCell(workEnvironment);
-        row++;
-        workEnvironment = new Label(column,row,"GST Amount in words: Rs."+toWord(Integer.parseInt(arr[4].toString())),cal_13_nb_r);
-        printSheet1.addCell(workEnvironment);
-        
-        row+=2; 
-        workEnvironment = new Label(column,row,"Total Amount : Rs."+arr[5],cal_13_nb_r);
-        printSheet1.addCell(workEnvironment);
-        row++;
-        workEnvironment = new Label(column,row,"Total Amount in words: Rs."+toWord(Integer.parseInt(arr[5].toString())),cal_13_nb_r);
-        printSheet1.addCell(workEnvironment);
         
 //</editor-fold> 
         

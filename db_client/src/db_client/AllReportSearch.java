@@ -133,6 +133,7 @@ public class AllReportSearch extends javax.swing.JPanel {
         {
            
            System.out.println("Error SERVICE QUERY, ALL REPORT SEARCH: "+ e.getMessage());
+           e.printStackTrace();
         }
         
         calculateTotals();
