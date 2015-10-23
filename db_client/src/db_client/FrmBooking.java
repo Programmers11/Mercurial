@@ -1810,12 +1810,20 @@ public final class FrmBooking extends javax.swing.JPanel {
         
         summary[0]=txtTotal.getText();
         if(ModeType.hasDiscount(mode)==true)
+        {
             summary[1]=txtDiscount.getText();
+            System.out.println(mode +" has discount");
+        }
         else
+        {
             summary[1]="0";
+            System.out.println(mode +" has no discount");
+        }
         
         summary[2]=lblNetTotal.getText();
+        
         summary[3]=txtHanger.getText();
+        System.out.println(summary[3].toString()+" HAAAAAANGER");
         summary[4]=lblGST.getText();
 
         
@@ -2826,17 +2834,22 @@ if ((evt.getX() > 3 && evt.getX() < 22) && (evt.getY() > 5 && evt.getY() < 24)) 
         
         double discount= Double.parseDouble(txtDiscount.getText()) / 100.0;
         
-        int tax= (int)(Math.round(grossTotal* (MainMenu.GST / 100.0)));
-        int netTax= tax -(int)(Math.round(tax* discount*isDiscountable));
+        
+        //int tax= (int)(Math.round(grossTotal* ( MainMenu.GST / 100.0)));
+        //int netTax= tax -(int)(Math.round(tax* discount*isDiscountable));
         
         
         netTotal= (int) Math.round(grossTotal - (grossTotal*discount*isDiscountable));
         
         netTotal= netTotal - (Integer.parseInt(txtHanger.getText())*2);
         
+        
+        int non_taxable_amount = (int) Math.round(netTotal / ( 1 + (MainMenu.GST/100.0 )));
+        int taxable_amount = netTotal - non_taxable_amount;
+        
         txtTotal.setText(String.valueOf(grossTotal));
-        lblNetTotal.setText(String.valueOf(netTotal+netTax));
-        lblGST.setText(String.valueOf(netTax));
+        lblNetTotal.setText(String.valueOf(netTotal));
+        lblGST.setText(String.valueOf(taxable_amount));
         
     }
     
