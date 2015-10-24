@@ -676,10 +676,13 @@ public class Printer implements Printable {
 			table.add(new myObject(TableEntryPrinter.TheCalculator("-" + String.valueOf((hangers * 2)), 123, 172, 9), values, 140));
 
 		}
+              //
+                /* GST  removed from receipts 24 OCT-13
                 table.add(new myObject("-x", values, 10)); 
                 table.add(new myObject("GST["+db_client.MainMenu.GST+"%]", headings, 60));
 		table.add(new myObject(TableEntryPrinter.TheCalculator(TaxAmount, 120, 172, 9), values, 140));
-		table.add(new myObject("", values, 6));
+		//*/                
+                table.add(new myObject("", values, 6));
 		//  table.add(new myObject("",values,3));
 		table.add(new myObject("-x", values, 20));
 
