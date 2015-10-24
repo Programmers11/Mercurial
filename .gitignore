@@ -1,3 +1,7 @@
 /db_client/dist/
 
 *.class
+
+/db_client/build/classes/db_client/
+
+*.class
