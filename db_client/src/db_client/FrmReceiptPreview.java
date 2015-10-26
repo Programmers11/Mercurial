@@ -192,7 +192,7 @@ public class FrmReceiptPreview extends javax.swing.JFrame {
         hangers.setText(summary[3].toString());
         gst.setText(summary[4].toString());
      
-        //if(txtMode.getText().contentEquals("Press")) txtDiscount.setText("0");
+        if(!ModeType.hasDiscount(txtMode.getText())) txtDiscount.setText("0");
         if(!txtStatus.getText().contentEquals("Delivered") && !txtStatus.getText().contentEquals("Cancelled") )cmdEdit.setVisible(false);
      }
 
