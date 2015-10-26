@@ -77,7 +77,8 @@ public final class FrmBooking extends javax.swing.JPanel {
     public FrmBooking(MainMenu p,String Uname) {
         initComponents();
         parent=p;
-        
+        jLabelGST.setVisible(false);
+        lblGST.setVisible(false);
         
         this.setPreferredSize(new Dimension(1024, 550) );
         assignButtonGroups();
@@ -294,7 +295,6 @@ public final class FrmBooking extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         lblUser = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
         txtDiscount = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -346,7 +346,7 @@ public final class FrmBooking extends javax.swing.JPanel {
         cmdKamizDc = new javax.swing.JToggleButton();
         cmdShalwarSuiteDc = new javax.swing.JToggleButton();
         cmdShirtDc = new javax.swing.JToggleButton();
-        jLabel14 = new javax.swing.JLabel();
+        jLabelGST = new javax.swing.JLabel();
         lblGST = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -612,7 +612,7 @@ public final class FrmBooking extends javax.swing.JPanel {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Net Total:");
         mainPanel.add(jLabel6);
-        jLabel6.setBounds(820, 480, 80, 20);
+        jLabel6.setBounds(820, 450, 80, 20);
 
         cmdPrint.setText("Print");
         cmdPrint.setOpaque(false);
@@ -877,12 +877,6 @@ public final class FrmBooking extends javax.swing.JPanel {
         mainPanel.add(lblUser);
         lblUser.setBounds(620, 90, 130, 20);
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("RS");
-        mainPanel.add(jLabel7);
-        jLabel7.setBounds(980, 420, 20, 20);
-
         txtDiscount.setText("0");
         txtDiscount.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         txtDiscount.addActionListener(new java.awt.event.ActionListener() {
@@ -901,13 +895,13 @@ public final class FrmBooking extends javax.swing.JPanel {
             }
         });
         mainPanel.add(txtDiscount);
-        txtDiscount.setBounds(890, 450, 80, 20);
+        txtDiscount.setBounds(890, 420, 80, 20);
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Discount:");
         mainPanel.add(jLabel8);
-        jLabel8.setBounds(820, 450, 60, 20);
+        jLabel8.setBounds(820, 420, 60, 20);
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
@@ -1231,13 +1225,13 @@ public final class FrmBooking extends javax.swing.JPanel {
             }
         });
         mainPanel.add(lblNetTotal);
-        lblNetTotal.setBounds(890, 480, 80, 20);
+        lblNetTotal.setBounds(890, 450, 80, 20);
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("RS");
         mainPanel.add(jLabel11);
-        jLabel11.setBounds(980, 480, 20, 20);
+        jLabel11.setBounds(980, 450, 20, 20);
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
@@ -1475,23 +1469,23 @@ public final class FrmBooking extends javax.swing.JPanel {
         mainPanel.add(cmdShirtDc);
         cmdShirtDc.setBounds(400, 200, 90, 23);
 
-        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel14.setText("GST:");
-        mainPanel.add(jLabel14);
-        jLabel14.setBounds(820, 420, 60, 20);
+        jLabelGST.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabelGST.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelGST.setText("GST:");
+        mainPanel.add(jLabelGST);
+        jLabelGST.setBounds(820, 530, 60, 20);
 
         lblGST.setEditable(false);
         lblGST.setText("0");
         lblGST.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         mainPanel.add(lblGST);
-        lblGST.setBounds(890, 420, 80, 20);
+        lblGST.setBounds(890, 530, 80, 20);
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("%");
         mainPanel.add(jLabel15);
-        jLabel15.setBounds(980, 450, 20, 20);
+        jLabel15.setBounds(980, 420, 20, 20);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Mercurial Theme [final]/booking.png"))); // NOI18N
         mainPanel.add(jLabel2);
@@ -1823,8 +1817,8 @@ public final class FrmBooking extends javax.swing.JPanel {
         summary[2]=lblNetTotal.getText();
         
         summary[3]=txtHanger.getText();
-        System.out.println(summary[3].toString()+" HAAAAAANGER");
-        summary[4]=lblGST.getText();
+//        System.out.println(summary[3].toString()+" HAAAAAANGER");
+        summary[4]=MainMenu.GST;
 
         
         if(addMode)
@@ -2570,7 +2564,6 @@ if ((evt.getX() > 3 && evt.getX() < 22) && (evt.getY() > 5 && evt.getY() < 24)) 
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
@@ -2589,9 +2582,9 @@ if ((evt.getX() > 3 && evt.getX() < 22) && (evt.getY() > 5 && evt.getY() < 24)) 
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelGST;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
@@ -2844,12 +2837,12 @@ if ((evt.getX() > 3 && evt.getX() < 22) && (evt.getY() > 5 && evt.getY() < 24)) 
         netTotal= netTotal - (Integer.parseInt(txtHanger.getText())*2);
         
         
-        int non_taxable_amount = (int) Math.round(netTotal / ( 1 + (MainMenu.GST/100.0 )));
-        int taxable_amount = netTotal - non_taxable_amount;
+      //  int non_taxable_amount = (int) Math.round(netTotal / ( 1 + (MainMenu.GST/100.0 )));
+        //int taxable_amount = netTotal - non_taxable_amount;
         
         txtTotal.setText(String.valueOf(grossTotal));
         lblNetTotal.setText(String.valueOf(netTotal));
-        lblGST.setText(String.valueOf(taxable_amount));
+       // lblGST.setText(String.valueOf(taxable_amount));
         
     }
     

@@ -924,7 +924,7 @@ public class FrmReceiptPreview extends javax.swing.JFrame {
                         prevRcpt,
                         hangers.getText(),
                         receiptTable.getModel(),
-                        Integer.parseInt(gst.getText()));
+                        MainMenu.GST);
                 
                 JOptionPane.showMessageDialog(null, "Receipt No: " + rcpNo);
                 
