@@ -665,11 +665,13 @@ public class Printer implements Printable {
 			table.add(new myObject("-x", values, 10));
                         table.add(new myObject(String.format("Discount[%.0f%%]",Double.valueOf(Discount)*100/Double.valueOf(GrossAmount)), headings, 60));
 			table.add(new myObject(TableEntryPrinter.TheCalculator("-" + String.format("%.0f", Math.floor(Double.valueOf(Discount))), 120, 172, 9), values, 140));
+                /*      SRemoved by jahanzeb 28-oct-15
                         table.add(new myObject("-x", values, 10));
                         double newNetAmount = Double.valueOf(GrossAmount) - Math.floor(Double.valueOf(Discount));
                         table.add(new myObject("NetAmount", headings, 60));
 			table.add(new myObject(TableEntryPrinter.TheCalculator(String.format("%.0f", newNetAmount), 120, 172, 9), values, 140));
-                }
+                */
+                        }
 		if (hangers > 0) {
 			table.add(new myObject("-x", values, 10));
 			table.add(new myObject("Hangers(" + hangers + "):", headings, 60));
