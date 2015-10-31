@@ -36,7 +36,7 @@ public class GenericReporter {
      //<editor-fold defaultstate="collapsed" desc="Format & Variables">
         Label workEnvironment;
         String columnHeads[] = {"Sr#","Receipt#","Phone#","Customer Name","Status",
-                                "Issue Date","Due Date","Qty","GrossAmt","GST","Amt"};
+                                "Issue Date","Due Date","Qty","NetAmount","GST%","GSTAmount","GrossAmount"};
         String column2Heads[] = {"Date","Voucher Count","Amount"};
         String column3Heads[] = {"Name","Quantity","Pieces"};
         
