@@ -16,10 +16,12 @@ public class FrmUtilities extends javax.swing.JPanel {
     
     
     FrmRatesChange rates= new FrmRatesChange(this);
+    FrmDeleteRecords delRec = new FrmDeleteRecords(this);
     
     public FrmUtilities() {
         initComponents();
         myPanel.add(rates);
+        myPanel.add(delRec);
       
     }
 
@@ -34,6 +36,7 @@ public class FrmUtilities extends javax.swing.JPanel {
 
         myPanel = new javax.swing.JPanel();
         cmdPrice = new javax.swing.JButton();
+        cmdDelete = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(13, 71, 93));
         setLayout(null);
@@ -62,15 +65,32 @@ public class FrmUtilities extends javax.swing.JPanel {
             }
         });
         add(cmdPrice);
-        cmdPrice.setBounds(90, 210, 120, 30);
+        cmdPrice.setBounds(100, 160, 120, 30);
+
+        cmdDelete.setText("Delete Data");
+        cmdDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdDeleteActionPerformed(evt);
+            }
+        });
+        add(cmdDelete);
+        cmdDelete.setBounds(100, 230, 120, 30);
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmdPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdPriceActionPerformed
         rates.setVisible(true);
+        delRec.setVisible(false);
         rates.setBounds(10,2,710,500);  
     }//GEN-LAST:event_cmdPriceActionPerformed
 
+    private void cmdDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdDeleteActionPerformed
+        delRec.setVisible(true);
+        rates.setVisible(false);
+        delRec.setBounds(10,2,710,500);  
+    }//GEN-LAST:event_cmdDeleteActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cmdDelete;
     private javax.swing.JButton cmdPrice;
     private javax.swing.JPanel myPanel;
     // End of variables declaration//GEN-END:variables

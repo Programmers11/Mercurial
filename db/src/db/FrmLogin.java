@@ -21,7 +21,7 @@ public class FrmLogin extends javax.swing.JFrame {
         txtUserName.requestFocus();
         optServer.setVisible(false); 
         optServer.setSelected(true); //is the system currently running on server? DEBUG PURPOSE ONLY
-        //optServer.setSelected(true);
+        //optServer.setSelected(false);
                
         try
         {

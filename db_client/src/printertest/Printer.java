@@ -1,5 +1,6 @@
 package printertest;
 
+import db_client.MainMenu;
 import db_client.BookingType;
 import db_client.ClientType;
 import java.awt.Color;
@@ -409,6 +410,8 @@ public class Printer implements Printable {
 					if (type == 1) {
                                                 linespacesmall();
 						printf("STN-0292788-8", "Arial", 8, Font.BOLD, 75);
+			//			linespacesmall();
+                                                printf("All Above Rates are Inclusive of "+MainMenu.GST+"% GST", "Arial", 8, Font.BOLD, 75);
 						linespacesmall();
 						Rectangle(5, ycord, 200, 220, 10, 5);
 						int charsize = 8, pos1 = 6, pos2 = 7;

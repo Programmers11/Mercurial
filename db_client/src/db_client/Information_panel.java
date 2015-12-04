@@ -13,6 +13,8 @@ public class Information_panel extends javax.swing.JPanel {
    MainMenu master;
    String date;
     private boolean isClosing=false;
+    private boolean isBooking=false;
+    
     private boolean itemWise=false;
     
     
@@ -62,7 +64,9 @@ public class Information_panel extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         Cancelledbutton2 = new javax.swing.JButton();
+        BR = new javax.swing.JButton();
         Dl3 = new javax.swing.JLabel();
+        CRl2 = new javax.swing.JLabel();
         type2 = new javax.swing.JPanel();
         UDl = new javax.swing.JLabel();
         Dl = new javax.swing.JLabel();
@@ -225,9 +229,9 @@ public class Information_panel extends javax.swing.JPanel {
 
         CRl.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         CRl.setForeground(new java.awt.Color(255, 255, 255));
-        CRl.setText("Closing report");
+        CRl.setText("Booking Report");
         type1.add(CRl);
-        CRl.setBounds(70, 120, 130, 30);
+        CRl.setBounds(230, 120, 110, 30);
 
         AB.setOpaque(false);
         AB.addActionListener(new java.awt.event.ActionListener() {
@@ -254,14 +258,29 @@ public class Information_panel extends javax.swing.JPanel {
         type1.add(Cancelledbutton2);
         Cancelledbutton2.setBounds(170, 40, 50, 30);
 
+        BR.setOpaque(false);
+        BR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BRActionPerformed(evt);
+            }
+        });
+        type1.add(BR);
+        BR.setBounds(170, 120, 50, 30);
+
         Dl3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         Dl3.setForeground(new java.awt.Color(255, 255, 255));
         Dl3.setText("Item-Wise");
         type1.add(Dl3);
         Dl3.setBounds(230, 40, 90, 30);
 
+        CRl2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        CRl2.setForeground(new java.awt.Color(255, 255, 255));
+        CRl2.setText("Closing report");
+        type1.add(CRl2);
+        CRl2.setBounds(70, 120, 130, 30);
+
         add(type1);
-        type1.setBounds(20, 40, 310, 170);
+        type1.setBounds(20, 40, 340, 170);
 
         type2.setBackground(new java.awt.Color(14, 87, 121));
         type2.setLayout(null);
@@ -364,7 +383,7 @@ public class Information_panel extends javax.swing.JPanel {
         Dl4.setBounds(210, 70, 130, 30);
 
         add(type2);
-        type2.setBounds(20, 210, 310, 170);
+        type2.setBounds(20, 210, 330, 170);
 
         type3.setBackground(new java.awt.Color(14, 87, 121));
         type3.setLayout(null);
@@ -422,7 +441,7 @@ public class Information_panel extends javax.swing.JPanel {
         jSeparator1.setBounds(10, 30, 190, 10);
 
         add(type3);
-        type3.setBounds(20, 380, 300, 170);
+        type3.setBounds(20, 380, 330, 170);
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Mercurial Theme [final]/reportsOptions.png"))); // NOI18N
         add(background);
@@ -525,6 +544,8 @@ public class Information_panel extends javax.swing.JPanel {
             cmdClosingReport();
         else if (itemWise)
             cmdItemWise();
+        else if (isBooking)
+            cmdItemWise();
         else
             cmdDateWise();
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -572,6 +593,7 @@ public class Information_panel extends javax.swing.JPanel {
     private void Cancelledbutton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cancelledbutton2ActionPerformed
         setter(3);
         isClosing=false;
+        isBooking=false;
         itemWise=true;
         jdpPanel.setLocation(310,130);
         this.setEnabled(false);
@@ -587,11 +609,30 @@ public class Information_panel extends javax.swing.JPanel {
     master.addReportWindow("DNP",query);
     }//GEN-LAST:event_DNPActionPerformed
 
+    private void BRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BRActionPerformed
+
+        /*
+        setter(3);
+        isClosing=true;
+        itemWise=false;
+        jdpPanel.setLocation(310,130);
+        this.setEnabled(false);
+        this.setFocusable(false);
+        */
+        setter(3);
+        isClosing=false;
+        jdpPanel.setLocation(310,130);
+        this.setEnabled(false);
+        this.setFocusable(false);
+    }//GEN-LAST:event_BRActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AB;
     private javax.swing.JLabel ABl;
+    private javax.swing.JButton BR;
     private javax.swing.JButton CR;
     private javax.swing.JLabel CRl;
+    private javax.swing.JLabel CRl2;
     private javax.swing.JButton Cancelledbutton;
     private javax.swing.JButton Cancelledbutton1;
     private javax.swing.JButton Cancelledbutton2;
@@ -698,8 +739,12 @@ public String dateCreator() {
         date = (myFormat.format(jdp.getDate()));
         String querry = "select b.rcptno,c.phone ,c.clientName,b.issuedate,b.duedate,b.netAmount  from "
         + "booking b,client c where c.phone = b.phone and `issueDate` = '"+date+"'"+master.getIsRegularString("b.",false);
-        System.out.println(querry);
-        master.addReportWindow("Date Wise",querry);
+        querry= querry + " order by b.rcptNo asc";
+        
+        //System.out.println(querry);
+        String q2 = "select @a:=@a+1 srno,x.* from ("+querry+") as x,(select @a:=0) as a";
+        System.out.println(q2);
+        master.addReportWindow("Date Wise",q2,date);
         jdpPanel.setVisible(false);
         jdpPanel.setEnabled(false);
         this.setEnabled(true);
@@ -734,4 +779,6 @@ public String dateCreator() {
         this.setEnabled(true);
         this.setFocusable(true);
     }
+     
+    
 }
