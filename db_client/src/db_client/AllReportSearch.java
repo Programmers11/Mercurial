@@ -64,6 +64,10 @@ public class AllReportSearch extends javax.swing.JPanel {
         //rs=db.read(query);
         printOption.setVisible(false);
         
+        if(q.contains("bookingReport"))
+            reportName="Booking Report";
+        else
+            reportName="Closing Report";
         
         viewtotals(false);
         viewtotalsClosing(true);
@@ -439,7 +443,7 @@ public class AllReportSearch extends javax.swing.JPanel {
                ArrayList<Integer> printArray = new ArrayList<>();
                
                getAllData(printArray);
-               setPrintableData(printArray,"CLOSING REPORT");
+               setPrintableData(printArray,reportName);
            
            }
            else {
@@ -580,7 +584,7 @@ public class AllReportSearch extends javax.swing.JPanel {
 
     private void getAllData(ArrayList<Integer> printArray) {
         
-        for (int i=0;i< depth; i++){
+        for (int i=1;i< depth; i++){
              printArray.add(i);
             // total = total + Double.parseDouble(data[i][queryWidth-1].toString());
         }

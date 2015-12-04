@@ -737,14 +737,15 @@ public String dateCreator() {
     private void cmdDateWise() {
         SimpleDateFormat myFormat=new SimpleDateFormat("yyyy-MM-dd");
         date = (myFormat.format(jdp.getDate()));
-        String querry = "select b.rcptno,c.phone ,c.clientName,b.issuedate,b.duedate,b.netAmount  from "
-        + "booking b,client c where c.phone = b.phone and `issueDate` = '"+date+"'"+master.getIsRegularString("b.",false);
-        querry= querry + " order by b.rcptNo asc";
+        String isRegularString = (master.isRegular)?" AND `Voucher No` Regexp '[A-Z]{1}0.*' ":"";
+        
+        String querry = "select @a:=@a+1 srno,b.* from bookingReport b,(select @a:=0) as a where Date(b.issueDate) = '"+date+"' "+isRegularString;
+        
+        
         
         //System.out.println(querry);
-        String q2 = "select @a:=@a+1 srno,x.* from ("+querry+") as x,(select @a:=0) as a";
-        System.out.println(q2);
-        master.addReportWindow("Date Wise",q2,date);
+        System.out.println(querry);
+        master.addReportWindow("Issue Date",querry,date);
         jdpPanel.setVisible(false);
         jdpPanel.setEnabled(false);
         this.setEnabled(true);

@@ -669,7 +669,7 @@ else if (cmp.contentEquals("Cancelled") ){
         ClosingReport= new AllReportSearch(this,query,true,date);       
         addTab(cmp,ClosingReport);
         }
-     if (cmp.contentEquals("Date Wise")  ){
+     if (cmp.contentEquals("Issue Date")  ){
         if( ABSDtw == null)
 	ABSDtw= new AllReportSearch(this,query,true,date);
             
