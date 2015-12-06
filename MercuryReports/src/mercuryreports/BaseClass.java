@@ -1,6 +1,6 @@
 package mercuryreports;
 
-import static com.sun.xml.internal.fastinfoset.alphabet.BuiltInRestrictedAlphabets.table;
+//import static com.sun.xml.internal.fastinfoset.alphabet.BuiltInRestrictedAlphabets.table;
 import java.awt.Color;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -370,7 +370,6 @@ public class BaseClass extends javax.swing.JFrame {
             displayTable.getColumnModel().getColumn(8).setResizable(false);
             displayTable.getColumnModel().getColumn(9).setResizable(false);
             displayTable.getColumnModel().getColumn(10).setResizable(false);
-            displayTable.getColumnModel().getColumn(10).setCellRenderer(null);
         }
 
         javax.swing.GroupLayout panelreportLayout = new javax.swing.GroupLayout(panelreport);
@@ -408,7 +407,7 @@ public class BaseClass extends javax.swing.JFrame {
         toMonth.setBounds(590, 50, 77, 20);
 
         toYear.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        toYear.setText("2014");
+        toYear.setText("2015");
         toYear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 toYearActionPerformed(evt);
@@ -423,7 +422,7 @@ public class BaseClass extends javax.swing.JFrame {
         toYear.setBounds(670, 50, 50, 20);
 
         fromYear.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        fromYear.setText("2014");
+        fromYear.setText("2015");
         fromYear.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 fromYearFocusLost(evt);

@@ -21,7 +21,7 @@ public class FrmLogin extends javax.swing.JFrame {
         txtUserName.requestFocus();
         optServer.setVisible(false);
         optServer.setSelected(false);
-        optServer.setSelected(true);
+        //optServer.setSelected(true);
                
         try
         {

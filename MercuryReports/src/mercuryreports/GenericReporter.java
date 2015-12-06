@@ -4,18 +4,20 @@ import java.awt.Desktop;
 import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import jxl.Workbook;
-import jxl.format.Alignment;
 import jxl.format.Border;
 import jxl.format.BorderLineStyle;
+import jxl.write.WriteException;
+
+import jxl.Workbook;
+import jxl.format.Alignment;
+import jxl.format.CellFormat;
+import jxl.format.Colour;
 import jxl.format.VerticalAlignment;
 import jxl.write.Label;
 import jxl.write.WritableCellFormat;
 import jxl.write.WritableFont;
 import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
-import jxl.write.WriteException;
-
 /**
  *
  * @author NUCES-Soban11-2051
@@ -131,6 +133,19 @@ private void printAllBookings(){
 //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Table Contents">
+
+        /*
+        following taken from stack overflow
+        */
+        WritableCellFormat newFormat =null;
+        WritableCellFormat cellFormatObj = new WritableCellFormat();
+        CellFormat readFormat = cellFormatObj;
+                    
+        newFormat = new WritableCellFormat(readFormat);
+        newFormat.setBackground(Colour.WHITE);
+        newFormat.setBorder(jxl.format.Border.BOTTOM,jxl.format.BorderLineStyle.THIN);
+        newFormat.setAlignment(Alignment.RIGHT);
+
         
         row++;column=1;
         
@@ -138,7 +153,10 @@ private void printAllBookings(){
             {
             for (j=0;j<columnHeads.length;j++,column++)
                 {
-                 workEnvironment = new Label(column,row,arr2[i][j].toString(),callight_12_ab);
+                    if(columnHeads[j].contains("Amount"))
+                        workEnvironment = new Label(column,row,arr2[i][j].toString(),newFormat);
+                    else
+                        workEnvironment = new Label(column,row,arr2[i][j].toString(),callight_12_ab);
                  printSheet1.addCell(workEnvironment);
                 }
             row++;

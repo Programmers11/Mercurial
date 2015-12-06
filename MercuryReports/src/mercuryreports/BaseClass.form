@@ -602,7 +602,7 @@
                         <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                           <Title/>
                           <Editor/>
-                          <Renderer editor="org.netbeans.modules.form.RADConnectionPropertyEditor"/>
+                          <Renderer/>
                         </Column>
                       </TableColumnModel>
                     </Property>
@@ -700,7 +700,7 @@
         <Component class="javax.swing.JTextField" name="toYear">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="2014"/>
+            <Property name="text" type="java.lang.String" value="2015"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="toYearActionPerformed"/>
@@ -715,7 +715,7 @@
         <Component class="javax.swing.JTextField" name="fromYear">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="2014"/>
+            <Property name="text" type="java.lang.String" value="2015"/>
           </Properties>
           <Events>
             <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fromYearFocusLost"/>

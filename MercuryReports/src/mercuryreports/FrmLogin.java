@@ -20,8 +20,8 @@ public class FrmLogin extends javax.swing.JFrame {
         //this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         txtUserName.requestFocus();
         optServer.setVisible(false);
-        //optServer.setSelected(false);
-        optServer.setSelected(true);
+        optServer.setSelected(false);
+        //optServer.setSelected(true);
                
         try{
         ImageIcon img = new ImageIcon("mer_logo.png");
