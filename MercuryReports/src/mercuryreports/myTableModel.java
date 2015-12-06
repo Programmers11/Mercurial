@@ -12,7 +12,7 @@ import javax.swing.table.DefaultTableModel;
 
    public myTableModel(Object[][] tableData, Object[] colNames) {
       super(tableData, colNames);
-     
+      
    }
 
     myTableModel() {
@@ -23,6 +23,7 @@ import javax.swing.table.DefaultTableModel;
    public boolean isCellEditable(int row, int column) {
       return false;
    }
+    
 }
     
     

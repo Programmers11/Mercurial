@@ -1,10 +1,13 @@
 package mercuryreports;
 
+import static com.sun.xml.internal.fastinfoset.alphabet.BuiltInRestrictedAlphabets.table;
 import java.awt.Color;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 
 public class BaseClass extends javax.swing.JFrame {
 
@@ -367,6 +370,7 @@ public class BaseClass extends javax.swing.JFrame {
             displayTable.getColumnModel().getColumn(8).setResizable(false);
             displayTable.getColumnModel().getColumn(9).setResizable(false);
             displayTable.getColumnModel().getColumn(10).setResizable(false);
+            displayTable.getColumnModel().getColumn(10).setCellRenderer(null);
         }
 
         javax.swing.GroupLayout panelreportLayout = new javax.swing.GroupLayout(panelreport);
@@ -844,9 +848,11 @@ public class BaseClass extends javax.swing.JFrame {
             {
                 for(int j=1;j<=queryWidth;j++)
                 {
+                    
                     data[i][j-1]=rs.getString(j);
                     
                 }
+             //   data[i][queryWidth-1] = String.format("%.0f",data[i][queryWidth-1].toString());
                  netTotal = netTotal + Double.parseDouble(data[i][queryWidth-4].toString());
                  gst = gst + Double.parseDouble(data[i][queryWidth-2].toString());
             }
@@ -866,6 +872,10 @@ public class BaseClass extends javax.swing.JFrame {
              grossAmountLabel.setVisible(false);GSTLabel.setVisible(false);
              }
              myTableModel tb=new myTableModel(data,heading);
+             DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
+             rightRenderer.setHorizontalAlignment(SwingConstants.RIGHT);
+             displayTable.getColumnModel().getColumn(queryWidth-2).setCellRenderer(rightRenderer);
+      
              displayTable.setModel(tb);
             
             db.closeConnection();
