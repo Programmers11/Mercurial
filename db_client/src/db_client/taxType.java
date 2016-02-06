@@ -16,13 +16,18 @@ import javax.swing.JOptionPane;
  * @author Alfred
  */
 public class taxType {
+    static int gst;
+    static String ntn;
+    
     public static int getTax(String type)
     {
-        int gst=0;
+        
         try
         {
             Scanner x= new Scanner(new File("GST.txt"));
-            gst=x.nextInt();
+            gst=Integer.parseInt(x.nextLine());
+            ntn = x.nextLine();
+            
             return gst;
         }
         catch(Exception e)
@@ -32,6 +37,11 @@ public class taxType {
         return gst;
     }
     
+    
+    public static String getNTN()
+    {
+        return ntn;
+    }
    
     
 }

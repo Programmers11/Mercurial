@@ -409,10 +409,10 @@ public class Printer implements Printable {
 
 					if (type == 1) {
                                                 linespacesmall();
-						printf("STN-0292788-8", "Arial", 8, Font.BOLD, 75);
+						printf(MainMenu.ntn, "Arial", 8, Font.BOLD, 75);
 			//			linespacesmall();
-                                                printf("All Above Rates are Inclusive of "+MainMenu.GST+"% GST", "Arial", 8, Font.BOLD, 75);
-						linespacesmall();
+                                                //printf("All Above Rates are Inclusive of "+MainMenu.GST+"% GST", "Arial", 8, Font.BOLD, 75);
+						//linespacesmall();
 						Rectangle(5, ycord, 200, 220, 10, 5);
 						int charsize = 8, pos1 = 6, pos2 = 7;
 						linespacelarge();
@@ -460,7 +460,7 @@ public class Printer implements Printable {
 						printEmptyString(5);
 					} else if (cashMemo) {
                                                linespacesmall();
-						printf("STN-0292788-8", "Arial", 8, Font.BOLD, 75);
+						printf(MainMenu.ntn, "Arial", 8, Font.BOLD, 75);
 						linespacesmall();
                                             Scanner cin=null;
                                             try {//for cash memo printing
@@ -479,7 +479,7 @@ public class Printer implements Printable {
                                         
 					
 					printf(Calendar.getInstance().getTime().toString(), "Arial", 8, Font.BOLD, 5);
-                                        printf("FACEBOOK.com/programmers11 - +92-331-2338554", "Arial", 8, Font.BOLD, 5);
+                                        printf("Programmers11, www.facebook.com/programmers11 ", "Arial", 8, Font.BOLD, 5);
 
 					if (!firstRun) {
 						noPagesLeft = true;

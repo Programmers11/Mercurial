@@ -20,7 +20,7 @@ public class FrmLogin extends javax.swing.JFrame {
         //this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         txtUserName.requestFocus();
         optServer.setVisible(false);
-        optServer.setSelected(false);
+        optServer.setSelected(true);
         //optServer.setSelected(true);
                
         try
