@@ -479,7 +479,7 @@ public class Printer implements Printable {
                                         
 					
 					printf(Calendar.getInstance().getTime().toString(), "Arial", 8, Font.BOLD, 5);
-                                        printf("Programmers11, www.facebook.com/programmers11 ", "Arial", 8, Font.BOLD, 5);
+//                                        printf("Programmers11, www.facebook.com/programmers11 ", "Arial", 8, Font.BOLD, 5);
 
 					if (!firstRun) {
 						noPagesLeft = true;
