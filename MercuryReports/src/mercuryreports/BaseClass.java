@@ -658,7 +658,7 @@ public class BaseClass extends javax.swing.JFrame {
         {
             
             query = getSelectedQuery(date1,date2);
-            //System.out.println(query);
+            System.out.println(query);
             serviceQuery(query);
             list.setSelectedIndex(0);
             searcbBar.setText("");
@@ -854,7 +854,10 @@ public class BaseClass extends javax.swing.JFrame {
              //   data[i][queryWidth-1] = String.format("%.0f",data[i][queryWidth-1].toString());
                  netTotal = netTotal + Double.parseDouble(data[i][queryWidth-4].toString());
                  gst = gst + Double.parseDouble(data[i][queryWidth-2].toString());
+                 
             }
+            
+           
              Total.setText(String.format("%.0f",netTotal));
              finalAmount = Total.getText();
              if(!(selectedReport == SUMMARY || selectedReport == ITEMWISE)){
@@ -862,8 +865,10 @@ public class BaseClass extends javax.swing.JFrame {
              gstTotal.setText(String.format("%.0f",gst));
              GSTAmount = gstTotal.getText();
              
-             grossTotal =(netTotal-gst);
+             grossTotal =(netTotal+gst);
+             
              grossAmountTotal.setText(String.format("%.0f",grossTotal));
+             
              GROSSAmount = grossAmountTotal.getText();
              }
              else{
@@ -913,16 +918,17 @@ public class BaseClass extends javax.swing.JFrame {
                     data[i][j-1]=rs.getString(j);
                     
                 }
-                netTotal = netTotal + Double.parseDouble(data[i][queryWidth-1].toString());
+                netTotal = netTotal + Double.parseDouble(data[i][queryWidth-4].toString());
                 gst = gst + Double.parseDouble(data[i][queryWidth-2].toString());
                
             }
+           
              Total.setText(String.format("%.0f",netTotal));
              finalAmount = Total.getText();
             if(!(selectedReport == SUMMARY || selectedReport == ITEMWISE)){
              gstTotal.setText(String.format("%.0f",gst));
              GSTAmount = gstTotal.getText();
-             grossTotal =(netTotal-gst);
+             grossTotal =(netTotal+gst);
              grossAmountTotal.setText(String.format("%.0f",grossTotal));
              GROSSAmount = grossAmountTotal.getText();
              }
