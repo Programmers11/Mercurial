@@ -366,7 +366,7 @@ public class AllReportSearch extends javax.swing.JPanel {
             }
         });
         add(cmdPrint);
-        cmdPrint.setBounds(863, 20, 90, 23);
+        cmdPrint.setBounds(740, 20, 90, 23);
 
         itemstotal.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         itemstotal.setForeground(new java.awt.Color(255, 255, 255));
@@ -583,8 +583,8 @@ public class AllReportSearch extends javax.swing.JPanel {
     }
 
     private void getAllData(ArrayList<Integer> printArray) {
-        
-        for (int i=1;i< depth; i++){
+        //jx: int i=1 was set to 1 for a reason we dont know..making i =0 solved the issue but it will remain a mystery why was it 1 in the first place --- 10 july 16 02:55 am
+        for (int i=0;i< depth; i++){
              printArray.add(i);
             // total = total + Double.parseDouble(data[i][queryWidth-1].toString());
         }
@@ -655,7 +655,7 @@ public class AllReportSearch extends javax.swing.JPanel {
          //  System.out.println(data[printArray.get(i)][0]);
             toPrint[i][0]= String.valueOf(data[printArray.get(i)][queryWidth-2]); // QTY
             qty += Integer.parseInt(toPrint[i][0]);
-            toPrint[i][1]= String.valueOf(data[printArray.get(i)][1]);
+            toPrint[i][1]= String.valueOf(data[printArray.get(i)][1]);System.out.println("i)))"+i+"rcp =))))))))))))))))"+toPrint[i][1]);
             toPrint[i][2] = String.valueOf(data[printArray.get(i)][queryWidth-1]);
             total += Double.parseDouble(toPrint[i][2]);
         }

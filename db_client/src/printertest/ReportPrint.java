@@ -118,7 +118,8 @@ public class ReportPrint implements Printable {
      //   System.out.println("**********************************"+pageIndex+"**********************************");
         if (isClosing) {
             for (int i = 0; i <= pageline; i++) {
-                // System.out.println("123 = "+Printable[i+(pageIndex*NumberOfLine)][0]);
+                //System.out.println("123 = "+Printable[i+(pageIndex*NumberOfLine)][0]);
+                System.out.println("i ========= "+(i + (pageIndex * NumberOfLine))+" /// "+Printable[i + (pageIndex * NumberOfLine)][1]);
                 if (i == pageline - 1 && pageIndex == Pages - 1) {
                     g.drawLine(5, y_axis, 195, y_axis);
                 }
