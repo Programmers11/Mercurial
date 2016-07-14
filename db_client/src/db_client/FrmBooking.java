@@ -392,7 +392,7 @@ public final class FrmBooking extends javax.swing.JPanel {
         jdp.setBounds(10, 10, 490, 270);
 
         mainPanel.add(jdpPanel);
-        jdpPanel.setBounds(180, 90, 510, 300);
+        jdpPanel.setBounds(190, 110, 510, 300);
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));

@@ -865,7 +865,7 @@ public class BaseClass extends javax.swing.JFrame {
              gstTotal.setText(String.format("%.0f",gst));
              GSTAmount = gstTotal.getText();
              
-             grossTotal =(netTotal+gst);
+             grossTotal =(netTotal-gst);
              
              grossAmountTotal.setText(String.format("%.0f",grossTotal));
              
@@ -928,7 +928,7 @@ public class BaseClass extends javax.swing.JFrame {
             if(!(selectedReport == SUMMARY || selectedReport == ITEMWISE)){
              gstTotal.setText(String.format("%.0f",gst));
              GSTAmount = gstTotal.getText();
-             grossTotal =(netTotal+gst);
+             grossTotal =(netTotal-gst);
              grossAmountTotal.setText(String.format("%.0f",grossTotal));
              GROSSAmount = grossAmountTotal.getText();
              }
