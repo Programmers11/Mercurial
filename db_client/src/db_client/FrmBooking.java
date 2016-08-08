@@ -1283,6 +1283,11 @@ public final class FrmBooking extends javax.swing.JPanel {
 
         lblDefaulted.setForeground(new java.awt.Color(255, 255, 255));
         lblDefaulted.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        lblDefaulted.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblDefaultedMouseClicked(evt);
+            }
+        });
         mainPanel.add(lblDefaulted);
         lblDefaulted.setBounds(400, 90, 70, 20);
 
@@ -2499,6 +2504,12 @@ if ((evt.getX() > 3 && evt.getX() < 22) && (evt.getY() > 5 && evt.getY() < 24)) 
     private void cmdShirtDcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdShirtDcActionPerformed
         ItemButtonClicked(cmdShirtDc.getText());
     }//GEN-LAST:event_cmdShirtDcActionPerformed
+
+    private void lblDefaultedMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDefaultedMouseClicked
+       // System.out.println(!lblDefaulted.getText().isEmpty() +" ++++ "+ lblDefaulted.getText().matches("[1-9]{1}.*"));
+        if(!lblDefaulted.getText().isEmpty() && lblDefaulted.getText().matches("[1-9]{1}.*"))
+           new ReadyReceiptList(txtPh.getText());
+    }//GEN-LAST:event_lblDefaultedMouseClicked
 
 
     private void setHighlight(JToggleButton a)

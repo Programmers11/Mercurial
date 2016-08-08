@@ -223,25 +223,51 @@ public class Printer implements Printable {
 	private void headers(int pageIndex, boolean isCashMemo) {
 
 		if (pageIndex == 0) {
-
-			//<editor-fold defaultstate="collapsed" desc="Merc Info">
+                        
+                     //<editor-fold defaultstate="collapsed" desc="Ready Receipt Info">
+			int readyReceipt = BookingType.getDefaultedBookings(PhoneNumber);
+                        if (readyReceipt > 0) 
+                            {
+                            try {
+                                Scanner in = new Scanner(new File("Company.txt"));
+                                in.nextLine();
+                               // printf(in.nextLine()+ readyReceipt, "Arial", 10, Font.PLAIN, 5);
+                                font = new Font("Arial", Font.PLAIN, 9);
+                                Style = new AttributedString(in.nextLine()+ readyReceipt);
+                                Style.addAttribute(TextAttribute.FONT, font);
+                                ycord=25;
+				tableYcord =25;
+                                graphics1.drawString(Style.getIterator(), xcord, 9);
+                               
+                                RectangleHeight = 10;
+				ycord=30;
+				tableYcord =30;
+                                in.close();
+                                } catch (FileNotFoundException ex) {
+                                        Logger.getLogger(Printer.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                            } 
+			
+  //</editor-fold>
+                    
+		    //<editor-fold defaultstate="collapsed" desc="Merc Info">
 			if (isCashMemo) {
-				graphics1.fillRoundRect(5, 5, 200, 20, 10, 10);
+				graphics1.fillRoundRect(5, 12, 200, 20, 10, 10);
 
-				RectangleHeight = 25;
+				RectangleHeight += 25;
 				ycord -= 2;
 				printfWhite("CASH MEMO", "Verdana", 15, Font.BOLD, 55, 15);
 				RectangleHeight += 5;
 			} else if (ReceiptId.length() > 8) {
-				graphics1.fillRoundRect(5, 5, 200, 20, 10, 10);
-				RectangleHeight = 25;
+				graphics1.fillRoundRect(5, 12, 200, 20, 10, 10);
+				RectangleHeight += 25;
 				ycord -= 2;
 				printfWhite("DUPLICATE", "Verdana", 15, Font.BOLD, 55, 15);
 				RectangleHeight += 5;
 			}
 			Rectangle(5, RectangleHeight, 200, 100, 10, 10);
                        //*
-                        System.out.println("soban error");
+                        
                         BufferedImage img = null;
                         try {
                             img = ImageIO.read(new File("merc.jpg"));
@@ -249,7 +275,7 @@ public class Printer implements Printable {
                             System.out.println(""+e.getMessage());
                         }
                         System.out.println("\n\n\nImg Height --- Yaaay " + img.getHeight() + "\n\n");
-                        printfimgHead(img, 8, ycord-20, 90, 190);
+                        printfimgHead(img, 8, ycord-18, 90, 190);
 			//*/
                         //(text,fontName,fontSize,fontattr,xCordinateOnPage)
 			/*
@@ -260,9 +286,9 @@ public class Printer implements Printable {
 			printf("12-c, Stadium Lane-1,Kh-e-Shamsheer", "Verdana", 9, Font.PLAIN, 13, 5);
 			printf("DHA Phase V, KHI - 35841207, 35850809", "Verdana", 9, Font.PLAIN, 10, 0);
                         //*/
-         //</editor-fold>
+                    //</editor-fold>
 
-			//<editor-fold defaultstate="collapsed" desc="Rcpt Info">
+                    //<editor-fold defaultstate="collapsed" desc="Rcpt Info">
 			Rectangle(5, RectangleHeight, 200, 113 + (isCashMemo ? 20 : 0), 10, 10);
 			printEmptyString(30);
 			line(ycord + 5);
@@ -284,32 +310,32 @@ public class Printer implements Printable {
 			printfnoLine("Due Date", "Verdana", 8, Font.PLAIN, 10);
 			printf(BookingType.getDueTimeStamp(ReceiptId) + ((isCashMemo)?" ":" - 07:00 PM")/*"Fri, 3 Mar'14 8:00AM"*/, "Verdana", 8, Font.BOLD, 80, 8);
 			System.out.println("soban-2");
-                        //</editor-fold>
+                    //</editor-fold>
 
-			if (isCashMemo) {
-				printfnoLine("Delivery Date", "Verdana", 8, Font.PLAIN, 10);
-				printf(BookingType.getDelTimeStamp(ReceiptId), "Verdana", 8, Font.BOLD, 80, 8);
-			}
+                    if (isCashMemo) {
+                            printfnoLine("Delivery Date", "Verdana", 8, Font.PLAIN, 10);
+                            printf(BookingType.getDelTimeStamp(ReceiptId), "Verdana", 8, Font.BOLD, 80, 8);
+                    }
 
-			//<editor-fold defaultstate="collapsed" desc="Customer Info">
-			printfnoLine("Name ", "Verdana", 8, Font.PLAIN, 10);
-			printf(CusName, "Verdana", 8, Font.BOLD, 80, 8);
+                    //<editor-fold defaultstate="collapsed" desc="Customer Info">
+                    printfnoLine("Name ", "Verdana", 8, Font.PLAIN, 10);
+                    printf(CusName, "Verdana", 8, Font.BOLD, 80, 8);
 
-			printfnoLine("Phone# ", "Verdana", 8, Font.PLAIN, 10);
-			printf(PhoneNumber, "Verdana", 8, Font.BOLD, 80, 8);
+                    printfnoLine("Phone# ", "Verdana", 8, Font.PLAIN, 10);
+                    printf(PhoneNumber, "Verdana", 8, Font.BOLD, 80, 8);
 
-			printfnoLine("Address ", "Verdana", 8, Font.PLAIN, 10);
-			printf(new ClientType().getClientAddress(PhoneNumber), "Verdana", 8, Font.BOLD, 80, 12);
+                    printfnoLine("Address ", "Verdana", 8, Font.PLAIN, 10);
+                    printf(new ClientType().getClientAddress(PhoneNumber), "Verdana", 8, Font.BOLD, 80, 12);
 
-			printf("Busniess Hours  8:00 AM - 8:00 PM", "Verdana", 8, Font.PLAIN, 25);
-			printEmptyString(8);
-         //</editor-fold>
+                    printf("Busniess Hours  8:00 AM - 8:00 PM", "Verdana", 8, Font.PLAIN, 25);
+                    printEmptyString(8);
+     //</editor-fold>
 
-			//Rectangle(5,RectangleHeight,200, 20, 10, 10);
-			graphics1.drawRoundRect(5, RectangleHeight, 200, 20, 10, 10);
-			printEmptyString(3);
-			printf(("QTY    " + "PARTICULAR            " + "PRICE"), "Verdana", 10, Font.BOLD, 8, 0);
-			printEmptyString(10);
+                    //Rectangle(5,RectangleHeight,200, 20, 10, 10);
+                    graphics1.drawRoundRect(5, RectangleHeight, 200, 20, 10, 10);
+                    printEmptyString(3);
+                    printf(("QTY    " + "PARTICULAR            " + "PRICE"), "Verdana", 10, Font.BOLD, 8, 0);
+                    printEmptyString(10);
 
 		}
 

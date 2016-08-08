@@ -5,6 +5,7 @@
 package db_client;
 
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -273,6 +274,34 @@ public class BookingType {
         return count;
         
     }
+    
+    public static ArrayList<String> getReadyReceiptList(String phone)
+    {
+        String query= "SELECT * FROM `readyreceipts` where phone='"+ phone+"'";
+        ArrayList<String> receiptList = new ArrayList<>();
+        
+        try
+        {
+            DatabaseType db= new DatabaseType();
+            db.openConnection();
+            ResultSet rs=db.read(query);
+            
+            while (rs.next()){
+            
+                receiptList.add(rs.getString("Receipt No"));
+                receiptList.add(rs.getString("Date"));
+            }
+            db.closeConnection();
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null, e.getMessage(),"Oops",JOptionPane.ERROR_MESSAGE);
+        }
+        
+        return receiptList;
+        
+    }
+    
     
     public static String getQuantity(String rcptNo)
     {

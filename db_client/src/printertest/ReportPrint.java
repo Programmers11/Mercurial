@@ -34,7 +34,9 @@ public class ReportPrint implements Printable {
         Print();
     }
 
-    public ReportPrint(String Ary[][], int Length, String[] heading, String pageHeading, String d, int x) {
+    
+    public ReportPrint(String Ary[][], int Length, String[] heading, String pageHeading, String d, 
+                        int x/*this x is someone's x I guess because it is never used in the code again :P*/) {
 
         Printable = Ary;
         this.Length = Length;

@@ -75,6 +75,7 @@ public class FrmLogin extends javax.swing.JFrame {
     }
     public void login() {
         
+        
         if(connected() && verified())
         {
             
