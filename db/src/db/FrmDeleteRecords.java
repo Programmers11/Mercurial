@@ -46,6 +46,7 @@ public class FrmDeleteRecords extends javax.swing.JPanel {
         cmbStartYear = new javax.swing.JComboBox();
         cmbEndYear = new javax.swing.JComboBox();
         cmdDel = new javax.swing.JButton();
+        box1 = new javax.swing.JCheckBox();
 
         setBackground(new java.awt.Color(13, 71, 93));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -125,6 +126,10 @@ public class FrmDeleteRecords extends javax.swing.JPanel {
         });
         add(cmdDel);
         cmdDel.setBounds(100, 330, 490, 50);
+
+        box1.setText("Regular Only");
+        add(box1);
+        box1.setBounds(340, 300, 250, 23);
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmdDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdDelActionPerformed
@@ -133,6 +138,13 @@ public class FrmDeleteRecords extends javax.swing.JPanel {
         String beginDate=cmbStartYear.getSelectedItem().toString()+"-"+(cmbStartMonth.getSelectedIndex()+1)+"-"+ cmbStartDay.getSelectedItem().toString();
         String endDate  =cmbEndYear.getSelectedItem().toString()  +"-"+(cmbEndMonth.getSelectedIndex()+1)  +"-"+ cmbEndDay.getSelectedItem().toString();
         String type=cmbStatus.getSelectedItem().toString();
+        
+        
+        boolean regularOnly = box1.isSelected();
+        String regularized = " and rcptno Like \'_0%\'";
+        
+        if(!regularOnly)
+               regularized="";
         
         
         boolean order=true;
@@ -157,9 +169,10 @@ public class FrmDeleteRecords extends javax.swing.JPanel {
 
         int value=JOptionPane.showConfirmDialog(null,type.toUpperCase()+" Records between "+ beginDate+"and"+ endDate + " will be deleted! Are you sure? (NO UNDO)");
 
-        String query1="Select rcptNo from booking where status=\'" +type+"\' and issueDate between \'"+beginDate+"\' and \'"+endDate+"\'";
+        String query1="Select rcptNo from booking where status=\'" +type+"\' and issueDate between \'"+beginDate+"\' and \'"+endDate+"\'" + regularized  ;
         String query2="Delete from booking_clothes where rcptNo in ("+query1+")";
-        String query3="Delete from booking where status=\'" +type+"\' and issueDate between \'"+beginDate+"\' and \'"+endDate+"\'";
+        String query3="Delete from booking where status=\'" +type+"\' and issueDate between \'"+beginDate+"\' and \'"+endDate+"\'"+ regularized;
+        
         
         if (value==JOptionPane.YES_OPTION)
         {
@@ -185,6 +198,7 @@ public class FrmDeleteRecords extends javax.swing.JPanel {
     }//GEN-LAST:event_cmdDelActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox box1;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
