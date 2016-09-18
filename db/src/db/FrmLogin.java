@@ -20,8 +20,8 @@ public class FrmLogin extends javax.swing.JFrame {
         //this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         txtUserName.requestFocus();
         optServer.setVisible(false); 
-        optServer.setSelected(false); //is the system currently running on server? DEBUG PURPOSE ONLY
-        //optServer.setSelected(false);
+        //optServer.setSelected(true); //is the system currently running on server? DEBUG PURPOSE ONLY
+        optServer.setSelected(false);
                
         try
         {

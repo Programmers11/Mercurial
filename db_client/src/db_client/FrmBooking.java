@@ -596,9 +596,9 @@ public final class FrmBooking extends javax.swing.JPanel {
             receiptTable.getColumnModel().getColumn(0).setResizable(false);
             receiptTable.getColumnModel().getColumn(0).setPreferredWidth(5);
             receiptTable.getColumnModel().getColumn(1).setResizable(false);
-            receiptTable.getColumnModel().getColumn(1).setPreferredWidth(10);
+            receiptTable.getColumnModel().getColumn(1).setPreferredWidth(150);
             receiptTable.getColumnModel().getColumn(2).setResizable(false);
-            receiptTable.getColumnModel().getColumn(2).setPreferredWidth(200);
+            receiptTable.getColumnModel().getColumn(2).setPreferredWidth(40);
             receiptTable.getColumnModel().getColumn(3).setResizable(false);
             receiptTable.getColumnModel().getColumn(3).setPreferredWidth(10);
             receiptTable.getColumnModel().getColumn(4).setResizable(false);
