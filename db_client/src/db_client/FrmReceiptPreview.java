@@ -550,6 +550,7 @@ public class FrmReceiptPreview extends javax.swing.JFrame {
         
         
         PrinterJob job = PrinterJob.getPrinterJob();
+        job.setPrintable(new Printer(x,Data,txtUser.getText(),receiptTable.getRowCount(),netTotal,1,Integer.parseInt(hangers.getText())));
         
         
         

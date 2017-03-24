@@ -2,12 +2,15 @@ package db_client;
 
 
 import java.awt.Dimension;
+import java.awt.print.PrinterException;
+import java.awt.print.PrinterJob;
 import java.sql.ResultSet;
 import javax.sound.midi.Soundbank;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import printertest.Printer;
 
 /**
  *
@@ -55,7 +58,7 @@ public class MainMenu extends javax.swing.JFrame {
     
     public MainMenu(String user,String priv) {
         this.setPreferredSize(new Dimension(1030,768));
-
+        
         initComponents();
         this.setTitle("Mercurial v1.0");
        // DatabaseType.master= this;

@@ -1,11 +1,15 @@
 package db_client;
 
 import java.awt.Dimension;
+import java.awt.HeadlessException;
+import java.awt.print.PrinterException;
+import java.awt.print.PrinterJob;
 import java.io.File;
 import java.sql.*;
 import java.util.Scanner;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import printertest.Printer;
 
 public class FrmLogin extends javax.swing.JFrame {
 
@@ -18,11 +22,13 @@ public class FrmLogin extends javax.swing.JFrame {
         initComponents();
         setDimensions();
         //this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+         
+        
         txtUserName.requestFocus();
         optServer.setVisible(false);
-       // optServer.setSelected(false);
+        optServer.setSelected(false);
         optServer.setSelected(true);
-               
+        
         try
         {
             ImageIcon img = new ImageIcon("mer_logo.png");
@@ -78,10 +84,12 @@ public class FrmLogin extends javax.swing.JFrame {
         
         if(connected() && verified())
         {
-            
+          //printTesting();
+         //* jx testing
             MainMenu mainM=new MainMenu(txtUserName.getText(),priv);
             mainM.setVisible(true);
             mainM.setMessage(txtUserName.getText());
+           //*/
             this.setVisible(false);
             this.dispose();
         }
@@ -90,6 +98,45 @@ public class FrmLogin extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Access Denied","Oops",JOptionPane.ERROR_MESSAGE);
         }
               
+    }
+
+    private void printTesting() throws HeadlessException {
+        PrinterJob job = PrinterJob.getPrinterJob();
+        job.setPrintable(new Printer(new String[][]{{"1", "2", ",Dark Green,,", "Coat[330]", "660"},
+            {"1", "2", ",Dark Green,,", "Coat[330]", "660"},
+            {"1", "2", ",Dark Green,,", "Coat[330]", "660"},
+            {"1", "2", ",Dark Green,,", "Coat[330]", "660"},
+            {"1", "2", ",Dark Green,,", "Coat[330]", "660"},
+            {"1", "2", ",Dark Green,,", "Coat[330]", "660"},
+            {"1", "2", ",Dark Green,,", "Coat[330]", "660"},
+            {"1", "2", ",Dark Green,,", "Coat[330]", "660"},
+            {"1", "2", ",Dark Green,,", "Coat[330]", "660"},
+            {"1", "2", ",Dark Green,,", "Coat[330]", "660"},
+            {"1", "2", ",Dark Green,,", "Coat[330]", "660"},
+            {"1", "2", ",Dark Green,,", "Coat[330]", "660"},
+            {"1", "2", ",Dark Green,,", "Coat[330]", "660"},
+            {"1", "2", ",Dark Green,,", "Coat[330]", "660"},
+            {"1", "2", ",Dark Green,,", "Coat[330]", "660"},
+            {"1", "2", ",Dark Green,,", "Coat[330]", "660"},
+            {"1", "2", ",Dark Green,,", "Coat[330]", "660"},
+            {"1", "2", ",Dark Green,,", "Coat[330]", "660"},
+            {"1", "2", ",Dark Green,,", "Coat[330]", "660"},
+            {"1", "2", ",Dark Green,,", "Coat[330]", "660"},
+            {"1", "2", ",Dark Green,,", "Coat[330]", "660"},
+            {"1", "2", ",Dark Green,,", "Coat[330]", "660"},
+            {"1", "2", ",Dark Green,,", "Coat[330]", "660"},
+            {"1", "2", ",Dark Green,,", "Coat[330]", "660"},
+            {"1", "2", ",Dark Green,,", "Coat[330]", "660"},
+            {"1", "2", ",Dark Green,,", "Coat[330]", "660"}},
+                new String[]{"0000", "07-02-17", "C10076", "Normal", "2950", "TEST", "05-02-17", "", "2950", "100", "14"}
+                ,"larka",2,100,1,1));
+        try {
+            if (true) {
+                job.print();
+            }
+        } catch (PrinterException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Oops", JOptionPane.ERROR_MESSAGE);
+        }
     }
     
     private boolean verified()
@@ -224,6 +271,7 @@ public class FrmLogin extends javax.swing.JFrame {
 
     private void cmdOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdOkActionPerformed
         login();
+        
     }//GEN-LAST:event_cmdOkActionPerformed
 
     private void cmdCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCancelActionPerformed
